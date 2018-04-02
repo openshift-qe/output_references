@@ -1,0 +1,338 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubernetes.io/created-by: |
+        {"kind":"SerializedReference","apiVersion":"v1","reference":{"kind":"StatefulSet","namespace":"openshift-metrics","name":"prometheus","uid":"a1009bdc-31e2-11e8-ad89-fa163e3b34a7","apiVersion":"apps/v1beta1","resourceVersion":"171874"}}
+      openshift.io/scc: restricted
+    creationTimestamp: 2018-03-27T17:16:46Z
+    generateName: prometheus-
+    labels:
+      app: prometheus
+      controller-revision-hash: prometheus-1954354777
+    name: prometheus-0
+    namespace: openshift-metrics
+    ownerReferences:
+    - apiVersion: apps/v1beta1
+      blockOwnerDeletion: true
+      controller: true
+      kind: StatefulSet
+      name: prometheus
+      uid: a1009bdc-31e2-11e8-ad89-fa163e3b34a7
+    resourceVersion: "171958"
+    selfLink: /api/v1/namespaces/openshift-metrics/pods/prometheus-0
+    uid: a1052c85-31e2-11e8-ad89-fa163e3b34a7
+  spec:
+    containers:
+    - args:
+      - -provider=openshift
+      - -https-address=:8443
+      - -http-address=
+      - -email-domain=*
+      - -upstream=http://localhost:9090
+      - -client-id=system:serviceaccount:openshift-metrics:prometheus
+      - '-openshift-sar={"resource": "namespaces", "verb": "get", "resourceName":
+        "openshift-metrics", "namespace": "openshift-metrics"}'
+      - '-openshift-delegate-urls={"/": {"resource": "namespaces", "verb": "get",
+        "resourceName": "openshift-metrics", "namespace": "openshift-metrics"}}'
+      - -tls-cert=/etc/tls/private/tls.crt
+      - -tls-key=/etc/tls/private/tls.key
+      - -client-secret-file=/var/run/secrets/kubernetes.io/serviceaccount/token
+      - -cookie-secret-file=/etc/proxy/secrets/session_secret
+      - -openshift-ca=/etc/pki/tls/cert.pem
+      - -openshift-ca=/var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+      - -skip-auth-regex=^/metrics
+      image: registry.access.redhat.com/openshift3/oauth-proxy:v3.7
+      imagePullPolicy: IfNotPresent
+      name: prom-proxy
+      ports:
+      - containerPort: 8443
+        name: web
+        protocol: TCP
+      resources: {}
+      securityContext:
+        capabilities:
+          drop:
+          - KILL
+          - MKNOD
+          - SETGID
+          - SETUID
+        privileged: false
+        runAsUser: 1000160000
+        seLinuxOptions:
+          level: s0:c13,c2
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /etc/tls/private
+        name: prometheus-tls
+      - mountPath: /etc/proxy/secrets
+        name: prometheus-secrets
+      - mountPath: /prometheus
+        name: prometheus-data
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: prometheus-token-742rg
+        readOnly: true
+    - args:
+      - --storage.tsdb.retention=6h
+      - --storage.tsdb.min-block-duration=2m
+      - --config.file=/etc/prometheus/prometheus.yml
+      - --web.listen-address=localhost:9090
+      image: registry.access.redhat.com/openshift3/prometheus:v3.7
+      imagePullPolicy: IfNotPresent
+      name: prometheus
+      resources: {}
+      securityContext:
+        capabilities:
+          drop:
+          - KILL
+          - MKNOD
+          - SETGID
+          - SETUID
+        privileged: false
+        runAsUser: 1000160000
+        seLinuxOptions:
+          level: s0:c13,c2
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /etc/prometheus
+        name: prometheus-config
+      - mountPath: /prometheus
+        name: prometheus-data
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: prometheus-token-742rg
+        readOnly: true
+    - args:
+      - -provider=openshift
+      - -https-address=:9443
+      - -http-address=
+      - -email-domain=*
+      - -upstream=http://localhost:9099
+      - -client-id=system:serviceaccount:openshift-metrics:prometheus
+      - '-openshift-sar={"resource": "namespaces", "verb": "get", "resourceName":
+        "openshift-metrics", "namespace": "openshift-metrics"}'
+      - '-openshift-delegate-urls={"/": {"resource": "namespaces", "verb": "get",
+        "resourceName": "openshift-metrics", "namespace": "openshift-metrics"}}'
+      - -tls-cert=/etc/tls/private/tls.crt
+      - -tls-key=/etc/tls/private/tls.key
+      - -client-secret-file=/var/run/secrets/kubernetes.io/serviceaccount/token
+      - -cookie-secret-file=/etc/proxy/secrets/session_secret
+      - -openshift-ca=/etc/pki/tls/cert.pem
+      - -openshift-ca=/var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+      image: registry.access.redhat.com/openshift3/oauth-proxy:v3.7
+      imagePullPolicy: IfNotPresent
+      name: alerts-proxy
+      ports:
+      - containerPort: 9443
+        name: web
+        protocol: TCP
+      resources: {}
+      securityContext:
+        capabilities:
+          drop:
+          - KILL
+          - MKNOD
+          - SETGID
+          - SETUID
+        privileged: false
+        runAsUser: 1000160000
+        seLinuxOptions:
+          level: s0:c13,c2
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /etc/tls/private
+        name: alerts-tls
+      - mountPath: /etc/proxy/secrets
+        name: alerts-secrets
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: prometheus-token-742rg
+        readOnly: true
+    - args:
+      - --storage-path=/alert-buffer/messages.db
+      image: registry.access.redhat.com/openshift3/prometheus-alert-buffer:v3.7
+      imagePullPolicy: IfNotPresent
+      name: alert-buffer
+      ports:
+      - containerPort: 9099
+        name: alert-buf
+        protocol: TCP
+      resources: {}
+      securityContext:
+        capabilities:
+          drop:
+          - KILL
+          - MKNOD
+          - SETGID
+          - SETUID
+        privileged: false
+        runAsUser: 1000160000
+        seLinuxOptions:
+          level: s0:c13,c2
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /alert-buffer
+        name: alert-buffer-data
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: prometheus-token-742rg
+        readOnly: true
+    - args:
+      - -config.file=/etc/alertmanager/alertmanager.yml
+      image: registry.access.redhat.com/openshift3/prometheus-alertmanager:v3.7
+      imagePullPolicy: IfNotPresent
+      name: alertmanager
+      ports:
+      - containerPort: 9093
+        name: web
+        protocol: TCP
+      resources: {}
+      securityContext:
+        capabilities:
+          drop:
+          - KILL
+          - MKNOD
+          - SETGID
+          - SETUID
+        privileged: false
+        runAsUser: 1000160000
+        seLinuxOptions:
+          level: s0:c13,c2
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /etc/alertmanager
+        name: alertmanager-config
+      - mountPath: /alertmanager
+        name: alertmanager-data
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: prometheus-token-742rg
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    hostname: prometheus-0
+    imagePullSecrets:
+    - name: prometheus-dockercfg-cjvc7
+    nodeName: 172.16.120.87
+    nodeSelector:
+      region: infra
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext:
+      fsGroup: 1000160000
+      seLinuxOptions:
+        level: s0:c13,c2
+    serviceAccount: prometheus
+    serviceAccountName: prometheus
+    terminationGracePeriodSeconds: 30
+    volumes:
+    - configMap:
+        defaultMode: 420
+        name: prometheus
+      name: prometheus-config
+    - name: prometheus-secrets
+      secret:
+        defaultMode: 420
+        secretName: prometheus-proxy
+    - name: prometheus-tls
+      secret:
+        defaultMode: 420
+        secretName: prometheus-tls
+    - emptyDir: {}
+      name: prometheus-data
+    - configMap:
+        defaultMode: 420
+        name: prometheus-alerts
+      name: alertmanager-config
+    - name: alerts-secrets
+      secret:
+        defaultMode: 420
+        secretName: alerts-proxy
+    - name: alerts-tls
+      secret:
+        defaultMode: 420
+        secretName: prometheus-alerts-tls
+    - emptyDir: {}
+      name: alertmanager-data
+    - emptyDir: {}
+      name: alert-buffer-data
+    - name: prometheus-token-742rg
+      secret:
+        defaultMode: 420
+        secretName: prometheus-token-742rg
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: 2018-03-27T17:16:46Z
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: 2018-03-27T17:17:13Z
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: 2018-03-27T17:16:46Z
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: docker://ec7c4aac86a5fb3a3027e23b53084b3019cea5b61dd3cc2dcee08e6e6b26dc4c
+      image: registry.access.redhat.com/openshift3/prometheus-alert-buffer:v3.7
+      imageID: docker-pullable://registry.access.redhat.com/openshift3/prometheus-alert-buffer@sha256:f1932f9a2e635dc8b0c56182d01f0a4d0f722e6678a180fa75d2f0ac9665b74f
+      lastState: {}
+      name: alert-buffer
+      ready: true
+      restartCount: 0
+      state:
+        running:
+          startedAt: 2018-03-27T17:17:04Z
+    - containerID: docker://2e795a5d6eec8909febe59be3cd47169263f37b651d5e26577f77a69980f014a
+      image: registry.access.redhat.com/openshift3/prometheus-alertmanager:v3.7
+      imageID: docker-pullable://registry.access.redhat.com/openshift3/prometheus-alertmanager@sha256:e80919e5357d0e8e4ea066e688b86ec48b51dba1fc3b2bf7ce5ea6a8bbc81e22
+      lastState: {}
+      name: alertmanager
+      ready: true
+      restartCount: 0
+      state:
+        running:
+          startedAt: 2018-03-27T17:17:12Z
+    - containerID: docker://764fa31e61672e48a1cdb5fabb78034162f0888290d84350d3980629dd620829
+      image: registry.access.redhat.com/openshift3/oauth-proxy:v3.7
+      imageID: docker-pullable://registry.access.redhat.com/openshift3/oauth-proxy@sha256:6f005ad15c442013388629d731f8779f7e71e24d32e56fb31d7c449f199c2271
+      lastState: {}
+      name: alerts-proxy
+      ready: true
+      restartCount: 0
+      state:
+        running:
+          startedAt: 2018-03-27T17:17:02Z
+    - containerID: docker://4eb8cc46e94b7266cd649e7cdf9bf0051d5f3683841a39180bb4d3f828c0487b
+      image: registry.access.redhat.com/openshift3/oauth-proxy:v3.7
+      imageID: docker-pullable://registry.access.redhat.com/openshift3/oauth-proxy@sha256:6f005ad15c442013388629d731f8779f7e71e24d32e56fb31d7c449f199c2271
+      lastState: {}
+      name: prom-proxy
+      ready: true
+      restartCount: 0
+      state:
+        running:
+          startedAt: 2018-03-27T17:16:58Z
+    - containerID: docker://7ab2332fe5b34a769f23b63ce7ffa54f36f2443d51cf580985dd2f159107c55b
+      image: registry.access.redhat.com/openshift3/prometheus:v3.7
+      imageID: docker-pullable://registry.access.redhat.com/openshift3/prometheus@sha256:fe207d89584fc1ed3717ff200ef2f76f210897250c052d925e2cfea5f61dc014
+      lastState: {}
+      name: prometheus
+      ready: true
+      restartCount: 0
+      state:
+        running:
+          startedAt: 2018-03-27T17:17:02Z
+    hostIP: 172.16.120.87
+    phase: Running
+    podIP: 10.128.0.47
+    qosClass: BestEffort
+    startTime: 2018-03-27T17:16:46Z
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""

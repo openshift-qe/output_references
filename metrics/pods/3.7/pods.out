@@ -1,0 +1,6 @@
+[root@host-172-16-120-21 ~]# oc get pods --show-labels
+NAME                         READY     STATUS    RESTARTS   AGE       LABELS
+hawkular-cassandra-1-rdzqp   1/1       Running   0          1h        metrics-infra=hawkular-cassandra,name=hawkular-cassandra-1,type=hawkular-cassandra
+hawkular-metrics-rcfb6       1/1       Running   0          1h        metrics-infra=hawkular-metrics,name=hawkular-metrics
+heapster-x85tr               1/1       Running   0          1h        metrics-infra=heapster,name=heapster
+

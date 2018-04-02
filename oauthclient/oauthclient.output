@@ -1,0 +1,8 @@
+[root@host-172-16-120-168 ~]# oc get oauthclient --show-labels
+NAME                           SECRET                                                                 WWW-CHALLENGE   TOKEN-MAX-AGE   REDIRECT URIS                                                                         LABELS
+cockpit-oauth-client           xxxx                                                                   FALSE           default         https://registry-console-default.apps.0313-y66.qe.rhcloud.com                         app=registry-console,createdBy=registry-console-template
+kibana-proxy                   yyyy                                                                   FALSE           default         https://logs.apps.0313-y66.qe.rhcloud.com                                             logging-infra=support
+openshift-browser-client       zzzz                                                                   FALSE           default         https://host-8-245-232.host.centralci.eng.rdu2.redhat.com:8443/oauth/token/display    <none>
+openshift-challenging-client                                                                          TRUE            default         https://host-8-245-232.host.centralci.eng.rdu2.redhat.com:8443/oauth/token/implicit   <none>
+openshift-web-console                                                                                 FALSE           default         https://host-8-245-232.host.centralci.eng.rdu2.redhat.com:8443/console/               <none>
+

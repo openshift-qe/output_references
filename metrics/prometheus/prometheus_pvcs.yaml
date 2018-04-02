@@ -1,0 +1,87 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    annotations:
+      pv.kubernetes.io/bind-completed: "yes"
+      pv.kubernetes.io/bound-by-controller: "yes"
+      volume.beta.kubernetes.io/storage-provisioner: kubernetes.io/cinder
+    creationTimestamp: 2018-03-29T19:38:19Z
+    name: prometheus
+    namespace: openshift-metrics
+    resourceVersion: "137315"
+    selfLink: /api/v1/namespaces/openshift-metrics/persistentvolumeclaims/prometheus
+    uid: bc16c0b8-3388-11e8-a4fd-fa163e134ec8
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 10Gi
+    storageClassName: standard
+    volumeName: pvc-bc16c0b8-3388-11e8-a4fd-fa163e134ec8
+  status:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 10Gi
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    annotations:
+      pv.kubernetes.io/bind-completed: "yes"
+      pv.kubernetes.io/bound-by-controller: "yes"
+      volume.beta.kubernetes.io/storage-provisioner: kubernetes.io/cinder
+    creationTimestamp: 2018-03-29T19:38:22Z
+    name: prometheus-alertbuffer
+    namespace: openshift-metrics
+    resourceVersion: "137334"
+    selfLink: /api/v1/namespaces/openshift-metrics/persistentvolumeclaims/prometheus-alertbuffer
+    uid: bd635865-3388-11e8-a4fd-fa163e134ec8
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 10Gi
+    storageClassName: standard
+    volumeName: pvc-bd635865-3388-11e8-a4fd-fa163e134ec8
+  status:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 10Gi
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    annotations:
+      pv.kubernetes.io/bind-completed: "yes"
+      pv.kubernetes.io/bound-by-controller: "yes"
+      volume.beta.kubernetes.io/storage-provisioner: kubernetes.io/cinder
+    creationTimestamp: 2018-03-29T19:38:20Z
+    name: prometheus-alertmanager
+    namespace: openshift-metrics
+    resourceVersion: "137324"
+    selfLink: /api/v1/namespaces/openshift-metrics/persistentvolumeclaims/prometheus-alertmanager
+    uid: bcbcfb42-3388-11e8-a4fd-fa163e134ec8
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 10Gi
+    storageClassName: standard
+    volumeName: pvc-bcbcfb42-3388-11e8-a4fd-fa163e134ec8
+  status:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 10Gi
+    phase: Bound
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""

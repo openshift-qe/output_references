@@ -1,0 +1,240 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    openshift.io/deployment-config.latest-version: "2"
+    openshift.io/deployment-config.name: logging-es-data-master-xvhh7h7a
+    openshift.io/deployment.name: logging-es-data-master-xvhh7h7a-2
+    openshift.io/scc: restricted
+  creationTimestamp: 2018-03-13T23:33:24Z
+  generateName: logging-es-data-master-xvhh7h7a-2-
+  labels:
+    component: es
+    deployment: logging-es-data-master-xvhh7h7a-2
+    deploymentconfig: logging-es-data-master-xvhh7h7a
+    logging-infra: elasticsearch
+    provider: openshift
+  name: logging-es-data-master-xvhh7h7a-2-lc57l
+  namespace: qs61r
+  ownerReferences:
+  - apiVersion: v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicationController
+    name: logging-es-data-master-xvhh7h7a-2
+    uid: bee3711c-2716-11e8-bf7f-fa163eae21aa
+  resourceVersion: "39438"
+  selfLink: /api/v1/namespaces/qs61r/pods/logging-es-data-master-xvhh7h7a-2-lc57l
+  uid: ec6807dc-2716-11e8-bf7f-fa163eae21aa
+spec:
+  containers:
+  - env:
+    - name: DC_NAME
+      value: logging-es-data-master-xvhh7h7a
+    - name: NAMESPACE
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: metadata.namespace
+    - name: KUBERNETES_TRUST_CERT
+      value: "true"
+    - name: SERVICE_DNS
+      value: logging-es-cluster
+    - name: CLUSTER_NAME
+      value: logging-es
+    - name: INSTANCE_RAM
+      value: 512Mi
+    - name: HEAP_DUMP_LOCATION
+      value: /elasticsearch/persistent/heapdump.hprof
+    - name: NODE_QUORUM
+      value: "1"
+    - name: RECOVER_EXPECTED_NODES
+      value: "1"
+    - name: RECOVER_AFTER_TIME
+      value: 5m
+    - name: READINESS_PROBE_TIMEOUT
+      value: "30"
+    - name: POD_LABEL
+      value: component=es
+    - name: IS_MASTER
+      value: "true"
+    - name: HAS_DATA
+      value: "true"
+    - name: PROMETHEUS_USER
+      value: system:serviceaccount:openshift-metrics:prometheus
+    image: brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/openshift3/logging-elasticsearch:v3.9
+    imagePullPolicy: IfNotPresent
+    name: elasticsearch
+    ports:
+    - containerPort: 9200
+      name: restapi
+      protocol: TCP
+    - containerPort: 9300
+      name: cluster
+      protocol: TCP
+    readinessProbe:
+      exec:
+        command:
+        - /usr/share/java/elasticsearch/probe/readiness.sh
+      failureThreshold: 3
+      initialDelaySeconds: 10
+      periodSeconds: 5
+      successThreshold: 1
+      timeoutSeconds: 30
+    resources:
+      limits:
+        cpu: 300m
+        memory: 512Mi
+      requests:
+        cpu: 300m
+        memory: 512Mi
+    securityContext:
+      capabilities:
+        drop:
+        - KILL
+        - MKNOD
+        - SETGID
+        - SETUID
+      runAsUser: 1000120000
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /etc/elasticsearch/secret
+      name: elasticsearch
+      readOnly: true
+    - mountPath: /usr/share/java/elasticsearch/config
+      name: elasticsearch-config
+      readOnly: true
+    - mountPath: /elasticsearch/persistent
+      name: elasticsearch-storage
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: aggregated-logging-elasticsearch-token-tmbpx
+      readOnly: true
+  - args:
+    - --upstream-ca=/etc/elasticsearch/secret/admin-ca
+    - --https-address=:4443
+    - -provider=openshift
+    - -client-id=system:serviceaccount:qs61r:aggregated-logging-elasticsearch
+    - -client-secret-file=/var/run/secrets/kubernetes.io/serviceaccount/token
+    - -cookie-secret=RnBpOE1NaUJoclJMSUNkMQ==
+    - -basic-auth-password=KuKhxHpnrTvWvgmR
+    - -upstream=https://localhost:9200
+    - '-openshift-sar={"namespace": "qs61r", "verb": "view", "resource": "prometheus",
+      "group": "metrics.openshift.io"}'
+    - '-openshift-delegate-urls={"/": {"resource": "prometheus", "verb": "view", "group":
+      "metrics.openshift.io", "namespace": "qs61r"}}'
+    - --tls-cert=/etc/tls/private/tls.crt
+    - --tls-key=/etc/tls/private/tls.key
+    - -pass-access-token
+    - -pass-user-headers
+    image: brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/openshift3/oauth-proxy:v3.9
+    imagePullPolicy: IfNotPresent
+    name: proxy
+    ports:
+    - containerPort: 4443
+      name: proxy
+      protocol: TCP
+    resources:
+      limits:
+        memory: 64Mi
+      requests:
+        cpu: 100m
+        memory: 64Mi
+    securityContext:
+      capabilities:
+        drop:
+        - KILL
+        - MKNOD
+        - SETGID
+        - SETUID
+      runAsUser: 1000120000
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /etc/tls/private
+      name: proxy-tls
+      readOnly: true
+    - mountPath: /etc/elasticsearch/secret
+      name: elasticsearch
+      readOnly: true
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: aggregated-logging-elasticsearch-token-tmbpx
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  imagePullSecrets:
+  - name: aggregated-logging-elasticsearch-dockercfg-jv9hl
+  nodeName: 192.168.100.25
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext:
+    fsGroup: 1000120000
+    seLinuxOptions:
+      level: s0:c11,c5
+    supplementalGroups:
+    - 65534
+  serviceAccount: aggregated-logging-elasticsearch
+  serviceAccountName: aggregated-logging-elasticsearch
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoSchedule
+    key: node.kubernetes.io/memory-pressure
+    operator: Exists
+  volumes:
+  - name: proxy-tls
+    secret:
+      defaultMode: 420
+      secretName: prometheus-tls
+  - name: elasticsearch
+    secret:
+      defaultMode: 420
+      secretName: logging-elasticsearch
+  - configMap:
+      defaultMode: 420
+      name: logging-elasticsearch
+    name: elasticsearch-config
+  - emptyDir: {}
+    name: elasticsearch-storage
+  - name: aggregated-logging-elasticsearch-token-tmbpx
+    secret:
+      defaultMode: 420
+      secretName: aggregated-logging-elasticsearch-token-tmbpx
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: 2018-03-13T23:33:24Z
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: 2018-03-13T23:34:41Z
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: 2018-03-13T23:33:24Z
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: docker://251a24edf01db45e5b866588443cd072cd10ce4978b6337ec14e665903da9224
+    image: brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/openshift3/logging-elasticsearch:v3.9
+    imageID: docker-pullable://brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/openshift3/logging-elasticsearch@sha256:3fea6b78e9c393610d521484c3c1a53d4b7b065725c1915736fcd180bb3c950c
+    lastState: {}
+    name: elasticsearch
+    ready: true
+    restartCount: 0
+    state:
+      running:
+        startedAt: 2018-03-13T23:33:31Z
+  - containerID: docker://1bc2035d7392b912639b21c48d0e0d48bc45714f1fca39511216428881094fc0
+    image: brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/openshift3/oauth-proxy:v3.9
+    imageID: docker-pullable://brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/openshift3/oauth-proxy@sha256:88cd13a096c87b2bc011c6cc10a2b0eb5330bf793b430700137d55a6213159fd
+    lastState: {}
+    name: proxy
+    ready: true
+    restartCount: 0
+    state:
+      running:
+        startedAt: 2018-03-13T23:33:32Z
+  hostIP: 192.168.100.25
+  phase: Running
+  podIP: 10.128.0.21
+  qosClass: Burstable
+  startTime: 2018-03-13T23:33:24Z

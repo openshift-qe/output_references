@@ -1,0 +1,6 @@
+[root@host-172-16-120-21 ~]# oc get rc  --show-labels
+NAME                   DESIRED   CURRENT   READY     AGE       LABELS
+hawkular-cassandra-1   1         1         1         1h        metrics-infra=hawkular-cassandra,name=hawkular-cassandra,type=hawkular-cassandra
+hawkular-metrics       1         1         1         1h        metrics-infra=hawkular-metrics,name=hawkular-metrics
+heapster               1         1         1         1h        metrics-infra=heapster,name=heapster
+

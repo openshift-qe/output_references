@@ -1,0 +1,9 @@
+NAME                                      READY     STATUS             RESTARTS   AGE       LABELS
+base-ansible-pod                          1/1       Running            0          14m       name=base-ansible-pod
+logging-curator-1-llqq5                   1/1       Running            0          11m       component=curator,deployment=logging-curator-1,deploymentconfig=logging-curator,logging-infra=curator,provider=openshift
+logging-es-data-master-cb29otjv-1-kp8nh   2/2       Running            0          10m       component=es,deployment=logging-es-data-master-cb29otjv-1,deploymentconfig=logging-es-data-master-cb29otjv,logging-infra=elasticsearch,provider=openshift
+logging-fluentd-n6qst                     0/1       CrashLoopBackOff   6          10m       component=fluentd,controller-revision-hash=533063912,logging-infra=fluentd,pod-template-generation=1,provider=openshift
+logging-fluentd-nrsrk                     0/1       CrashLoopBackOff   6          10m       component=fluentd,controller-revision-hash=533063912,logging-infra=fluentd,pod-template-generation=1,provider=openshift
+logging-kibana-1-8nslf                    2/2       Running            0          11m       component=kibana,deployment=logging-kibana-1,deploymentconfig=logging-kibana,logging-infra=kibana,provider=openshift
+logging-mux-1-2fgv8                       0/1       CrashLoopBackOff   6          11m       component=mux,deployment=logging-mux-1,deploymentconfig=logging-mux,logging-infra=mux,provider=openshift
+

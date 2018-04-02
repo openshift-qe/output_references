@@ -1,0 +1,136 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"ReplicationController","metadata":{"annotations":{},"creationTimestamp":"2018-03-17T08:01:39Z","generation":2,"labels":{"metrics-infra":"hawkular-metrics","name":"hawkular-metrics"},"name":"hawkular-metrics","namespace":"openshift-infra","selfLink":"/api/v1/namespaces/openshift-infra/replicationcontrollers/hawkular-metrics","uid":"6c5362e4-29b9-11e8-85f2-fa163ee13785"},"spec":{"replicas":1,"selector":{"name":"hawkular-metrics"},"template":{"metadata":{"creationTimestamp":null,"labels":{"metrics-infra":"hawkular-metrics","name":"hawkular-metrics"}},"spec":{"containers":[{"command":["/opt/hawkular/scripts/hawkular-metrics-wrapper.sh","-b","0.0.0.0","-Dhawkular.metrics.cassandra.nodes=hawkular-cassandra","-Dhawkular.metrics.cassandra.use-ssl","-Dhawkular.metrics.openshift.auth-methods=openshift-oauth,htpasswd","-Dhawkular.metrics.openshift.htpasswd-file=/hawkular-account/hawkular-metrics.htpasswd","-Dhawkular.metrics.allowed-cors-access-control-allow-headers=authorization","-Dhawkular.metrics.default-ttl=7","-Dhawkular.metrics.admin-tenant=_hawkular_admin","-Dhawkular-alerts.cassandra-nodes=hawkular-cassandra","-Dhawkular-alerts.cassandra-use-ssl","-Dhawkular.alerts.openshift.auth-methods=openshift-oauth,htpasswd","-Dhawkular.alerts.openshift.htpasswd-file=/hawkular-account/hawkular-metrics.htpasswd","-Dhawkular.alerts.allowed-cors-access-control-allow-headers=authorization","-Dorg.apache.tomcat.util.buf.UDecoder.ALLOW_ENCODED_SLASH=true","-Dorg.apache.catalina.connector.CoyoteAdapter.ALLOW_BACKSLASH=true","-Dcom.datastax.driver.FORCE_NIO=true","-DKUBERNETES_MASTER_URL=https://kubernetes.default.svc","-DUSER_WRITE_ACCESS=False","-Dhawkular.metrics.jmx-reporting-enabled"],"env":[{"name":"POD_NAMESPACE","valueFrom":{"fieldRef":{"apiVersion":"v1","fieldPath":"metadata.namespace"}}},{"name":"MASTER_URL","value":"https://kubernetes.default.svc"},{"name":"JGROUPS_PASSWORD","value":"BeFMWQsPiElN2YGWg"},{"name":"TRUSTSTORE_AUTHORITIES","value":"/hawkular-metrics-certs/tls.truststore.crt"},{"name":"ENABLE_PROMETHEUS_ENDPOINT","value":"True"},{"name":"OPENSHIFT_KUBE_PING_NAMESPACE","valueFrom":{"fieldRef":{"apiVersion":"v1","fieldPath":"metadata.namespace"}}},{"name":"OPENSHIFT_KUBE_PING_LABELS","value":"metrics-infra=hawkular-metrics,name=hawkular-metrics"},{"name":"STARTUP_TIMEOUT","value":"500"}],"image":"brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/openshift3/metrics-hawkular-metrics:v3.9","imagePullPolicy":"IfNotPresent","livenessProbe":{"exec":{"command":["/opt/hawkular/scripts/hawkular-metrics-liveness.py"]},"failureThreshold":3,"periodSeconds":10,"successThreshold":1,"timeoutSeconds":1},"name":"hawkular-metrics","ports":[{"containerPort":8080,"name":"http-endpoint","protocol":"TCP"},{"containerPort":8443,"name":"https-endpoint","protocol":"TCP"},{"containerPort":8888,"name":"ping","protocol":"TCP"}],"readinessProbe":{"exec":{"command":["/opt/hawkular/scripts/hawkular-metrics-readiness.py"]},"failureThreshold":3,"periodSeconds":10,"successThreshold":1,"timeoutSeconds":1},"resources":{"limits":{"memory":"2500M"},"requests":{"memory":"1500M"}},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File","volumeMounts":[{"mountPath":"/hawkular-metrics-certs","name":"hawkular-metrics-certs"},{"mountPath":"/hawkular-account","name":"hawkular-metrics-account"}]}],"dnsPolicy":"ClusterFirst","restartPolicy":"Always","schedulerName":"default-scheduler","securityContext":{},"serviceAccount":"hawkular","serviceAccountName":"hawkular","terminationGracePeriodSeconds":30,"volumes":[{"name":"hawkular-metrics-certs","secret":{"defaultMode":420,"secretName":"hawkular-metrics-certs"}},{"name":"hawkular-metrics-account","secret":{"defaultMode":420,"secretName":"hawkular-metrics-account"}}]}}},"status":{"observedGeneration":2,"replicas":0}}
+  creationTimestamp: 2018-03-17T08:01:39Z
+  generation: 3
+  labels:
+    metrics-infra: hawkular-metrics
+    name: hawkular-metrics
+  name: hawkular-metrics
+  namespace: openshift-infra
+  resourceVersion: "220305"
+  selfLink: /api/v1/namespaces/openshift-infra/replicationcontrollers/hawkular-metrics
+  uid: 6c5362e4-29b9-11e8-85f2-fa163ee13785
+spec:
+  replicas: 1
+  selector:
+    name: hawkular-metrics
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        metrics-infra: hawkular-metrics
+        name: hawkular-metrics
+    spec:
+      containers:
+      - command:
+        - /opt/hawkular/scripts/hawkular-metrics-wrapper.sh
+        - -b
+        - 0.0.0.0
+        - -Dhawkular.metrics.cassandra.nodes=hawkular-cassandra
+        - -Dhawkular.metrics.cassandra.use-ssl
+        - -Dhawkular.metrics.openshift.auth-methods=openshift-oauth,htpasswd
+        - -Dhawkular.metrics.openshift.htpasswd-file=/hawkular-account/hawkular-metrics.htpasswd
+        - -Dhawkular.metrics.allowed-cors-access-control-allow-headers=authorization
+        - -Dhawkular.metrics.default-ttl=7
+        - -Dhawkular.metrics.admin-tenant=_hawkular_admin
+        - -Dhawkular-alerts.cassandra-nodes=hawkular-cassandra
+        - -Dhawkular-alerts.cassandra-use-ssl
+        - -Dhawkular.alerts.openshift.auth-methods=openshift-oauth,htpasswd
+        - -Dhawkular.alerts.openshift.htpasswd-file=/hawkular-account/hawkular-metrics.htpasswd
+        - -Dhawkular.alerts.allowed-cors-access-control-allow-headers=authorization
+        - -Dorg.apache.tomcat.util.buf.UDecoder.ALLOW_ENCODED_SLASH=true
+        - -Dorg.apache.catalina.connector.CoyoteAdapter.ALLOW_BACKSLASH=true
+        - -Dcom.datastax.driver.FORCE_NIO=true
+        - -DKUBERNETES_MASTER_URL=https://kubernetes.default.svc
+        - -DUSER_WRITE_ACCESS=False
+        - -Dhawkular.metrics.jmx-reporting-enabled
+        env:
+        - name: POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+        - name: MASTER_URL
+          value: https://kubernetes.default.svc
+        - name: JGROUPS_PASSWORD
+          value: BeFMWQsPiElN2YGWg
+        - name: TRUSTSTORE_AUTHORITIES
+          value: /hawkular-metrics-certs/tls.truststore.crt
+        - name: ENABLE_PROMETHEUS_ENDPOINT
+          value: "True"
+        - name: OPENSHIFT_KUBE_PING_NAMESPACE
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+        - name: OPENSHIFT_KUBE_PING_LABELS
+          value: metrics-infra=hawkular-metrics,name=hawkular-metrics
+        - name: STARTUP_TIMEOUT
+          value: "500"
+        image: brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/openshift3/metrics-hawkular-metrics:v3.9
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          exec:
+            command:
+            - /opt/hawkular/scripts/hawkular-metrics-liveness.py
+          failureThreshold: 3
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        name: hawkular-metrics
+        ports:
+        - containerPort: 8080
+          name: http-endpoint
+          protocol: TCP
+        - containerPort: 8443
+          name: https-endpoint
+          protocol: TCP
+        - containerPort: 8888
+          name: ping
+          protocol: TCP
+        readinessProbe:
+          exec:
+            command:
+            - /opt/hawkular/scripts/hawkular-metrics-readiness.py
+          failureThreshold: 3
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        resources:
+          limits:
+            memory: 2500M
+          requests:
+            memory: 1500M
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /hawkular-metrics-certs
+          name: hawkular-metrics-certs
+        - mountPath: /hawkular-account
+          name: hawkular-metrics-account
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      serviceAccount: hawkular
+      serviceAccountName: hawkular
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: hawkular-metrics-certs
+        secret:
+          defaultMode: 420
+          secretName: hawkular-metrics-certs
+      - name: hawkular-metrics-account
+        secret:
+          defaultMode: 420
+          secretName: hawkular-metrics-account
+status:
+  availableReplicas: 1
+  fullyLabeledReplicas: 1
+  observedGeneration: 3
+  readyReplicas: 1
+  replicas: 1

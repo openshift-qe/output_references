@@ -1,0 +1,181 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    openshift.io/scc: restricted
+  creationTimestamp: 2018-03-17T08:01:59Z
+  generateName: hawkular-metrics-
+  labels:
+    metrics-infra: hawkular-metrics
+    name: hawkular-metrics
+  name: hawkular-metrics-85f2v
+  namespace: openshift-infra
+  ownerReferences:
+  - apiVersion: v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicationController
+    name: hawkular-metrics
+    uid: 6c5362e4-29b9-11e8-85f2-fa163ee13785
+  resourceVersion: "220304"
+  selfLink: /api/v1/namespaces/openshift-infra/pods/hawkular-metrics-85f2v
+  uid: 77c9a298-29b9-11e8-85f2-fa163ee13785
+spec:
+  containers:
+  - command:
+    - /opt/hawkular/scripts/hawkular-metrics-wrapper.sh
+    - -b
+    - 0.0.0.0
+    - -Dhawkular.metrics.cassandra.nodes=hawkular-cassandra
+    - -Dhawkular.metrics.cassandra.use-ssl
+    - -Dhawkular.metrics.openshift.auth-methods=openshift-oauth,htpasswd
+    - -Dhawkular.metrics.openshift.htpasswd-file=/hawkular-account/hawkular-metrics.htpasswd
+    - -Dhawkular.metrics.allowed-cors-access-control-allow-headers=authorization
+    - -Dhawkular.metrics.default-ttl=7
+    - -Dhawkular.metrics.admin-tenant=_hawkular_admin
+    - -Dhawkular-alerts.cassandra-nodes=hawkular-cassandra
+    - -Dhawkular-alerts.cassandra-use-ssl
+    - -Dhawkular.alerts.openshift.auth-methods=openshift-oauth,htpasswd
+    - -Dhawkular.alerts.openshift.htpasswd-file=/hawkular-account/hawkular-metrics.htpasswd
+    - -Dhawkular.alerts.allowed-cors-access-control-allow-headers=authorization
+    - -Dorg.apache.tomcat.util.buf.UDecoder.ALLOW_ENCODED_SLASH=true
+    - -Dorg.apache.catalina.connector.CoyoteAdapter.ALLOW_BACKSLASH=true
+    - -Dcom.datastax.driver.FORCE_NIO=true
+    - -DKUBERNETES_MASTER_URL=https://kubernetes.default.svc
+    - -DUSER_WRITE_ACCESS=False
+    - -Dhawkular.metrics.jmx-reporting-enabled
+    env:
+    - name: POD_NAMESPACE
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: metadata.namespace
+    - name: MASTER_URL
+      value: https://kubernetes.default.svc
+    - name: JGROUPS_PASSWORD
+      value: BeFMWQsPiElN2YGWg
+    - name: TRUSTSTORE_AUTHORITIES
+      value: /hawkular-metrics-certs/tls.truststore.crt
+    - name: ENABLE_PROMETHEUS_ENDPOINT
+      value: "True"
+    - name: OPENSHIFT_KUBE_PING_NAMESPACE
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: metadata.namespace
+    - name: OPENSHIFT_KUBE_PING_LABELS
+      value: metrics-infra=hawkular-metrics,name=hawkular-metrics
+    - name: STARTUP_TIMEOUT
+      value: "500"
+    image: brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/openshift3/metrics-hawkular-metrics:v3.9
+    imagePullPolicy: IfNotPresent
+    livenessProbe:
+      exec:
+        command:
+        - /opt/hawkular/scripts/hawkular-metrics-liveness.py
+      failureThreshold: 3
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 1
+    name: hawkular-metrics
+    ports:
+    - containerPort: 8080
+      name: http-endpoint
+      protocol: TCP
+    - containerPort: 8443
+      name: https-endpoint
+      protocol: TCP
+    - containerPort: 8888
+      name: ping
+      protocol: TCP
+    readinessProbe:
+      exec:
+        command:
+        - /opt/hawkular/scripts/hawkular-metrics-readiness.py
+      failureThreshold: 3
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 1
+    resources:
+      limits:
+        memory: 2500M
+      requests:
+        memory: 1500M
+    securityContext:
+      capabilities:
+        drop:
+        - KILL
+        - MKNOD
+        - SETGID
+        - SETUID
+      runAsUser: 1000040000
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /hawkular-metrics-certs
+      name: hawkular-metrics-certs
+    - mountPath: /hawkular-account
+      name: hawkular-metrics-account
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: hawkular-token-56ct4
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  imagePullSecrets:
+  - name: hawkular-dockercfg-wh7x5
+  nodeName: 172.16.120.14
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext:
+    fsGroup: 1000040000
+    seLinuxOptions:
+      level: s0:c6,c5
+  serviceAccount: hawkular
+  serviceAccountName: hawkular
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoSchedule
+    key: node.kubernetes.io/memory-pressure
+    operator: Exists
+  volumes:
+  - name: hawkular-metrics-certs
+    secret:
+      defaultMode: 420
+      secretName: hawkular-metrics-certs
+  - name: hawkular-metrics-account
+    secret:
+      defaultMode: 420
+      secretName: hawkular-metrics-account
+  - name: hawkular-token-56ct4
+    secret:
+      defaultMode: 420
+      secretName: hawkular-token-56ct4
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: 2018-03-17T08:01:59Z
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: 2018-03-17T08:03:14Z
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: 2018-03-17T08:01:59Z
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: docker://73b6d7c3e2d09972078de2ddd86a6c2d68b380a786ffcd14989578ddbf53d974
+    image: brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/openshift3/metrics-hawkular-metrics:v3.9
+    imageID: docker-pullable://brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/openshift3/metrics-hawkular-metrics@sha256:684725a6e7d14f4aba8dd3217cc6569c27ff941fa91ac5f58567b2f5133c7e2d
+    lastState: {}
+    name: hawkular-metrics
+    ready: true
+    restartCount: 0
+    state:
+      running:
+        startedAt: 2018-03-17T08:02:26Z
+  hostIP: 172.16.120.14
+  phase: Running
+  podIP: 10.128.0.67
+  qosClass: Burstable
+  startTime: 2018-03-17T08:01:59Z

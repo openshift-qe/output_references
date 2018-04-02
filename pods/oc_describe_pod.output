@@ -1,0 +1,64 @@
+# oc describe node
+Name:               172.16.120.129
+Roles:              master
+Labels:             beta.kubernetes.io/arch=amd64
+                    beta.kubernetes.io/instance-type=3
+                    beta.kubernetes.io/os=linux
+                    failure-domain.beta.kubernetes.io/region=regionOne
+                    failure-domain.beta.kubernetes.io/zone=nova
+                    kubernetes.io/hostname=172.16.120.129
+                    node-role.kubernetes.io/master=true
+                    openshift-infra=apiserver
+                    registry=enabled
+                    role=node
+                    router=enabled
+Annotations:        volumes.kubernetes.io/controller-managed-attach-detach=true
+Taints:             <none>
+CreationTimestamp:  Tue, 13 Mar 2018 12:21:05 -0400
+Conditions:
+  Type             Status  LastHeartbeatTime                 LastTransitionTime                Reason                       Message
+  ----             ------  -----------------                 ------------------                ------                       -------
+  OutOfDisk        False   Tue, 13 Mar 2018 16:07:31 -0400   Tue, 13 Mar 2018 12:21:05 -0400   KubeletHasSufficientDisk     kubelet has sufficient disk space available
+  MemoryPressure   False   Tue, 13 Mar 2018 16:07:31 -0400   Tue, 13 Mar 2018 12:21:05 -0400   KubeletHasSufficientMemory   kubelet has sufficient memory available
+  DiskPressure     False   Tue, 13 Mar 2018 16:07:31 -0400   Tue, 13 Mar 2018 12:21:05 -0400   KubeletHasNoDiskPressure     kubelet has no disk pressure
+  Ready            True    Tue, 13 Mar 2018 16:07:31 -0400   Tue, 13 Mar 2018 12:21:58 -0400   KubeletReady                 kubelet is posting ready status
+Addresses:
+  InternalIP:  172.16.120.129
+  ExternalIP:  10.8.241.37
+  Hostname:    172.16.120.129
+Capacity:
+ cpu:     2
+ memory:  3881676Ki
+ pods:    250
+Allocatable:
+ cpu:     2
+ memory:  3779276Ki
+ pods:    250
+System Info:
+ Machine ID:                         6578704f71144944bcf05068370a5315
+ System UUID:                        1F9726CC-E87C-4975-867D-3658805DED77
+ Boot ID:                            a81f626e-eefc-4e93-933a-0380ca6dba11
+ Kernel Version:                     3.10.0-693.11.1.el7.x86_64
+ OS Image:                           Red Hat Enterprise Linux Server 7.4 (Maipo)
+ Operating System:                   linux
+ Architecture:                       amd64
+ Container Runtime Version:          docker://1.13.1
+ Kubelet Version:                    v1.9.1+a0ce1bc657
+ Kube-Proxy Version:                 v1.9.1+a0ce1bc657
+ExternalID:                          1f9726cc-e87c-4975-867d-3658805ded77
+Non-terminated Pods:                 (7 in total)
+  Namespace                          Name                           CPU Requests  CPU Limits  Memory Requests  Memory Limits
+  ---------                          ----                           ------------  ----------  ---------------  -------------
+  default                            docker-registry-1-9cp54        100m (5%)     0 (0%)      256Mi (6%)       0 (0%)
+  default                            registry-console-1-cp5tr       0 (0%)        0 (0%)      0 (0%)           0 (0%)
+  default                            router-1-fnlzs                 100m (5%)     0 (0%)      256Mi (6%)       0 (0%)
+  kube-service-catalog               apiserver-7l58f                0 (0%)        0 (0%)      0 (0%)           0 (0%)
+  kube-service-catalog               controller-manager-zvt6r       0 (0%)        0 (0%)      0 (0%)           0 (0%)
+  openshift-template-service-broker  apiserver-xlsv9                0 (0%)        0 (0%)      0 (0%)           0 (0%)
+  openshift-web-console              webconsole-776767c6f4-vf79h    100m (5%)     0 (0%)      100Mi (2%)       0 (0%)
+Allocated resources:
+  (Total limits may be over 100 percent, i.e., overcommitted.)
+  CPU Requests  CPU Limits  Memory Requests  Memory Limits
+  ------------  ----------  ---------------  -------------
+  300m (15%)    0 (0%)      612Mi (16%)      0 (0%)
+Events:         <none>

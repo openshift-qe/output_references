@@ -1,0 +1,171 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    annotations:
+      kubernetes.io/createdby: cinder-dynamic-provisioner
+      pv.kubernetes.io/bound-by-controller: "yes"
+      pv.kubernetes.io/provisioned-by: kubernetes.io/cinder
+    creationTimestamp: 2018-03-28T23:55:54Z
+    labels:
+      failure-domain.beta.kubernetes.io/zone: nova
+    name: pvc-8d29d85c-32e3-11e8-81ba-fa163e134ec8
+    namespace: ""
+    resourceVersion: "2356"
+    selfLink: /api/v1/persistentvolumes/pvc-8d29d85c-32e3-11e8-81ba-fa163e134ec8
+    uid: 8d622169-32e3-11e8-81ba-fa163e134ec8
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    cinder:
+      fsType: xfs
+      volumeID: 95574d28-a8ff-4bf7-83fb-d56b11275ab4
+    claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: etcd
+      namespace: openshift-ansible-service-broker
+      resourceVersion: "2354"
+      uid: 8d29d85c-32e3-11e8-81ba-fa163e134ec8
+    persistentVolumeReclaimPolicy: Delete
+    storageClassName: standard
+  status:
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    annotations:
+      kubernetes.io/createdby: cinder-dynamic-provisioner
+      pv.kubernetes.io/bound-by-controller: "yes"
+      pv.kubernetes.io/provisioned-by: kubernetes.io/cinder
+    creationTimestamp: 2018-03-29T19:38:20Z
+    labels:
+      failure-domain.beta.kubernetes.io/zone: nova
+    name: pvc-bc16c0b8-3388-11e8-a4fd-fa163e134ec8
+    namespace: ""
+    resourceVersion: "137313"
+    selfLink: /api/v1/persistentvolumes/pvc-bc16c0b8-3388-11e8-a4fd-fa163e134ec8
+    uid: bc4bd472-3388-11e8-a4fd-fa163e134ec8
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 10Gi
+    cinder:
+      fsType: xfs
+      volumeID: fe1d3ac6-71eb-4bf8-9244-1a0d7606425e
+    claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: prometheus
+      namespace: openshift-metrics
+      resourceVersion: "137310"
+      uid: bc16c0b8-3388-11e8-a4fd-fa163e134ec8
+    persistentVolumeReclaimPolicy: Delete
+    storageClassName: standard
+  status:
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    annotations:
+      kubernetes.io/createdby: cinder-dynamic-provisioner
+      pv.kubernetes.io/bound-by-controller: "yes"
+      pv.kubernetes.io/provisioned-by: kubernetes.io/cinder
+    creationTimestamp: 2018-03-29T19:38:21Z
+    labels:
+      failure-domain.beta.kubernetes.io/zone: nova
+    name: pvc-bcbcfb42-3388-11e8-a4fd-fa163e134ec8
+    namespace: ""
+    resourceVersion: "137322"
+    selfLink: /api/v1/persistentvolumes/pvc-bcbcfb42-3388-11e8-a4fd-fa163e134ec8
+    uid: bcf1d550-3388-11e8-a4fd-fa163e134ec8
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 10Gi
+    cinder:
+      fsType: xfs
+      volumeID: 36ac8424-b906-48db-9358-a0870f89a52a
+    claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: prometheus-alertmanager
+      namespace: openshift-metrics
+      resourceVersion: "137317"
+      uid: bcbcfb42-3388-11e8-a4fd-fa163e134ec8
+    persistentVolumeReclaimPolicy: Delete
+    storageClassName: standard
+  status:
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    annotations:
+      kubernetes.io/createdby: cinder-dynamic-provisioner
+      pv.kubernetes.io/bound-by-controller: "yes"
+      pv.kubernetes.io/provisioned-by: kubernetes.io/cinder
+    creationTimestamp: 2018-03-29T19:38:22Z
+    labels:
+      failure-domain.beta.kubernetes.io/zone: nova
+    name: pvc-bd635865-3388-11e8-a4fd-fa163e134ec8
+    namespace: ""
+    resourceVersion: "137332"
+    selfLink: /api/v1/persistentvolumes/pvc-bd635865-3388-11e8-a4fd-fa163e134ec8
+    uid: bd98a8b6-3388-11e8-a4fd-fa163e134ec8
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 10Gi
+    cinder:
+      fsType: xfs
+      volumeID: 9c1e700b-6c03-4a1a-a309-b219b86b4fbf
+    claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: prometheus-alertbuffer
+      namespace: openshift-metrics
+      resourceVersion: "137329"
+      uid: bd635865-3388-11e8-a4fd-fa163e134ec8
+    persistentVolumeReclaimPolicy: Delete
+    storageClassName: standard
+  status:
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    annotations:
+      pv.kubernetes.io/bound-by-controller: "yes"
+    creationTimestamp: 2018-03-28T23:50:12Z
+    name: regpv-volume
+    namespace: ""
+    resourceVersion: "1402"
+    selfLink: /api/v1/persistentvolumes/regpv-volume
+    uid: c1af2f57-32e2-11e8-81ba-fa163e134ec8
+  spec:
+    accessModes:
+    - ReadWriteMany
+    capacity:
+      storage: 17G
+    claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: regpv-claim
+      namespace: default
+      resourceVersion: "1400"
+      uid: c24379e1-32e2-11e8-81ba-fa163e134ec8
+    nfs:
+      path: /var/lib/exports/regpv
+      server: host-8-244-113.host.centralci.eng.rdu2.redhat.com
+    persistentVolumeReclaimPolicy: Retain
+  status:
+    phase: Bound
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""

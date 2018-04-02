@@ -1,0 +1,67 @@
+apiVersion: servicecatalog.k8s.io/v1beta1
+kind: ServiceInstance
+metadata:
+  annotations:
+    openshift.io/generated-by: OpenShiftNewApp
+  creationTimestamp: '2018-03-16T18:56:12Z'
+  finalizers:
+  - kubernetes-incubator/service-catalog
+  generation: 1
+  labels:
+    app: serviceinstance-template
+  name: rh-postgresql-apb
+  namespace: rwjgw
+  resourceVersion: '10821'
+  selfLink: "/apis/servicecatalog.k8s.io/v1beta1/namespaces/rwjgw/serviceinstances/rh-postgresql-apb"
+  uid: b288e6da-294b-11e8-9e77-0a580a810004
+spec:
+  clusterServiceClassExternalName: rh-postgresql-apb
+  clusterServiceClassRef:
+    name: d5915e05b253df421efe6e41fb6a66ba
+  clusterServicePlanExternalName: prod
+  clusterServicePlanRef:
+    name: 4acaf1511a92890cd8910b1d8473be97
+  externalID: 3da65ebc-54ab-4cff-9c5d-d2f776a7c389
+  parametersFrom:
+  - secretKeyRef:
+      key: parameters
+      name: rh-postgresql-apb-parameters
+  updateRequests: 0
+  userInfo:
+    extra:
+      scopes.authorization.openshift.io:
+      - user:full
+    groups:
+    - system:authenticated:oauth
+    - system:authenticated
+    uid: ''
+    username: myusername
+status:
+  asyncOpInProgress: false
+  conditions:
+  - lastTransitionTime: '2018-03-16T18:58:21Z'
+    message: The instance was provisioned successfully
+    reason: ProvisionedSuccessfully
+    status: 'True'
+    type: Ready
+  deprovisionStatus: Required
+  externalProperties:
+    clusterServicePlanExternalID: 4acaf1511a92890cd8910b1d8473be97
+    clusterServicePlanExternalName: prod
+    parameterChecksum: bba9c67f1db091fb6736dda435b38eb2c9e0838dd9abe090922212a66047033e
+    parameters:
+      postgresql_database: "<redacted>"
+      postgresql_password: "<redacted>"
+      postgresql_user: "<redacted>"
+      postgresql_version: "<redacted>"
+    userInfo:
+      extra:
+        scopes.authorization.openshift.io:
+        - user:full
+      groups:
+      - system:authenticated:oauth
+      - system:authenticated
+      uid: ''
+      username: myusername
+  orphanMitigationInProgress: false
+  reconciledGeneration: 1

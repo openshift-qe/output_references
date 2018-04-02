@@ -1,0 +1,7 @@
+[root@host-172-16-120-76 ~]# oc get rc --show-labels
+NAME                                DESIRED   CURRENT   READY     AGE       LABELS
+httpd-example-1                     1         1         1         3m        app=httpd-example,openshift.io/deployment-config.name=httpd-example,template=httpd-example
+logging-curator-1                   1         1         1         5m        component=curator,logging-infra=curator,openshift.io/deployment-config.name=logging-curator,provider=openshift
+logging-es-data-master-a7ocg47j-1   1         1         1         5m        component=es,deployment=logging-es-data-master-a7ocg47j,logging-infra=elasticsearch,openshift.io/deployment-config.name=logging-es-data-master-a7ocg47j,provider=openshift
+logging-kibana-1                    1         1         1         5m        component=kibana,logging-infra=kibana,openshift.io/deployment-config.name=logging-kibana,provider=openshift
+

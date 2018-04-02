@@ -1,0 +1,152 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    kubernetes.io/created-by: |
+      {"kind":"SerializedReference","apiVersion":"v1","reference":{"kind":"ReplicationController","namespace":"openshift-infra","name":"heapster","uid":"7bba44d0-2961-11e8-add0-fa163e40c339","apiVersion":"v1","resourceVersion":"202590"}}
+    openshift.io/scc: restricted
+  creationTimestamp: 2018-03-16T21:51:29Z
+  generateName: heapster-
+  labels:
+    metrics-infra: heapster
+    name: heapster
+  name: heapster-x85tr
+  namespace: openshift-infra
+  ownerReferences:
+  - apiVersion: v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicationController
+    name: heapster
+    uid: 7bba44d0-2961-11e8-add0-fa163e40c339
+  resourceVersion: "202746"
+  selfLink: /api/v1/namespaces/openshift-infra/pods/heapster-x85tr
+  uid: 2ecdc15c-2964-11e8-add0-fa163e40c339
+spec:
+  containers:
+  - command:
+    - heapster-wrapper.sh
+    - --wrapper.allowed_users_file=/secrets/heapster.allowed-users
+    - --source=kubernetes.summary_api:${MASTER_URL}?useServiceAccount=true&kubeletHttps=true&kubeletPort=10250
+    - --tls_cert=/heapster-certs/tls.crt
+    - --tls_key=/heapster-certs/tls.key
+    - --tls_client_ca=/var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+    - --allowed_users=%allowed_users%
+    - --metric_resolution=15s
+    - --wrapper.username_file=/hawkular-account/hawkular-metrics.username
+    - --wrapper.password_file=/hawkular-account/hawkular-metrics.password
+    - --wrapper.endpoint_check=https://hawkular-metrics:443/hawkular/metrics/status
+    - --sink=hawkular:https://hawkular-metrics:443?tenant=_system&labelToTenant=pod_namespace&labelNodeId=nodename&caCert=/hawkular-metrics-certs/tls.crt&user=%username%&pass=%password%&filter=label(container_name:^system.slice.*|^user.slice)
+    env:
+    - name: STARTUP_TIMEOUT
+      value: "500"
+    image: brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/openshift3/metrics-heapster:v3.7
+    imagePullPolicy: IfNotPresent
+    name: heapster
+    ports:
+    - containerPort: 8082
+      name: http-endpoint
+      protocol: TCP
+    readinessProbe:
+      exec:
+        command:
+        - /opt/heapster-readiness.sh
+      failureThreshold: 3
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 1
+    resources:
+      limits:
+        memory: 3750M
+      requests:
+        memory: 937500k
+    securityContext:
+      capabilities:
+        drop:
+        - KILL
+        - MKNOD
+        - SETGID
+        - SETUID
+      privileged: false
+      runAsUser: 1000040000
+      seLinuxOptions:
+        level: s0:c6,c5
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /secrets
+      name: heapster-secrets
+    - mountPath: /heapster-certs
+      name: heapster-certs
+    - mountPath: /hawkular-metrics-certs
+      name: hawkular-metrics-certs
+    - mountPath: /hawkular-account
+      name: hawkular-metrics-account
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: heapster-token-l9rp6
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  imagePullSecrets:
+  - name: heapster-dockercfg-2s2fv
+  nodeName: 172.16.120.21
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext:
+    fsGroup: 1000040000
+    seLinuxOptions:
+      level: s0:c6,c5
+  serviceAccount: heapster
+  serviceAccountName: heapster
+  terminationGracePeriodSeconds: 30
+  volumes:
+  - name: heapster-secrets
+    secret:
+      defaultMode: 420
+      secretName: heapster-secrets
+  - name: heapster-certs
+    secret:
+      defaultMode: 420
+      secretName: heapster-certs
+  - name: hawkular-metrics-certs
+    secret:
+      defaultMode: 420
+      secretName: hawkular-metrics-certs
+  - name: hawkular-metrics-account
+    secret:
+      defaultMode: 420
+      secretName: hawkular-metrics-account
+  - name: heapster-token-l9rp6
+    secret:
+      defaultMode: 420
+      secretName: heapster-token-l9rp6
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: 2018-03-16T21:51:29Z
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: 2018-03-16T21:52:29Z
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: 2018-03-16T21:51:29Z
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: docker://2db7ef478170df58d2c1cd64c941c54c631c338708a4b1358dee94dcaa3ed85a
+    image: brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/openshift3/metrics-heapster:v3.7
+    imageID: docker-pullable://brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/openshift3/metrics-heapster@sha256:9cadfd4eb7df2981237b5150ef715dfe018dce5b0373418b2d6917de97f67a8a
+    lastState: {}
+    name: heapster
+    ready: true
+    restartCount: 0
+    state:
+      running:
+        startedAt: 2018-03-16T21:51:31Z
+  hostIP: 172.16.120.21
+  phase: Running
+  podIP: 10.128.0.65
+  qosClass: Burstable
+  startTime: 2018-03-16T21:51:29Z
+

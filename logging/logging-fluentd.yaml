@@ -1,0 +1,221 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    openshift.io/scc: privileged
+  creationTimestamp: 2018-03-13T23:30:42Z
+  generateName: logging-fluentd-
+  labels:
+    component: fluentd
+    controller-revision-hash: "1468112172"
+    logging-infra: fluentd
+    pod-template-generation: "2"
+    provider: openshift
+  name: logging-fluentd-d46sr
+  namespace: qs61r
+  ownerReferences:
+  - apiVersion: extensions/v1beta1
+    blockOwnerDeletion: true
+    controller: true
+    kind: DaemonSet
+    name: logging-fluentd
+    uid: b811f45d-2714-11e8-bf7f-fa163eae21aa
+  resourceVersion: "39006"
+  selfLink: /api/v1/namespaces/qs61r/pods/logging-fluentd-d46sr
+  uid: 8c1401fa-2716-11e8-bf7f-fa163eae21aa
+spec:
+  containers:
+  - env:
+    - name: K8S_HOST_URL
+      value: https://kubernetes.default.svc.cluster.local
+    - name: ES_HOST
+      value: logging-es
+    - name: ES_PORT
+      value: "9200"
+    - name: ES_CLIENT_CERT
+      value: /etc/fluent/keys/cert
+    - name: ES_CLIENT_KEY
+      value: /etc/fluent/keys/key
+    - name: ES_CA
+      value: /etc/fluent/keys/ca
+    - name: OPS_HOST
+      value: logging-es
+    - name: OPS_PORT
+      value: "9200"
+    - name: OPS_CLIENT_CERT
+      value: /etc/fluent/keys/cert
+    - name: OPS_CLIENT_KEY
+      value: /etc/fluent/keys/key
+    - name: OPS_CA
+      value: /etc/fluent/keys/ca
+    - name: JOURNAL_SOURCE
+    - name: JOURNAL_READ_FROM_HEAD
+    - name: BUFFER_QUEUE_LIMIT
+      value: "32"
+    - name: BUFFER_SIZE_LIMIT
+      value: 8m
+    - name: FLUENTD_CPU_LIMIT
+      valueFrom:
+        resourceFieldRef:
+          containerName: fluentd-elasticsearch
+          divisor: "0"
+          resource: limits.cpu
+    - name: FLUENTD_MEMORY_LIMIT
+      valueFrom:
+        resourceFieldRef:
+          containerName: fluentd-elasticsearch
+          divisor: "0"
+          resource: limits.memory
+    - name: FILE_BUFFER_LIMIT
+      value: 256Mi
+    image: brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/openshift3/logging-fluentd:v3.9
+    imagePullPolicy: IfNotPresent
+    name: fluentd-elasticsearch
+    resources:
+      limits:
+        memory: 512Mi
+      requests:
+        cpu: 100m
+        memory: 512Mi
+    securityContext:
+      privileged: true
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /run/log/journal
+      name: runlogjournal
+    - mountPath: /var/log
+      name: varlog
+    - mountPath: /var/lib/docker/containers
+      name: varlibdockercontainers
+      readOnly: true
+    - mountPath: /etc/fluent/configs.d/user
+      name: config
+      readOnly: true
+    - mountPath: /etc/fluent/keys
+      name: certs
+      readOnly: true
+    - mountPath: /etc/docker-hostname
+      name: dockerhostname
+      readOnly: true
+    - mountPath: /etc/localtime
+      name: localtime
+      readOnly: true
+    - mountPath: /etc/sysconfig/docker
+      name: dockercfg
+      readOnly: true
+    - mountPath: /etc/docker
+      name: dockerdaemoncfg
+      readOnly: true
+    - mountPath: /etc/origin/node
+      name: originnodecfg
+      readOnly: true
+    - mountPath: /var/lib/fluentd
+      name: filebufferstorage
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: aggregated-logging-fluentd-token-trlt2
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  imagePullSecrets:
+  - name: aggregated-logging-fluentd-dockercfg-zt8v4
+  nodeName: 192.168.100.25
+  nodeSelector:
+    logging-infra-fluentd: "true"
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: aggregated-logging-fluentd
+  serviceAccountName: aggregated-logging-fluentd
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoSchedule
+    key: node.kubernetes.io/memory-pressure
+    operator: Exists
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+  - effect: NoSchedule
+    key: node.kubernetes.io/disk-pressure
+    operator: Exists
+  volumes:
+  - hostPath:
+      path: /run/log/journal
+      type: ""
+    name: runlogjournal
+  - hostPath:
+      path: /var/log
+      type: ""
+    name: varlog
+  - hostPath:
+      path: /var/lib/docker/containers
+      type: ""
+    name: varlibdockercontainers
+  - configMap:
+      defaultMode: 420
+      name: logging-fluentd
+    name: config
+  - name: certs
+    secret:
+      defaultMode: 420
+      secretName: logging-fluentd
+  - hostPath:
+      path: /etc/hostname
+      type: ""
+    name: dockerhostname
+  - hostPath:
+      path: /etc/localtime
+      type: ""
+    name: localtime
+  - hostPath:
+      path: /etc/sysconfig/docker
+      type: ""
+    name: dockercfg
+  - hostPath:
+      path: /etc/origin/node
+      type: ""
+    name: originnodecfg
+  - hostPath:
+      path: /etc/docker
+      type: ""
+    name: dockerdaemoncfg
+  - hostPath:
+      path: /var/lib/fluentd
+      type: ""
+    name: filebufferstorage
+  - name: aggregated-logging-fluentd-token-trlt2
+    secret:
+      defaultMode: 420
+      secretName: aggregated-logging-fluentd-token-trlt2
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: 2018-03-13T23:30:42Z
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: 2018-03-13T23:30:47Z
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: 2018-03-13T23:30:47Z
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: docker://bd6a606b917ea2410e23c971deb27d692f609901476d8c528164ae19eeb0f044
+    image: brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/openshift3/logging-fluentd:v3.9
+    imageID: docker-pullable://brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/openshift3/logging-fluentd@sha256:cfd2cdba84de6f47344ecc181ddd5f214e376082af1b1a63a41b75a0435d6d48
+    lastState: {}
+    name: fluentd-elasticsearch
+    ready: true
+    restartCount: 0
+    state:
+      running:
+        startedAt: 2018-03-13T23:30:47Z
+  hostIP: 192.168.100.25
+  phase: Running
+  podIP: 10.128.0.20
+  qosClass: Burstable
+  startTime: 2018-03-13T23:30:42Z

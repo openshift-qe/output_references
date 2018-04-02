@@ -1,0 +1,4 @@
+NAME                      STATUS    VOLUME                                     CAPACITY   ACCESSMODES   STORAGECLASS   AGE       LABELS
+prometheus                Bound     pvc-bc16c0b8-3388-11e8-a4fd-fa163e134ec8   10Gi       RWO           standard       1h        <none>
+prometheus-alertbuffer    Bound     pvc-bd635865-3388-11e8-a4fd-fa163e134ec8   10Gi       RWO           standard       1h        <none>
+prometheus-alertmanager   Bound     pvc-bcbcfb42-3388-11e8-a4fd-fa163e134ec8   10Gi       RWO           standard       1h        <none>

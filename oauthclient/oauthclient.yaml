@@ -1,0 +1,19 @@
+apiVersion: oauth.openshift.io/v1
+kind: OAuthClient
+metadata:
+  creationTimestamp: 2018-03-14T03:25:28Z
+  labels:
+    logging-infra: support
+  name: kibana-proxy
+  resourceVersion: "25710"
+  selfLink: /apis/oauth.openshift.io/v1/oauthclients/kibana-proxy
+  uid: 580d9650-2737-11e8-9bc6-fa163e258c9d
+redirectURIs:
+- https://logs.apps.0313-y66.qe.rhcloud.com
+scopeRestrictions:
+- literals:
+  - user:info
+  - user:check-access
+  - user:list-projects
+secret: super_secret
+

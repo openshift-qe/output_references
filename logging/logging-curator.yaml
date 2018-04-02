@@ -1,0 +1,150 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    openshift.io/deployment-config.latest-version: "1"
+    openshift.io/deployment-config.name: logging-curator
+    openshift.io/deployment.name: logging-curator-1
+    openshift.io/scc: restricted
+  creationTimestamp: 2018-03-13T23:15:48Z
+  generateName: logging-curator-1-
+  labels:
+    component: curator
+    deployment: logging-curator-1
+    deploymentconfig: logging-curator
+    logging-infra: curator
+    provider: openshift
+  name: logging-curator-1-fccvs
+  namespace: qs61r
+  ownerReferences:
+  - apiVersion: v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicationController
+    name: logging-curator-1
+    uid: 72279a95-2714-11e8-bf7f-fa163eae21aa
+  resourceVersion: "38188"
+  selfLink: /api/v1/namespaces/qs61r/pods/logging-curator-1-fccvs
+  uid: 76eae7ce-2714-11e8-bf7f-fa163eae21aa
+spec:
+  containers:
+  - env:
+    - name: K8S_HOST_URL
+      value: https://kubernetes.default.svc.cluster.local
+    - name: ES_HOST
+      value: logging-es
+    - name: ES_PORT
+      value: "9200"
+    - name: ES_CLIENT_CERT
+      value: /etc/curator/keys/cert
+    - name: ES_CLIENT_KEY
+      value: /etc/curator/keys/key
+    - name: ES_CA
+      value: /etc/curator/keys/ca
+    - name: CURATOR_DEFAULT_DAYS
+      value: "30"
+    - name: CURATOR_RUN_HOUR
+      value: "0"
+    - name: CURATOR_RUN_MINUTE
+      value: "0"
+    - name: CURATOR_RUN_TIMEZONE
+      value: UTC
+    - name: CURATOR_SCRIPT_LOG_LEVEL
+      value: INFO
+    - name: CURATOR_LOG_LEVEL
+      value: ERROR
+    image: brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/openshift3/logging-curator:v3.9
+    imagePullPolicy: IfNotPresent
+    name: curator
+    resources:
+      limits:
+        memory: 256Mi
+      requests:
+        cpu: 100m
+        memory: 256Mi
+    securityContext:
+      capabilities:
+        drop:
+        - KILL
+        - MKNOD
+        - SETGID
+        - SETUID
+      runAsUser: 1000120000
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /etc/curator/keys
+      name: certs
+      readOnly: true
+    - mountPath: /etc/curator/settings
+      name: config
+      readOnly: true
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: aggregated-logging-curator-token-sb9dr
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  imagePullSecrets:
+  - name: aggregated-logging-curator-dockercfg-bt4m7
+  nodeName: 192.168.100.6
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext:
+    fsGroup: 1000120000
+    seLinuxOptions:
+      level: s0:c11,c5
+  serviceAccount: aggregated-logging-curator
+  serviceAccountName: aggregated-logging-curator
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoSchedule
+    key: node.kubernetes.io/memory-pressure
+    operator: Exists
+  volumes:
+  - name: certs
+    secret:
+      defaultMode: 420
+      secretName: logging-curator
+  - configMap:
+      defaultMode: 420
+      name: logging-curator
+    name: config
+  - name: aggregated-logging-curator-token-sb9dr
+    secret:
+      defaultMode: 420
+      secretName: aggregated-logging-curator-token-sb9dr
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: 2018-03-13T23:15:48Z
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: 2018-03-13T23:21:51Z
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: 2018-03-13T23:15:48Z
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: docker://9b5b3bd7b37f9f4ed88f40c6c70bbe3e210a411534904f31cb4274ea3d6a2352
+    image: brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/openshift3/logging-curator:v3.9
+    imageID: docker-pullable://brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/openshift3/logging-curator@sha256:47eb531f34c8f5064c9e1c1d7664240c98dfc7b729591dda4de2e9a771dc3e54
+    lastState:
+      terminated:
+        containerID: docker://6015f97e447ac21a4219bbcea7b8bb4d0d6f03bc0688c5524012e3fdda7c445c
+        exitCode: 255
+        finishedAt: 2018-03-13T23:21:35Z
+        reason: Error
+        startedAt: 2018-03-13T23:19:13Z
+    name: curator
+    ready: true
+    restartCount: 2
+    state:
+      running:
+        startedAt: 2018-03-13T23:21:50Z
+  hostIP: 192.168.100.6
+  phase: Running
+  podIP: 10.129.0.23
+  qosClass: Burstable
+  startTime: 2018-03-13T23:15:48Z
