@@ -1,0 +1,1151 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: ReplicationController
+  metadata:
+    annotations:
+      openshift.io/deployer-pod.completed-at: 2018-04-02 14:17:36 -0400 EDT
+      openshift.io/deployer-pod.created-at: 2018-04-02 14:17:30 -0400 EDT
+      openshift.io/deployer-pod.name: logging-curator-1-deploy
+      openshift.io/deployment-config.latest-version: "1"
+      openshift.io/deployment-config.name: logging-curator
+      openshift.io/deployment.phase: Complete
+      openshift.io/deployment.replicas: "1"
+      openshift.io/deployment.status-reason: config change
+      openshift.io/encoded-deployment-config: |
+        {"kind":"DeploymentConfig","apiVersion":"v1","metadata":{"name":"logging-curator","namespace":"tkv7a","selfLink":"/apis/apps.openshift.io/v1/namespaces/tkv7a/deploymentconfigs/logging-curator","uid":"1b58d85d-36a2-11e8-bbc3-fa163efc1ac4","resourceVersion":"12552","generation":1,"creationTimestamp":"2018-04-02T18:17:30Z","labels":{"component":"curator","logging-infra":"curator","provider":"openshift"}},"spec":{"strategy":{"type":"Recreate","recreateParams":{"timeoutSeconds":600},"rollingParams":{"updatePeriodSeconds":1,"intervalSeconds":1,"timeoutSeconds":600,"maxUnavailable":"25%","maxSurge":"25%"},"resources":{},"activeDeadlineSeconds":21600},"triggers":[{"type":"ConfigChange"}],"replicas":1,"test":false,"selector":{"component":"curator","logging-infra":"curator","provider":"openshift"},"template":{"metadata":{"name":"logging-curator","creationTimestamp":null,"labels":{"component":"curator","logging-infra":"curator","provider":"openshift"}},"spec":{"volumes":[{"name":"certs","secret":{"secretName":"logging-curator","defaultMode":420}},{"name":"config","configMap":{"name":"logging-curator","defaultMode":420}}],"containers":[{"name":"curator","image":"registry.access.redhat.com/openshift3/logging-curator:v3.9.14","env":[{"name":"K8S_HOST_URL","value":"https://kubernetes.default.svc.cluster.local"},{"name":"ES_HOST","value":"logging-es"},{"name":"ES_PORT","value":"9200"},{"name":"ES_CLIENT_CERT","value":"/etc/curator/keys/cert"},{"name":"ES_CLIENT_KEY","value":"/etc/curator/keys/key"},{"name":"ES_CA","value":"/etc/curator/keys/ca"},{"name":"CURATOR_DEFAULT_DAYS","value":"30"},{"name":"CURATOR_RUN_HOUR","value":"3"},{"name":"CURATOR_RUN_MINUTE","value":"30"},{"name":"CURATOR_RUN_TIMEZONE","value":"UTC"},{"name":"CURATOR_SCRIPT_LOG_LEVEL","value":"INFO"},{"name":"CURATOR_LOG_LEVEL","value":"ERROR"}],"resources":{"limits":{"memory":"256Mi"},"requests":{"cpu":"100m","memory":"256Mi"}},"volumeMounts":[{"name":"certs","readOnly":true,"mountPath":"/etc/curator/keys"},{"name":"config","readOnly":true,"mountPath":"/etc/curator/settings"}],"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File","imagePullPolicy":"IfNotPresent"}],"restartPolicy":"Always","terminationGracePeriodSeconds":30,"dnsPolicy":"ClusterFirst","serviceAccountName":"aggregated-logging-curator","serviceAccount":"aggregated-logging-curator","securityContext":{},"schedulerName":"default-scheduler"}}},"status":{"latestVersion":1,"observedGeneration":0,"replicas":0,"updatedReplicas":0,"availableReplicas":0,"unavailableReplicas":0,"details":{"message":"config change","causes":[{"type":"ConfigChange"}]}}}
+    creationTimestamp: 2018-04-02T18:17:30Z
+    generation: 2
+    labels:
+      component: curator
+      logging-infra: curator
+      openshift.io/deployment-config.name: logging-curator
+      provider: openshift
+    name: logging-curator-1
+    namespace: tkv7a
+    ownerReferences:
+    - apiVersion: apps.openshift.io/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: DeploymentConfig
+      name: logging-curator
+      uid: 1b58d85d-36a2-11e8-bbc3-fa163efc1ac4
+    resourceVersion: "79026"
+    selfLink: /api/v1/namespaces/tkv7a/replicationcontrollers/logging-curator-1
+    uid: 1b59ba54-36a2-11e8-bbc3-fa163efc1ac4
+  spec:
+    replicas: 1
+    selector:
+      component: curator
+      deployment: logging-curator-1
+      deploymentconfig: logging-curator
+      logging-infra: curator
+      provider: openshift
+    template:
+      metadata:
+        annotations:
+          openshift.io/deployment-config.latest-version: "1"
+          openshift.io/deployment-config.name: logging-curator
+          openshift.io/deployment.name: logging-curator-1
+        creationTimestamp: null
+        labels:
+          component: curator
+          deployment: logging-curator-1
+          deploymentconfig: logging-curator
+          logging-infra: curator
+          provider: openshift
+      spec:
+        containers:
+        - env:
+          - name: K8S_HOST_URL
+            value: https://kubernetes.default.svc.cluster.local
+          - name: ES_HOST
+            value: logging-es
+          - name: ES_PORT
+            value: "9200"
+          - name: ES_CLIENT_CERT
+            value: /etc/curator/keys/cert
+          - name: ES_CLIENT_KEY
+            value: /etc/curator/keys/key
+          - name: ES_CA
+            value: /etc/curator/keys/ca
+          - name: CURATOR_DEFAULT_DAYS
+            value: "30"
+          - name: CURATOR_RUN_HOUR
+            value: "3"
+          - name: CURATOR_RUN_MINUTE
+            value: "30"
+          - name: CURATOR_RUN_TIMEZONE
+            value: UTC
+          - name: CURATOR_SCRIPT_LOG_LEVEL
+            value: INFO
+          - name: CURATOR_LOG_LEVEL
+            value: ERROR
+          image: registry.access.redhat.com/openshift3/logging-curator:v3.9.14
+          imagePullPolicy: IfNotPresent
+          name: curator
+          resources:
+            limits:
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 256Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /etc/curator/keys
+            name: certs
+            readOnly: true
+          - mountPath: /etc/curator/settings
+            name: config
+            readOnly: true
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        serviceAccount: aggregated-logging-curator
+        serviceAccountName: aggregated-logging-curator
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - name: certs
+          secret:
+            defaultMode: 420
+            secretName: logging-curator
+        - configMap:
+            defaultMode: 420
+            name: logging-curator
+          name: config
+  status:
+    availableReplicas: 1
+    fullyLabeledReplicas: 1
+    observedGeneration: 2
+    readyReplicas: 1
+    replicas: 1
+- apiVersion: v1
+  kind: ReplicationController
+  metadata:
+    annotations:
+      openshift.io/deployer-pod.completed-at: 2018-04-02 14:17:50 -0400 EDT
+      openshift.io/deployer-pod.created-at: 2018-04-02 14:17:44 -0400 EDT
+      openshift.io/deployer-pod.name: logging-curator-ops-1-deploy
+      openshift.io/deployment-config.latest-version: "1"
+      openshift.io/deployment-config.name: logging-curator-ops
+      openshift.io/deployment.phase: Complete
+      openshift.io/deployment.replicas: "1"
+      openshift.io/deployment.status-reason: config change
+      openshift.io/encoded-deployment-config: |
+        {"kind":"DeploymentConfig","apiVersion":"v1","metadata":{"name":"logging-curator-ops","namespace":"tkv7a","selfLink":"/apis/apps.openshift.io/v1/namespaces/tkv7a/deploymentconfigs/logging-curator-ops","uid":"23a763ed-36a2-11e8-bbc3-fa163efc1ac4","resourceVersion":"12621","generation":1,"creationTimestamp":"2018-04-02T18:17:44Z","labels":{"component":"curator-ops","logging-infra":"curator","provider":"openshift"}},"spec":{"strategy":{"type":"Recreate","recreateParams":{"timeoutSeconds":600},"rollingParams":{"updatePeriodSeconds":1,"intervalSeconds":1,"timeoutSeconds":600,"maxUnavailable":"25%","maxSurge":"25%"},"resources":{},"activeDeadlineSeconds":21600},"triggers":[{"type":"ConfigChange"}],"replicas":1,"test":false,"selector":{"component":"curator-ops","logging-infra":"curator","provider":"openshift"},"template":{"metadata":{"name":"logging-curator-ops","creationTimestamp":null,"labels":{"component":"curator-ops","logging-infra":"curator","provider":"openshift"}},"spec":{"volumes":[{"name":"certs","secret":{"secretName":"logging-curator","defaultMode":420}},{"name":"config","configMap":{"name":"logging-curator","defaultMode":420}}],"containers":[{"name":"curator","image":"registry.access.redhat.com/openshift3/logging-curator:v3.9.14","env":[{"name":"K8S_HOST_URL","value":"https://kubernetes.default.svc.cluster.local"},{"name":"ES_HOST","value":"logging-es-ops"},{"name":"ES_PORT","value":"9200"},{"name":"ES_CLIENT_CERT","value":"/etc/curator/keys/cert"},{"name":"ES_CLIENT_KEY","value":"/etc/curator/keys/key"},{"name":"ES_CA","value":"/etc/curator/keys/ca"},{"name":"CURATOR_DEFAULT_DAYS","value":"30"},{"name":"CURATOR_RUN_HOUR","value":"3"},{"name":"CURATOR_RUN_MINUTE","value":"30"},{"name":"CURATOR_RUN_TIMEZONE","value":"UTC"},{"name":"CURATOR_SCRIPT_LOG_LEVEL","value":"INFO"},{"name":"CURATOR_LOG_LEVEL","value":"ERROR"}],"resources":{"limits":{"memory":"256Mi"},"requests":{"cpu":"100m","memory":"256Mi"}},"volumeMounts":[{"name":"certs","readOnly":true,"mountPath":"/etc/curator/keys"},{"name":"config","readOnly":true,"mountPath":"/etc/curator/settings"}],"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File","imagePullPolicy":"IfNotPresent"}],"restartPolicy":"Always","terminationGracePeriodSeconds":30,"dnsPolicy":"ClusterFirst","serviceAccountName":"aggregated-logging-curator","serviceAccount":"aggregated-logging-curator","securityContext":{},"schedulerName":"default-scheduler"}}},"status":{"latestVersion":1,"observedGeneration":0,"replicas":0,"updatedReplicas":0,"availableReplicas":0,"unavailableReplicas":0,"details":{"message":"config change","causes":[{"type":"ConfigChange"}]}}}
+    creationTimestamp: 2018-04-02T18:17:44Z
+    generation: 2
+    labels:
+      component: curator-ops
+      logging-infra: curator
+      openshift.io/deployment-config.name: logging-curator-ops
+      provider: openshift
+    name: logging-curator-ops-1
+    namespace: tkv7a
+    ownerReferences:
+    - apiVersion: apps.openshift.io/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: DeploymentConfig
+      name: logging-curator-ops
+      uid: 23a763ed-36a2-11e8-bbc3-fa163efc1ac4
+    resourceVersion: "79030"
+    selfLink: /api/v1/namespaces/tkv7a/replicationcontrollers/logging-curator-ops-1
+    uid: 23aa4404-36a2-11e8-bbc3-fa163efc1ac4
+  spec:
+    replicas: 1
+    selector:
+      component: curator-ops
+      deployment: logging-curator-ops-1
+      deploymentconfig: logging-curator-ops
+      logging-infra: curator
+      provider: openshift
+    template:
+      metadata:
+        annotations:
+          openshift.io/deployment-config.latest-version: "1"
+          openshift.io/deployment-config.name: logging-curator-ops
+          openshift.io/deployment.name: logging-curator-ops-1
+        creationTimestamp: null
+        labels:
+          component: curator-ops
+          deployment: logging-curator-ops-1
+          deploymentconfig: logging-curator-ops
+          logging-infra: curator
+          provider: openshift
+      spec:
+        containers:
+        - env:
+          - name: K8S_HOST_URL
+            value: https://kubernetes.default.svc.cluster.local
+          - name: ES_HOST
+            value: logging-es-ops
+          - name: ES_PORT
+            value: "9200"
+          - name: ES_CLIENT_CERT
+            value: /etc/curator/keys/cert
+          - name: ES_CLIENT_KEY
+            value: /etc/curator/keys/key
+          - name: ES_CA
+            value: /etc/curator/keys/ca
+          - name: CURATOR_DEFAULT_DAYS
+            value: "30"
+          - name: CURATOR_RUN_HOUR
+            value: "3"
+          - name: CURATOR_RUN_MINUTE
+            value: "30"
+          - name: CURATOR_RUN_TIMEZONE
+            value: UTC
+          - name: CURATOR_SCRIPT_LOG_LEVEL
+            value: INFO
+          - name: CURATOR_LOG_LEVEL
+            value: ERROR
+          image: registry.access.redhat.com/openshift3/logging-curator:v3.9.14
+          imagePullPolicy: IfNotPresent
+          name: curator
+          resources:
+            limits:
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 256Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /etc/curator/keys
+            name: certs
+            readOnly: true
+          - mountPath: /etc/curator/settings
+            name: config
+            readOnly: true
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        serviceAccount: aggregated-logging-curator
+        serviceAccountName: aggregated-logging-curator
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - name: certs
+          secret:
+            defaultMode: 420
+            secretName: logging-curator
+        - configMap:
+            defaultMode: 420
+            name: logging-curator
+          name: config
+  status:
+    availableReplicas: 1
+    fullyLabeledReplicas: 1
+    observedGeneration: 2
+    readyReplicas: 1
+    replicas: 1
+- apiVersion: v1
+  kind: ReplicationController
+  metadata:
+    annotations:
+      openshift.io/deployer-pod.completed-at: 2018-04-02 14:20:14 -0400 EDT
+      openshift.io/deployer-pod.created-at: 2018-04-02 14:19:22 -0400 EDT
+      openshift.io/deployer-pod.name: logging-es-data-master-2611r465-1-deploy
+      openshift.io/deployer-pod.started-at: 2018-04-02 14:19:22 -0400 EDT
+      openshift.io/deployment-config.latest-version: "1"
+      openshift.io/deployment-config.name: logging-es-data-master-2611r465
+      openshift.io/deployment.phase: Complete
+      openshift.io/deployment.replicas: "1"
+      openshift.io/deployment.status-reason: manual change
+      openshift.io/encoded-deployment-config: |
+        {"kind":"DeploymentConfig","apiVersion":"v1","metadata":{"name":"logging-es-data-master-2611r465","namespace":"tkv7a","selfLink":"/apis/apps.openshift.io/v1/namespaces/tkv7a/deploymentconfigs/logging-es-data-master-2611r465","uid":"d6e70509-36a1-11e8-bbc3-fa163efc1ac4","resourceVersion":"13054","generation":2,"creationTimestamp":"2018-04-02T18:15:35Z","labels":{"component":"es","deployment":"logging-es-data-master-2611r465","logging-infra":"elasticsearch","provider":"openshift"}},"spec":{"strategy":{"type":"Recreate","recreateParams":{"timeoutSeconds":600},"resources":{},"activeDeadlineSeconds":21600},"triggers":[],"replicas":1,"revisionHistoryLimit":0,"test":false,"selector":{"component":"es","deployment":"logging-es-data-master-2611r465","logging-infra":"elasticsearch","provider":"openshift"},"template":{"metadata":{"name":"logging-es-data-master-2611r465","creationTimestamp":null,"labels":{"component":"es","deployment":"logging-es-data-master-2611r465","logging-infra":"elasticsearch","provider":"openshift"}},"spec":{"volumes":[{"name":"proxy-tls","secret":{"secretName":"prometheus-tls","defaultMode":420}},{"name":"elasticsearch","secret":{"secretName":"logging-elasticsearch","defaultMode":420}},{"name":"elasticsearch-config","configMap":{"name":"logging-elasticsearch","defaultMode":420}},{"name":"elasticsearch-storage","emptyDir":{}}],"containers":[{"name":"elasticsearch","image":"registry.access.redhat.com/openshift3/logging-elasticsearch:v3.9.14","ports":[{"name":"restapi","containerPort":9200,"protocol":"TCP"},{"name":"cluster","containerPort":9300,"protocol":"TCP"}],"env":[{"name":"DC_NAME","value":"logging-es-data-master-2611r465"},{"name":"NAMESPACE","valueFrom":{"fieldRef":{"apiVersion":"v1","fieldPath":"metadata.namespace"}}},{"name":"KUBERNETES_TRUST_CERT","value":"true"},{"name":"SERVICE_DNS","value":"logging-es-cluster"},{"name":"CLUSTER_NAME","value":"logging-es"},{"name":"INSTANCE_RAM","value":"512Mi"},{"name":"HEAP_DUMP_LOCATION","value":"/elasticsearch/persistent/heapdump.hprof"},{"name":"NODE_QUORUM","value":"1"},{"name":"RECOVER_EXPECTED_NODES","value":"1"},{"name":"RECOVER_AFTER_TIME","value":"5m"},{"name":"READINESS_PROBE_TIMEOUT","value":"30"},{"name":"POD_LABEL","value":"component=es"},{"name":"IS_MASTER","value":"true"},{"name":"HAS_DATA","value":"true"},{"name":"PROMETHEUS_USER","value":"system:serviceaccount:openshift-metrics:prometheus"}],"resources":{"limits":{"cpu":"300m","memory":"512Mi"},"requests":{"cpu":"300m","memory":"512Mi"}},"volumeMounts":[{"name":"elasticsearch","readOnly":true,"mountPath":"/etc/elasticsearch/secret"},{"name":"elasticsearch-config","readOnly":true,"mountPath":"/usr/share/java/elasticsearch/config"},{"name":"elasticsearch-storage","mountPath":"/elasticsearch/persistent"}],"readinessProbe":{"exec":{"command":["/usr/share/java/elasticsearch/probe/readiness.sh"]},"initialDelaySeconds":10,"timeoutSeconds":30,"periodSeconds":5,"successThreshold":1,"failureThreshold":3},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File","imagePullPolicy":"IfNotPresent"},{"name":"proxy","image":"registry.access.redhat.com/openshift3/oauth-proxy:v3.9.14","args":["--upstream-ca=/etc/elasticsearch/secret/admin-ca","--https-address=:4443","-provider=openshift","-client-id=system:serviceaccount:tkv7a:aggregated-logging-elasticsearch","-client-secret-file=/var/run/secrets/kubernetes.io/serviceaccount/token","-cookie-secret=OUQ4N254em02TWxDTXVvTw==","-basic-auth-password=LLnRp3KQslDamZ8o","-upstream=https://localhost:9200","-openshift-sar={\"namespace\": \"tkv7a\", \"verb\": \"view\", \"resource\": \"prometheus\", \"group\": \"metrics.openshift.io\"}","-openshift-delegate-urls={\"/\": {\"resource\": \"prometheus\", \"verb\": \"view\", \"group\": \"metrics.openshift.io\", \"namespace\": \"tkv7a\"}}","--tls-cert=/etc/tls/private/tls.crt","--tls-key=/etc/tls/private/tls.key","-pass-access-token","-pass-user-headers"],"ports":[{"name":"proxy","containerPort":4443,"protocol":"TCP"}],"resources":{"limits":{"memory":"64Mi"},"requests":{"cpu":"100m","memory":"64Mi"}},"volumeMounts":[{"name":"proxy-tls","readOnly":true,"mountPath":"/etc/tls/private"},{"name":"elasticsearch","readOnly":true,"mountPath":"/etc/elasticsearch/secret"}],"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File","imagePullPolicy":"IfNotPresent"}],"restartPolicy":"Always","terminationGracePeriodSeconds":30,"dnsPolicy":"ClusterFirst","serviceAccountName":"aggregated-logging-elasticsearch","serviceAccount":"aggregated-logging-elasticsearch","securityContext":{"supplementalGroups":[65534]},"schedulerName":"default-scheduler"}}},"status":{"latestVersion":1,"observedGeneration":1,"replicas":0,"updatedReplicas":0,"availableReplicas":0,"unavailableReplicas":0,"details":{"message":"manual change","causes":[{"type":"Manual"}]},"conditions":[{"type":"Available","status":"False","lastUpdateTime":"2018-04-02T18:15:35Z","lastTransitionTime":"2018-04-02T18:15:35Z","message":"Deployment config does not have minimum availability."}]}}
+    creationTimestamp: 2018-04-02T18:19:22Z
+    generation: 2
+    labels:
+      component: es
+      deployment: logging-es-data-master-2611r465
+      logging-infra: elasticsearch
+      openshift.io/deployment-config.name: logging-es-data-master-2611r465
+      provider: openshift
+    name: logging-es-data-master-2611r465-1
+    namespace: tkv7a
+    ownerReferences:
+    - apiVersion: apps.openshift.io/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: DeploymentConfig
+      name: logging-es-data-master-2611r465
+      uid: d6e70509-36a1-11e8-bbc3-fa163efc1ac4
+    resourceVersion: "79004"
+    selfLink: /api/v1/namespaces/tkv7a/replicationcontrollers/logging-es-data-master-2611r465-1
+    uid: 5dbff69d-36a2-11e8-bbc3-fa163efc1ac4
+  spec:
+    replicas: 1
+    selector:
+      component: es
+      deployment: logging-es-data-master-2611r465-1
+      deploymentconfig: logging-es-data-master-2611r465
+      logging-infra: elasticsearch
+      provider: openshift
+    template:
+      metadata:
+        annotations:
+          openshift.io/deployment-config.latest-version: "1"
+          openshift.io/deployment-config.name: logging-es-data-master-2611r465
+          openshift.io/deployment.name: logging-es-data-master-2611r465-1
+        creationTimestamp: null
+        labels:
+          component: es
+          deployment: logging-es-data-master-2611r465-1
+          deploymentconfig: logging-es-data-master-2611r465
+          logging-infra: elasticsearch
+          provider: openshift
+      spec:
+        containers:
+        - env:
+          - name: DC_NAME
+            value: logging-es-data-master-2611r465
+          - name: NAMESPACE
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+          - name: KUBERNETES_TRUST_CERT
+            value: "true"
+          - name: SERVICE_DNS
+            value: logging-es-cluster
+          - name: CLUSTER_NAME
+            value: logging-es
+          - name: INSTANCE_RAM
+            value: 512Mi
+          - name: HEAP_DUMP_LOCATION
+            value: /elasticsearch/persistent/heapdump.hprof
+          - name: NODE_QUORUM
+            value: "1"
+          - name: RECOVER_EXPECTED_NODES
+            value: "1"
+          - name: RECOVER_AFTER_TIME
+            value: 5m
+          - name: READINESS_PROBE_TIMEOUT
+            value: "30"
+          - name: POD_LABEL
+            value: component=es
+          - name: IS_MASTER
+            value: "true"
+          - name: HAS_DATA
+            value: "true"
+          - name: PROMETHEUS_USER
+            value: system:serviceaccount:openshift-metrics:prometheus
+          image: registry.access.redhat.com/openshift3/logging-elasticsearch:v3.9.14
+          imagePullPolicy: IfNotPresent
+          name: elasticsearch
+          ports:
+          - containerPort: 9200
+            name: restapi
+            protocol: TCP
+          - containerPort: 9300
+            name: cluster
+            protocol: TCP
+          readinessProbe:
+            exec:
+              command:
+              - /usr/share/java/elasticsearch/probe/readiness.sh
+            failureThreshold: 3
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 30
+          resources:
+            limits:
+              cpu: 300m
+              memory: 512Mi
+            requests:
+              cpu: 300m
+              memory: 512Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /etc/elasticsearch/secret
+            name: elasticsearch
+            readOnly: true
+          - mountPath: /usr/share/java/elasticsearch/config
+            name: elasticsearch-config
+            readOnly: true
+          - mountPath: /elasticsearch/persistent
+            name: elasticsearch-storage
+        - args:
+          - --upstream-ca=/etc/elasticsearch/secret/admin-ca
+          - --https-address=:4443
+          - -provider=openshift
+          - -client-id=system:serviceaccount:tkv7a:aggregated-logging-elasticsearch
+          - -client-secret-file=/var/run/secrets/kubernetes.io/serviceaccount/token
+          - -cookie-secret=OUQ4N254em02TWxDTXVvTw==
+          - -basic-auth-password=LLnRp3KQslDamZ8o
+          - -upstream=https://localhost:9200
+          - '-openshift-sar={"namespace": "tkv7a", "verb": "view", "resource": "prometheus",
+            "group": "metrics.openshift.io"}'
+          - '-openshift-delegate-urls={"/": {"resource": "prometheus", "verb": "view",
+            "group": "metrics.openshift.io", "namespace": "tkv7a"}}'
+          - --tls-cert=/etc/tls/private/tls.crt
+          - --tls-key=/etc/tls/private/tls.key
+          - -pass-access-token
+          - -pass-user-headers
+          image: registry.access.redhat.com/openshift3/oauth-proxy:v3.9.14
+          imagePullPolicy: IfNotPresent
+          name: proxy
+          ports:
+          - containerPort: 4443
+            name: proxy
+            protocol: TCP
+          resources:
+            limits:
+              memory: 64Mi
+            requests:
+              cpu: 100m
+              memory: 64Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /etc/tls/private
+            name: proxy-tls
+            readOnly: true
+          - mountPath: /etc/elasticsearch/secret
+            name: elasticsearch
+            readOnly: true
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext:
+          supplementalGroups:
+          - 65534
+        serviceAccount: aggregated-logging-elasticsearch
+        serviceAccountName: aggregated-logging-elasticsearch
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - name: proxy-tls
+          secret:
+            defaultMode: 420
+            secretName: prometheus-tls
+        - name: elasticsearch
+          secret:
+            defaultMode: 420
+            secretName: logging-elasticsearch
+        - configMap:
+            defaultMode: 420
+            name: logging-elasticsearch
+          name: elasticsearch-config
+        - emptyDir: {}
+          name: elasticsearch-storage
+  status:
+    availableReplicas: 1
+    fullyLabeledReplicas: 1
+    observedGeneration: 2
+    readyReplicas: 1
+    replicas: 1
+- apiVersion: v1
+  kind: ReplicationController
+  metadata:
+    annotations:
+      openshift.io/deployer-pod.completed-at: 2018-04-02 14:20:16 -0400 EDT
+      openshift.io/deployer-pod.created-at: 2018-04-02 14:19:26 -0400 EDT
+      openshift.io/deployer-pod.name: logging-es-ops-data-master-51w7u76p-1-deploy
+      openshift.io/deployment-config.latest-version: "1"
+      openshift.io/deployment-config.name: logging-es-ops-data-master-51w7u76p
+      openshift.io/deployment.phase: Complete
+      openshift.io/deployment.replicas: "1"
+      openshift.io/deployment.status-reason: manual change
+      openshift.io/encoded-deployment-config: |
+        {"kind":"DeploymentConfig","apiVersion":"v1","metadata":{"name":"logging-es-ops-data-master-51w7u76p","namespace":"tkv7a","selfLink":"/apis/apps.openshift.io/v1/namespaces/tkv7a/deploymentconfigs/logging-es-ops-data-master-51w7u76p","uid":"ef9bf95f-36a1-11e8-bbc3-fa163efc1ac4","resourceVersion":"13088","generation":2,"creationTimestamp":"2018-04-02T18:16:17Z","labels":{"component":"es-ops","deployment":"logging-es-ops-data-master-51w7u76p","logging-infra":"elasticsearch","provider":"openshift"}},"spec":{"strategy":{"type":"Recreate","recreateParams":{"timeoutSeconds":600},"resources":{},"activeDeadlineSeconds":21600},"triggers":[],"replicas":1,"revisionHistoryLimit":0,"test":false,"selector":{"component":"es-ops","deployment":"logging-es-ops-data-master-51w7u76p","logging-infra":"elasticsearch","provider":"openshift"},"template":{"metadata":{"name":"logging-es-ops-data-master-51w7u76p","creationTimestamp":null,"labels":{"component":"es-ops","deployment":"logging-es-ops-data-master-51w7u76p","logging-infra":"elasticsearch","provider":"openshift"}},"spec":{"volumes":[{"name":"proxy-tls","secret":{"secretName":"prometheus-tls","defaultMode":420}},{"name":"elasticsearch","secret":{"secretName":"logging-elasticsearch","defaultMode":420}},{"name":"elasticsearch-config","configMap":{"name":"logging-elasticsearch","defaultMode":420}},{"name":"elasticsearch-storage","emptyDir":{}}],"containers":[{"name":"elasticsearch","image":"registry.access.redhat.com/openshift3/logging-elasticsearch:v3.9.14","ports":[{"name":"restapi","containerPort":9200,"protocol":"TCP"},{"name":"cluster","containerPort":9300,"protocol":"TCP"}],"env":[{"name":"DC_NAME","value":"logging-es-ops-data-master-51w7u76p"},{"name":"NAMESPACE","valueFrom":{"fieldRef":{"apiVersion":"v1","fieldPath":"metadata.namespace"}}},{"name":"KUBERNETES_TRUST_CERT","value":"true"},{"name":"SERVICE_DNS","value":"logging-es-ops-cluster"},{"name":"CLUSTER_NAME","value":"logging-es-ops"},{"name":"INSTANCE_RAM","value":"512Mi"},{"name":"HEAP_DUMP_LOCATION","value":"/elasticsearch/persistent/heapdump.hprof"},{"name":"NODE_QUORUM","value":"1"},{"name":"RECOVER_EXPECTED_NODES","value":"1"},{"name":"RECOVER_AFTER_TIME","value":"5m"},{"name":"READINESS_PROBE_TIMEOUT","value":"30"},{"name":"POD_LABEL","value":"component=es-ops"},{"name":"IS_MASTER","value":"true"},{"name":"HAS_DATA","value":"true"},{"name":"PROMETHEUS_USER","value":"system:serviceaccount:openshift-metrics:prometheus"}],"resources":{"limits":{"cpu":"300m","memory":"512Mi"},"requests":{"cpu":"300m","memory":"512Mi"}},"volumeMounts":[{"name":"elasticsearch","readOnly":true,"mountPath":"/etc/elasticsearch/secret"},{"name":"elasticsearch-config","readOnly":true,"mountPath":"/usr/share/java/elasticsearch/config"},{"name":"elasticsearch-storage","mountPath":"/elasticsearch/persistent"}],"readinessProbe":{"exec":{"command":["/usr/share/java/elasticsearch/probe/readiness.sh"]},"initialDelaySeconds":10,"timeoutSeconds":30,"periodSeconds":5,"successThreshold":1,"failureThreshold":3},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File","imagePullPolicy":"IfNotPresent"},{"name":"proxy","image":"registry.access.redhat.com/openshift3/oauth-proxy:v3.9.14","args":["--upstream-ca=/etc/elasticsearch/secret/admin-ca","--https-address=:4443","-provider=openshift","-client-id=system:serviceaccount:tkv7a:aggregated-logging-elasticsearch","-client-secret-file=/var/run/secrets/kubernetes.io/serviceaccount/token","-cookie-secret=MWVBajhlVlJKYU92Y0N5Zw==","-basic-auth-password=LLnRp3KQslDamZ8o","-upstream=https://localhost:9200","-openshift-sar={\"namespace\": \"tkv7a\", \"verb\": \"view\", \"resource\": \"prometheus\", \"group\": \"metrics.openshift.io\"}","-openshift-delegate-urls={\"/\": {\"resource\": \"prometheus\", \"verb\": \"view\", \"group\": \"metrics.openshift.io\", \"namespace\": \"tkv7a\"}}","--tls-cert=/etc/tls/private/tls.crt","--tls-key=/etc/tls/private/tls.key","-pass-access-token","-pass-user-headers"],"ports":[{"name":"proxy","containerPort":4443,"protocol":"TCP"}],"resources":{"limits":{"memory":"64Mi"},"requests":{"cpu":"100m","memory":"64Mi"}},"volumeMounts":[{"name":"proxy-tls","readOnly":true,"mountPath":"/etc/tls/private"},{"name":"elasticsearch","readOnly":true,"mountPath":"/etc/elasticsearch/secret"}],"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File","imagePullPolicy":"IfNotPresent"}],"restartPolicy":"Always","terminationGracePeriodSeconds":30,"dnsPolicy":"ClusterFirst","serviceAccountName":"aggregated-logging-elasticsearch","serviceAccount":"aggregated-logging-elasticsearch","securityContext":{"supplementalGroups":[65534]},"schedulerName":"default-scheduler"}}},"status":{"latestVersion":1,"observedGeneration":1,"replicas":0,"updatedReplicas":0,"availableReplicas":0,"unavailableReplicas":0,"details":{"message":"manual change","causes":[{"type":"Manual"}]},"conditions":[{"type":"Available","status":"False","lastUpdateTime":"2018-04-02T18:16:17Z","lastTransitionTime":"2018-04-02T18:16:17Z","message":"Deployment config does not have minimum availability."}]}}
+    creationTimestamp: 2018-04-02T18:19:26Z
+    generation: 2
+    labels:
+      component: es-ops
+      deployment: logging-es-ops-data-master-51w7u76p
+      logging-infra: elasticsearch
+      openshift.io/deployment-config.name: logging-es-ops-data-master-51w7u76p
+      provider: openshift
+    name: logging-es-ops-data-master-51w7u76p-1
+    namespace: tkv7a
+    ownerReferences:
+    - apiVersion: apps.openshift.io/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: DeploymentConfig
+      name: logging-es-ops-data-master-51w7u76p
+      uid: ef9bf95f-36a1-11e8-bbc3-fa163efc1ac4
+    resourceVersion: "79013"
+    selfLink: /api/v1/namespaces/tkv7a/replicationcontrollers/logging-es-ops-data-master-51w7u76p-1
+    uid: 602d08fa-36a2-11e8-bbc3-fa163efc1ac4
+  spec:
+    replicas: 1
+    selector:
+      component: es-ops
+      deployment: logging-es-ops-data-master-51w7u76p-1
+      deploymentconfig: logging-es-ops-data-master-51w7u76p
+      logging-infra: elasticsearch
+      provider: openshift
+    template:
+      metadata:
+        annotations:
+          openshift.io/deployment-config.latest-version: "1"
+          openshift.io/deployment-config.name: logging-es-ops-data-master-51w7u76p
+          openshift.io/deployment.name: logging-es-ops-data-master-51w7u76p-1
+        creationTimestamp: null
+        labels:
+          component: es-ops
+          deployment: logging-es-ops-data-master-51w7u76p-1
+          deploymentconfig: logging-es-ops-data-master-51w7u76p
+          logging-infra: elasticsearch
+          provider: openshift
+      spec:
+        containers:
+        - env:
+          - name: DC_NAME
+            value: logging-es-ops-data-master-51w7u76p
+          - name: NAMESPACE
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+          - name: KUBERNETES_TRUST_CERT
+            value: "true"
+          - name: SERVICE_DNS
+            value: logging-es-ops-cluster
+          - name: CLUSTER_NAME
+            value: logging-es-ops
+          - name: INSTANCE_RAM
+            value: 512Mi
+          - name: HEAP_DUMP_LOCATION
+            value: /elasticsearch/persistent/heapdump.hprof
+          - name: NODE_QUORUM
+            value: "1"
+          - name: RECOVER_EXPECTED_NODES
+            value: "1"
+          - name: RECOVER_AFTER_TIME
+            value: 5m
+          - name: READINESS_PROBE_TIMEOUT
+            value: "30"
+          - name: POD_LABEL
+            value: component=es-ops
+          - name: IS_MASTER
+            value: "true"
+          - name: HAS_DATA
+            value: "true"
+          - name: PROMETHEUS_USER
+            value: system:serviceaccount:openshift-metrics:prometheus
+          image: registry.access.redhat.com/openshift3/logging-elasticsearch:v3.9.14
+          imagePullPolicy: IfNotPresent
+          name: elasticsearch
+          ports:
+          - containerPort: 9200
+            name: restapi
+            protocol: TCP
+          - containerPort: 9300
+            name: cluster
+            protocol: TCP
+          readinessProbe:
+            exec:
+              command:
+              - /usr/share/java/elasticsearch/probe/readiness.sh
+            failureThreshold: 3
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 30
+          resources:
+            limits:
+              cpu: 300m
+              memory: 512Mi
+            requests:
+              cpu: 300m
+              memory: 512Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /etc/elasticsearch/secret
+            name: elasticsearch
+            readOnly: true
+          - mountPath: /usr/share/java/elasticsearch/config
+            name: elasticsearch-config
+            readOnly: true
+          - mountPath: /elasticsearch/persistent
+            name: elasticsearch-storage
+        - args:
+          - --upstream-ca=/etc/elasticsearch/secret/admin-ca
+          - --https-address=:4443
+          - -provider=openshift
+          - -client-id=system:serviceaccount:tkv7a:aggregated-logging-elasticsearch
+          - -client-secret-file=/var/run/secrets/kubernetes.io/serviceaccount/token
+          - -cookie-secret=MWVBajhlVlJKYU92Y0N5Zw==
+          - -basic-auth-password=LLnRp3KQslDamZ8o
+          - -upstream=https://localhost:9200
+          - '-openshift-sar={"namespace": "tkv7a", "verb": "view", "resource": "prometheus",
+            "group": "metrics.openshift.io"}'
+          - '-openshift-delegate-urls={"/": {"resource": "prometheus", "verb": "view",
+            "group": "metrics.openshift.io", "namespace": "tkv7a"}}'
+          - --tls-cert=/etc/tls/private/tls.crt
+          - --tls-key=/etc/tls/private/tls.key
+          - -pass-access-token
+          - -pass-user-headers
+          image: registry.access.redhat.com/openshift3/oauth-proxy:v3.9.14
+          imagePullPolicy: IfNotPresent
+          name: proxy
+          ports:
+          - containerPort: 4443
+            name: proxy
+            protocol: TCP
+          resources:
+            limits:
+              memory: 64Mi
+            requests:
+              cpu: 100m
+              memory: 64Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /etc/tls/private
+            name: proxy-tls
+            readOnly: true
+          - mountPath: /etc/elasticsearch/secret
+            name: elasticsearch
+            readOnly: true
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext:
+          supplementalGroups:
+          - 65534
+        serviceAccount: aggregated-logging-elasticsearch
+        serviceAccountName: aggregated-logging-elasticsearch
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - name: proxy-tls
+          secret:
+            defaultMode: 420
+            secretName: prometheus-tls
+        - name: elasticsearch
+          secret:
+            defaultMode: 420
+            secretName: logging-elasticsearch
+        - configMap:
+            defaultMode: 420
+            name: logging-elasticsearch
+          name: elasticsearch-config
+        - emptyDir: {}
+          name: elasticsearch-storage
+  status:
+    availableReplicas: 1
+    fullyLabeledReplicas: 1
+    observedGeneration: 2
+    readyReplicas: 1
+    replicas: 1
+- apiVersion: v1
+  kind: ReplicationController
+  metadata:
+    annotations:
+      openshift.io/deployer-pod.completed-at: 2018-04-02 14:16:55 -0400 EDT
+      openshift.io/deployer-pod.created-at: 2018-04-02 14:16:43 -0400 EDT
+      openshift.io/deployer-pod.name: logging-kibana-1-deploy
+      openshift.io/deployment-config.latest-version: "1"
+      openshift.io/deployment-config.name: logging-kibana
+      openshift.io/deployment.phase: Complete
+      openshift.io/deployment.replicas: "1"
+      openshift.io/deployment.status-reason: config change
+      openshift.io/encoded-deployment-config: |
+        {"kind":"DeploymentConfig","apiVersion":"v1","metadata":{"name":"logging-kibana","namespace":"tkv7a","selfLink":"/apis/apps.openshift.io/v1/namespaces/tkv7a/deploymentconfigs/logging-kibana","uid":"ff1f772a-36a1-11e8-bbc3-fa163efc1ac4","resourceVersion":"12322","generation":1,"creationTimestamp":"2018-04-02T18:16:43Z","labels":{"component":"kibana","logging-infra":"kibana","provider":"openshift"}},"spec":{"strategy":{"type":"Rolling","rollingParams":{"updatePeriodSeconds":1,"intervalSeconds":1,"timeoutSeconds":600,"maxUnavailable":"25%","maxSurge":"25%"},"resources":{},"activeDeadlineSeconds":21600},"triggers":[{"type":"ConfigChange"}],"replicas":1,"test":false,"selector":{"component":"kibana","logging-infra":"kibana","provider":"openshift"},"template":{"metadata":{"name":"logging-kibana","creationTimestamp":null,"labels":{"component":"kibana","logging-infra":"kibana","provider":"openshift"}},"spec":{"volumes":[{"name":"kibana","secret":{"secretName":"logging-kibana","defaultMode":420}},{"name":"kibana-proxy","secret":{"secretName":"logging-kibana-proxy","defaultMode":420}}],"containers":[{"name":"kibana","image":"registry.access.redhat.com/openshift3/logging-kibana:v3.9.14","env":[{"name":"ES_HOST","value":"logging-es"},{"name":"ES_PORT","value":"9200"},{"name":"KIBANA_MEMORY_LIMIT","valueFrom":{"resourceFieldRef":{"containerName":"kibana","resource":"limits.memory","divisor":"0"}}}],"resources":{"limits":{"memory":"512Mi"},"requests":{"cpu":"100m","memory":"512Mi"}},"volumeMounts":[{"name":"kibana","readOnly":true,"mountPath":"/etc/kibana/keys"}],"readinessProbe":{"exec":{"command":["/usr/share/kibana/probe/readiness.sh"]},"initialDelaySeconds":5,"timeoutSeconds":4,"periodSeconds":5,"successThreshold":1,"failureThreshold":3},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File","imagePullPolicy":"IfNotPresent"},{"name":"kibana-proxy","image":"registry.access.redhat.com/openshift3/logging-auth-proxy:v3.9.14","ports":[{"name":"oaproxy","containerPort":3000,"protocol":"TCP"}],"env":[{"name":"OAP_BACKEND_URL","value":"http://localhost:5601"},{"name":"OAP_AUTH_MODE","value":"oauth2"},{"name":"OAP_TRANSFORM","value":"user_header,token_header"},{"name":"OAP_OAUTH_ID","value":"kibana-proxy"},{"name":"OAP_MASTER_URL","value":"https://kubernetes.default.svc.cluster.local"},{"name":"OAP_PUBLIC_MASTER_URL","value":"https://host-8-247-94.host.centralci.eng.rdu2.redhat.com:8443"},{"name":"OAP_LOGOUT_REDIRECT","value":"https://host-8-247-94.host.centralci.eng.rdu2.redhat.com:8443/console/logout"},{"name":"OAP_MASTER_CA_FILE","value":"/var/run/secrets/kubernetes.io/serviceaccount/ca.crt"},{"name":"OAP_DEBUG","value":"False"},{"name":"OAP_OAUTH_SECRET_FILE","value":"/secret/oauth-secret"},{"name":"OAP_SERVER_CERT_FILE","value":"/secret/server-cert"},{"name":"OAP_SERVER_KEY_FILE","value":"/secret/server-key"},{"name":"OAP_SERVER_TLS_FILE","value":"/secret/server-tls.json"},{"name":"OAP_SESSION_SECRET_FILE","value":"/secret/session-secret"},{"name":"OCP_AUTH_PROXY_MEMORY_LIMIT","valueFrom":{"resourceFieldRef":{"containerName":"kibana-proxy","resource":"limits.memory","divisor":"0"}}}],"resources":{"limits":{"memory":"256Mi"},"requests":{"cpu":"100m","memory":"256Mi"}},"volumeMounts":[{"name":"kibana-proxy","readOnly":true,"mountPath":"/secret"}],"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File","imagePullPolicy":"IfNotPresent"}],"restartPolicy":"Always","terminationGracePeriodSeconds":30,"dnsPolicy":"ClusterFirst","serviceAccountName":"aggregated-logging-kibana","serviceAccount":"aggregated-logging-kibana","securityContext":{},"schedulerName":"default-scheduler"}}},"status":{"latestVersion":1,"observedGeneration":0,"replicas":0,"updatedReplicas":0,"availableReplicas":0,"unavailableReplicas":0,"details":{"message":"config change","causes":[{"type":"ConfigChange"}]}}}
+    creationTimestamp: 2018-04-02T18:16:43Z
+    generation: 2
+    labels:
+      component: kibana
+      logging-infra: kibana
+      openshift.io/deployment-config.name: logging-kibana
+      provider: openshift
+    name: logging-kibana-1
+    namespace: tkv7a
+    ownerReferences:
+    - apiVersion: apps.openshift.io/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: DeploymentConfig
+      name: logging-kibana
+      uid: ff1f772a-36a1-11e8-bbc3-fa163efc1ac4
+    resourceVersion: "12401"
+    selfLink: /api/v1/namespaces/tkv7a/replicationcontrollers/logging-kibana-1
+    uid: ff2128e2-36a1-11e8-bbc3-fa163efc1ac4
+  spec:
+    replicas: 1
+    selector:
+      component: kibana
+      deployment: logging-kibana-1
+      deploymentconfig: logging-kibana
+      logging-infra: kibana
+      provider: openshift
+    template:
+      metadata:
+        annotations:
+          openshift.io/deployment-config.latest-version: "1"
+          openshift.io/deployment-config.name: logging-kibana
+          openshift.io/deployment.name: logging-kibana-1
+        creationTimestamp: null
+        labels:
+          component: kibana
+          deployment: logging-kibana-1
+          deploymentconfig: logging-kibana
+          logging-infra: kibana
+          provider: openshift
+      spec:
+        containers:
+        - env:
+          - name: ES_HOST
+            value: logging-es
+          - name: ES_PORT
+            value: "9200"
+          - name: KIBANA_MEMORY_LIMIT
+            valueFrom:
+              resourceFieldRef:
+                containerName: kibana
+                divisor: "0"
+                resource: limits.memory
+          image: registry.access.redhat.com/openshift3/logging-kibana:v3.9.14
+          imagePullPolicy: IfNotPresent
+          name: kibana
+          readinessProbe:
+            exec:
+              command:
+              - /usr/share/kibana/probe/readiness.sh
+            failureThreshold: 3
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 4
+          resources:
+            limits:
+              memory: 512Mi
+            requests:
+              cpu: 100m
+              memory: 512Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /etc/kibana/keys
+            name: kibana
+            readOnly: true
+        - env:
+          - name: OAP_BACKEND_URL
+            value: http://localhost:5601
+          - name: OAP_AUTH_MODE
+            value: oauth2
+          - name: OAP_TRANSFORM
+            value: user_header,token_header
+          - name: OAP_OAUTH_ID
+            value: kibana-proxy
+          - name: OAP_MASTER_URL
+            value: https://kubernetes.default.svc.cluster.local
+          - name: OAP_PUBLIC_MASTER_URL
+            value: https://host-8-247-94.host.centralci.eng.rdu2.redhat.com:8443
+          - name: OAP_LOGOUT_REDIRECT
+            value: https://host-8-247-94.host.centralci.eng.rdu2.redhat.com:8443/console/logout
+          - name: OAP_MASTER_CA_FILE
+            value: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+          - name: OAP_DEBUG
+            value: "False"
+          - name: OAP_OAUTH_SECRET_FILE
+            value: /secret/oauth-secret
+          - name: OAP_SERVER_CERT_FILE
+            value: /secret/server-cert
+          - name: OAP_SERVER_KEY_FILE
+            value: /secret/server-key
+          - name: OAP_SERVER_TLS_FILE
+            value: /secret/server-tls.json
+          - name: OAP_SESSION_SECRET_FILE
+            value: /secret/session-secret
+          - name: OCP_AUTH_PROXY_MEMORY_LIMIT
+            valueFrom:
+              resourceFieldRef:
+                containerName: kibana-proxy
+                divisor: "0"
+                resource: limits.memory
+          image: registry.access.redhat.com/openshift3/logging-auth-proxy:v3.9.14
+          imagePullPolicy: IfNotPresent
+          name: kibana-proxy
+          ports:
+          - containerPort: 3000
+            name: oaproxy
+            protocol: TCP
+          resources:
+            limits:
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 256Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /secret
+            name: kibana-proxy
+            readOnly: true
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        serviceAccount: aggregated-logging-kibana
+        serviceAccountName: aggregated-logging-kibana
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - name: kibana
+          secret:
+            defaultMode: 420
+            secretName: logging-kibana
+        - name: kibana-proxy
+          secret:
+            defaultMode: 420
+            secretName: logging-kibana-proxy
+  status:
+    availableReplicas: 1
+    fullyLabeledReplicas: 1
+    observedGeneration: 2
+    readyReplicas: 1
+    replicas: 1
+- apiVersion: v1
+  kind: ReplicationController
+  metadata:
+    annotations:
+      openshift.io/deployer-pod.completed-at: 2018-04-02 14:17:21 -0400 EDT
+      openshift.io/deployer-pod.created-at: 2018-04-02 14:17:08 -0400 EDT
+      openshift.io/deployer-pod.name: logging-kibana-ops-1-deploy
+      openshift.io/deployment-config.latest-version: "1"
+      openshift.io/deployment-config.name: logging-kibana-ops
+      openshift.io/deployment.phase: Complete
+      openshift.io/deployment.replicas: "1"
+      openshift.io/deployment.status-reason: config change
+      openshift.io/encoded-deployment-config: |
+        {"kind":"DeploymentConfig","apiVersion":"v1","metadata":{"name":"logging-kibana-ops","namespace":"tkv7a","selfLink":"/apis/apps.openshift.io/v1/namespaces/tkv7a/deploymentconfigs/logging-kibana-ops","uid":"0e532865-36a2-11e8-bbc3-fa163efc1ac4","resourceVersion":"12441","generation":1,"creationTimestamp":"2018-04-02T18:17:08Z","labels":{"component":"kibana-ops","logging-infra":"kibana","provider":"openshift"}},"spec":{"strategy":{"type":"Rolling","rollingParams":{"updatePeriodSeconds":1,"intervalSeconds":1,"timeoutSeconds":600,"maxUnavailable":"25%","maxSurge":"25%"},"resources":{},"activeDeadlineSeconds":21600},"triggers":[{"type":"ConfigChange"}],"replicas":1,"test":false,"selector":{"component":"kibana-ops","logging-infra":"kibana","provider":"openshift"},"template":{"metadata":{"name":"logging-kibana-ops","creationTimestamp":null,"labels":{"component":"kibana-ops","logging-infra":"kibana","provider":"openshift"}},"spec":{"volumes":[{"name":"kibana","secret":{"secretName":"logging-kibana","defaultMode":420}},{"name":"kibana-proxy","secret":{"secretName":"logging-kibana-proxy","defaultMode":420}}],"containers":[{"name":"kibana","image":"registry.access.redhat.com/openshift3/logging-kibana:v3.9.14","env":[{"name":"ES_HOST","value":"logging-es-ops"},{"name":"ES_PORT","value":"9200"},{"name":"KIBANA_MEMORY_LIMIT","valueFrom":{"resourceFieldRef":{"containerName":"kibana","resource":"limits.memory","divisor":"0"}}}],"resources":{"limits":{"memory":"512Mi"},"requests":{"cpu":"100m","memory":"512Mi"}},"volumeMounts":[{"name":"kibana","readOnly":true,"mountPath":"/etc/kibana/keys"}],"readinessProbe":{"exec":{"command":["/usr/share/kibana/probe/readiness.sh"]},"initialDelaySeconds":5,"timeoutSeconds":4,"periodSeconds":5,"successThreshold":1,"failureThreshold":3},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File","imagePullPolicy":"IfNotPresent"},{"name":"kibana-proxy","image":"registry.access.redhat.com/openshift3/logging-auth-proxy:v3.9.14","ports":[{"name":"oaproxy","containerPort":3000,"protocol":"TCP"}],"env":[{"name":"OAP_BACKEND_URL","value":"http://localhost:5601"},{"name":"OAP_AUTH_MODE","value":"oauth2"},{"name":"OAP_TRANSFORM","value":"user_header,token_header"},{"name":"OAP_OAUTH_ID","value":"kibana-proxy"},{"name":"OAP_MASTER_URL","value":"https://kubernetes.default.svc.cluster.local"},{"name":"OAP_PUBLIC_MASTER_URL","value":"https://host-8-247-94.host.centralci.eng.rdu2.redhat.com:8443"},{"name":"OAP_LOGOUT_REDIRECT","value":"https://host-8-247-94.host.centralci.eng.rdu2.redhat.com:8443/console/logout"},{"name":"OAP_MASTER_CA_FILE","value":"/var/run/secrets/kubernetes.io/serviceaccount/ca.crt"},{"name":"OAP_DEBUG","value":"False"},{"name":"OAP_OAUTH_SECRET_FILE","value":"/secret/oauth-secret"},{"name":"OAP_SERVER_CERT_FILE","value":"/secret/server-cert"},{"name":"OAP_SERVER_KEY_FILE","value":"/secret/server-key"},{"name":"OAP_SERVER_TLS_FILE","value":"/secret/server-tls.json"},{"name":"OAP_SESSION_SECRET_FILE","value":"/secret/session-secret"},{"name":"OCP_AUTH_PROXY_MEMORY_LIMIT","valueFrom":{"resourceFieldRef":{"containerName":"kibana-proxy","resource":"limits.memory","divisor":"0"}}}],"resources":{"limits":{"memory":"256Mi"},"requests":{"cpu":"100m","memory":"256Mi"}},"volumeMounts":[{"name":"kibana-proxy","readOnly":true,"mountPath":"/secret"}],"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File","imagePullPolicy":"IfNotPresent"}],"restartPolicy":"Always","terminationGracePeriodSeconds":30,"dnsPolicy":"ClusterFirst","serviceAccountName":"aggregated-logging-kibana","serviceAccount":"aggregated-logging-kibana","securityContext":{},"schedulerName":"default-scheduler"}}},"status":{"latestVersion":1,"observedGeneration":0,"replicas":0,"updatedReplicas":0,"availableReplicas":0,"unavailableReplicas":0,"details":{"message":"config change","causes":[{"type":"ConfigChange"}]}}}
+    creationTimestamp: 2018-04-02T18:17:08Z
+    generation: 2
+    labels:
+      component: kibana-ops
+      logging-infra: kibana
+      openshift.io/deployment-config.name: logging-kibana-ops
+      provider: openshift
+    name: logging-kibana-ops-1
+    namespace: tkv7a
+    ownerReferences:
+    - apiVersion: apps.openshift.io/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: DeploymentConfig
+      name: logging-kibana-ops
+      uid: 0e532865-36a2-11e8-bbc3-fa163efc1ac4
+    resourceVersion: "12522"
+    selfLink: /api/v1/namespaces/tkv7a/replicationcontrollers/logging-kibana-ops-1
+    uid: 0e552f25-36a2-11e8-bbc3-fa163efc1ac4
+  spec:
+    replicas: 1
+    selector:
+      component: kibana-ops
+      deployment: logging-kibana-ops-1
+      deploymentconfig: logging-kibana-ops
+      logging-infra: kibana
+      provider: openshift
+    template:
+      metadata:
+        annotations:
+          openshift.io/deployment-config.latest-version: "1"
+          openshift.io/deployment-config.name: logging-kibana-ops
+          openshift.io/deployment.name: logging-kibana-ops-1
+        creationTimestamp: null
+        labels:
+          component: kibana-ops
+          deployment: logging-kibana-ops-1
+          deploymentconfig: logging-kibana-ops
+          logging-infra: kibana
+          provider: openshift
+      spec:
+        containers:
+        - env:
+          - name: ES_HOST
+            value: logging-es-ops
+          - name: ES_PORT
+            value: "9200"
+          - name: KIBANA_MEMORY_LIMIT
+            valueFrom:
+              resourceFieldRef:
+                containerName: kibana
+                divisor: "0"
+                resource: limits.memory
+          image: registry.access.redhat.com/openshift3/logging-kibana:v3.9.14
+          imagePullPolicy: IfNotPresent
+          name: kibana
+          readinessProbe:
+            exec:
+              command:
+              - /usr/share/kibana/probe/readiness.sh
+            failureThreshold: 3
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 4
+          resources:
+            limits:
+              memory: 512Mi
+            requests:
+              cpu: 100m
+              memory: 512Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /etc/kibana/keys
+            name: kibana
+            readOnly: true
+        - env:
+          - name: OAP_BACKEND_URL
+            value: http://localhost:5601
+          - name: OAP_AUTH_MODE
+            value: oauth2
+          - name: OAP_TRANSFORM
+            value: user_header,token_header
+          - name: OAP_OAUTH_ID
+            value: kibana-proxy
+          - name: OAP_MASTER_URL
+            value: https://kubernetes.default.svc.cluster.local
+          - name: OAP_PUBLIC_MASTER_URL
+            value: https://host-8-247-94.host.centralci.eng.rdu2.redhat.com:8443
+          - name: OAP_LOGOUT_REDIRECT
+            value: https://host-8-247-94.host.centralci.eng.rdu2.redhat.com:8443/console/logout
+          - name: OAP_MASTER_CA_FILE
+            value: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+          - name: OAP_DEBUG
+            value: "False"
+          - name: OAP_OAUTH_SECRET_FILE
+            value: /secret/oauth-secret
+          - name: OAP_SERVER_CERT_FILE
+            value: /secret/server-cert
+          - name: OAP_SERVER_KEY_FILE
+            value: /secret/server-key
+          - name: OAP_SERVER_TLS_FILE
+            value: /secret/server-tls.json
+          - name: OAP_SESSION_SECRET_FILE
+            value: /secret/session-secret
+          - name: OCP_AUTH_PROXY_MEMORY_LIMIT
+            valueFrom:
+              resourceFieldRef:
+                containerName: kibana-proxy
+                divisor: "0"
+                resource: limits.memory
+          image: registry.access.redhat.com/openshift3/logging-auth-proxy:v3.9.14
+          imagePullPolicy: IfNotPresent
+          name: kibana-proxy
+          ports:
+          - containerPort: 3000
+            name: oaproxy
+            protocol: TCP
+          resources:
+            limits:
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 256Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /secret
+            name: kibana-proxy
+            readOnly: true
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        serviceAccount: aggregated-logging-kibana
+        serviceAccountName: aggregated-logging-kibana
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - name: kibana
+          secret:
+            defaultMode: 420
+            secretName: logging-kibana
+        - name: kibana-proxy
+          secret:
+            defaultMode: 420
+            secretName: logging-kibana-proxy
+  status:
+    availableReplicas: 1
+    fullyLabeledReplicas: 1
+    observedGeneration: 2
+    readyReplicas: 1
+    replicas: 1
+- apiVersion: v1
+  kind: ReplicationController
+  metadata:
+    annotations:
+      openshift.io/deployer-pod.completed-at: 2018-04-02 14:18:26 -0400 EDT
+      openshift.io/deployer-pod.created-at: 2018-04-02 14:18:03 -0400 EDT
+      openshift.io/deployer-pod.name: logging-mux-1-deploy
+      openshift.io/deployment-config.latest-version: "1"
+      openshift.io/deployment-config.name: logging-mux
+      openshift.io/deployment.phase: Complete
+      openshift.io/deployment.replicas: "1"
+      openshift.io/deployment.status-reason: config change
+      openshift.io/encoded-deployment-config: |
+        {"kind":"DeploymentConfig","apiVersion":"v1","metadata":{"name":"logging-mux","namespace":"tkv7a","selfLink":"/apis/apps.openshift.io/v1/namespaces/tkv7a/deploymentconfigs/logging-mux","uid":"2ee853e0-36a2-11e8-bbc3-fa163efc1ac4","resourceVersion":"12722","generation":1,"creationTimestamp":"2018-04-02T18:18:03Z","labels":{"component":"mux","logging-infra":"mux","provider":"openshift"}},"spec":{"strategy":{"type":"Rolling","rollingParams":{"updatePeriodSeconds":1,"intervalSeconds":1,"timeoutSeconds":600,"maxUnavailable":"25%","maxSurge":"25%"},"resources":{},"activeDeadlineSeconds":21600},"triggers":[{"type":"ConfigChange"}],"replicas":1,"test":false,"selector":{"component":"mux","logging-infra":"mux","provider":"openshift"},"template":{"metadata":{"name":"logging-mux","creationTimestamp":null,"labels":{"component":"mux","logging-infra":"mux","provider":"openshift"}},"spec":{"volumes":[{"name":"config","configMap":{"name":"logging-mux","defaultMode":420}},{"name":"certs","secret":{"secretName":"logging-fluentd","defaultMode":420}},{"name":"dockerhostname","hostPath":{"path":"/etc/hostname","type":""}},{"name":"localtime","hostPath":{"path":"/etc/localtime","type":""}},{"name":"muxcerts","secret":{"secretName":"logging-mux","defaultMode":420}},{"name":"filebufferstorage","emptyDir":{}}],"containers":[{"name":"mux","image":"registry.access.redhat.com/openshift3/logging-fluentd:v3.9.14","ports":[{"name":"mux-forward","containerPort":24284,"protocol":"TCP"}],"env":[{"name":"K8S_HOST_URL","value":"https://kubernetes.default.svc.cluster.local"},{"name":"ES_HOST","value":"logging-es"},{"name":"ES_PORT","value":"9200"},{"name":"ES_CLIENT_CERT","value":"/etc/fluent/keys/cert"},{"name":"ES_CLIENT_KEY","value":"/etc/fluent/keys/key"},{"name":"ES_CA","value":"/etc/fluent/keys/ca"},{"name":"OPS_HOST","value":"logging-es-ops"},{"name":"OPS_PORT","value":"9200"},{"name":"OPS_CLIENT_CERT","value":"/etc/fluent/keys/cert"},{"name":"OPS_CLIENT_KEY","value":"/etc/fluent/keys/key"},{"name":"OPS_CA","value":"/etc/fluent/keys/ca"},{"name":"JOURNAL_SOURCE"},{"name":"JOURNAL_READ_FROM_HEAD"},{"name":"FORWARD_LISTEN_HOST","value":"mux.router.default.svc.cluster.local"},{"name":"FORWARD_LISTEN_PORT","value":"24284"},{"name":"USE_MUX","value":"true"},{"name":"BUFFER_QUEUE_LIMIT","value":"32"},{"name":"BUFFER_SIZE_LIMIT","value":"8m"},{"name":"MUX_CPU_LIMIT","valueFrom":{"resourceFieldRef":{"containerName":"mux","resource":"limits.cpu","divisor":"0"}}},{"name":"MUX_MEMORY_LIMIT","valueFrom":{"resourceFieldRef":{"containerName":"mux","resource":"limits.memory","divisor":"0"}}},{"name":"FILE_BUFFER_LIMIT","value":"2Gi"}],"resources":{"limits":{"memory":"512Mi"},"requests":{"cpu":"100m","memory":"512Mi"}},"volumeMounts":[{"name":"config","readOnly":true,"mountPath":"/etc/fluent/configs.d/user"},{"name":"certs","readOnly":true,"mountPath":"/etc/fluent/keys"},{"name":"dockerhostname","readOnly":true,"mountPath":"/etc/docker-hostname"},{"name":"localtime","readOnly":true,"mountPath":"/etc/localtime"},{"name":"muxcerts","readOnly":true,"mountPath":"/etc/fluent/muxkeys"},{"name":"filebufferstorage","mountPath":"/var/lib/fluentd"}],"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File","imagePullPolicy":"IfNotPresent"}],"restartPolicy":"Always","terminationGracePeriodSeconds":30,"dnsPolicy":"ClusterFirst","serviceAccountName":"aggregated-logging-mux","serviceAccount":"aggregated-logging-mux","securityContext":{},"schedulerName":"default-scheduler"}}},"status":{"latestVersion":1,"observedGeneration":0,"replicas":0,"updatedReplicas":0,"availableReplicas":0,"unavailableReplicas":0,"details":{"message":"config change","causes":[{"type":"ConfigChange"}]}}}
+    creationTimestamp: 2018-04-02T18:18:03Z
+    generation: 2
+    labels:
+      component: mux
+      logging-infra: mux
+      openshift.io/deployment-config.name: logging-mux
+      provider: openshift
+    name: logging-mux-1
+    namespace: tkv7a
+    ownerReferences:
+    - apiVersion: apps.openshift.io/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: DeploymentConfig
+      name: logging-mux
+      uid: 2ee853e0-36a2-11e8-bbc3-fa163efc1ac4
+    resourceVersion: "79049"
+    selfLink: /api/v1/namespaces/tkv7a/replicationcontrollers/logging-mux-1
+    uid: 2eeaa21a-36a2-11e8-bbc3-fa163efc1ac4
+  spec:
+    replicas: 1
+    selector:
+      component: mux
+      deployment: logging-mux-1
+      deploymentconfig: logging-mux
+      logging-infra: mux
+      provider: openshift
+    template:
+      metadata:
+        annotations:
+          openshift.io/deployment-config.latest-version: "1"
+          openshift.io/deployment-config.name: logging-mux
+          openshift.io/deployment.name: logging-mux-1
+        creationTimestamp: null
+        labels:
+          component: mux
+          deployment: logging-mux-1
+          deploymentconfig: logging-mux
+          logging-infra: mux
+          provider: openshift
+      spec:
+        containers:
+        - env:
+          - name: K8S_HOST_URL
+            value: https://kubernetes.default.svc.cluster.local
+          - name: ES_HOST
+            value: logging-es
+          - name: ES_PORT
+            value: "9200"
+          - name: ES_CLIENT_CERT
+            value: /etc/fluent/keys/cert
+          - name: ES_CLIENT_KEY
+            value: /etc/fluent/keys/key
+          - name: ES_CA
+            value: /etc/fluent/keys/ca
+          - name: OPS_HOST
+            value: logging-es-ops
+          - name: OPS_PORT
+            value: "9200"
+          - name: OPS_CLIENT_CERT
+            value: /etc/fluent/keys/cert
+          - name: OPS_CLIENT_KEY
+            value: /etc/fluent/keys/key
+          - name: OPS_CA
+            value: /etc/fluent/keys/ca
+          - name: JOURNAL_SOURCE
+          - name: JOURNAL_READ_FROM_HEAD
+          - name: FORWARD_LISTEN_HOST
+            value: mux.router.default.svc.cluster.local
+          - name: FORWARD_LISTEN_PORT
+            value: "24284"
+          - name: USE_MUX
+            value: "true"
+          - name: BUFFER_QUEUE_LIMIT
+            value: "32"
+          - name: BUFFER_SIZE_LIMIT
+            value: 8m
+          - name: MUX_CPU_LIMIT
+            valueFrom:
+              resourceFieldRef:
+                containerName: mux
+                divisor: "0"
+                resource: limits.cpu
+          - name: MUX_MEMORY_LIMIT
+            valueFrom:
+              resourceFieldRef:
+                containerName: mux
+                divisor: "0"
+                resource: limits.memory
+          - name: FILE_BUFFER_LIMIT
+            value: 2Gi
+          image: registry.access.redhat.com/openshift3/logging-fluentd:v3.9.14
+          imagePullPolicy: IfNotPresent
+          name: mux
+          ports:
+          - containerPort: 24284
+            name: mux-forward
+            protocol: TCP
+          resources:
+            limits:
+              memory: 512Mi
+            requests:
+              cpu: 100m
+              memory: 512Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /etc/fluent/configs.d/user
+            name: config
+            readOnly: true
+          - mountPath: /etc/fluent/keys
+            name: certs
+            readOnly: true
+          - mountPath: /etc/docker-hostname
+            name: dockerhostname
+            readOnly: true
+          - mountPath: /etc/localtime
+            name: localtime
+            readOnly: true
+          - mountPath: /etc/fluent/muxkeys
+            name: muxcerts
+            readOnly: true
+          - mountPath: /var/lib/fluentd
+            name: filebufferstorage
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        serviceAccount: aggregated-logging-mux
+        serviceAccountName: aggregated-logging-mux
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - configMap:
+            defaultMode: 420
+            name: logging-mux
+          name: config
+        - name: certs
+          secret:
+            defaultMode: 420
+            secretName: logging-fluentd
+        - hostPath:
+            path: /etc/hostname
+            type: ""
+          name: dockerhostname
+        - hostPath:
+            path: /etc/localtime
+            type: ""
+          name: localtime
+        - name: muxcerts
+          secret:
+            defaultMode: 420
+            secretName: logging-mux
+        - emptyDir: {}
+          name: filebufferstorage
+  status:
+    availableReplicas: 1
+    fullyLabeledReplicas: 1
+    observedGeneration: 2
+    readyReplicas: 1
+    replicas: 1
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""
