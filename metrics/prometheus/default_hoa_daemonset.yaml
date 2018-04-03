@@ -1,0 +1,98 @@
+apiVersion: v1
+items:
+- apiVersion: extensions/v1beta1
+  kind: DaemonSet
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"extensions/v1beta1","kind":"DaemonSet","metadata":{"annotations":{},"labels":{"metrics-infra":"agent","name":"hawkular-openshift-agent"},"name":"hawkular-openshift-agent","namespace":"default"},"spec":{"selector":{"matchLabels":{"name":"hawkular-openshift-agent"}},"template":{"metadata":{"labels":{"metrics-infra":"agent","name":"hawkular-openshift-agent"}},"spec":{"containers":[{"command":["hawkular-openshift-agent","-config","/hawkular-openshift-agent-configuration/config.yaml","-v","3"],"env":[{"name":"K8S_POD_NAMESPACE","valueFrom":{"fieldRef":{"fieldPath":"metadata.namespace"}}},{"name":"K8S_POD_NAME","valueFrom":{"fieldRef":{"fieldPath":"metadata.name"}}}],"image":"registry.access.redhat.com/openshift3/metrics-hawkular-openshift-agent:v3.9.14","imagePullPolicy":"IfNotPresent","livenessProbe":{"httpGet":{"path":"/health","port":8080,"scheme":"HTTP"},"initialDelaySeconds":30,"periodSeconds":30},"name":"hawkular-openshift-agent","volumeMounts":[{"mountPath":"/hawkular-openshift-agent-configuration","name":"hawkular-openshift-agent-configuration"}]}],"serviceAccount":"hawkular-openshift-agent","volumes":[{"configMap":{"name":"hawkular-openshift-agent-configuration"},"name":"hawkular-openshift-agent-configuration"},{"configMap":{"name":"hawkular-openshift-agent-configuration"},"name":"hawkular-openshift-agent"}]}}}}
+    creationTimestamp: 2018-04-03T03:59:09Z
+    generation: 1
+    labels:
+      metrics-infra: agent
+      name: hawkular-openshift-agent
+    name: hawkular-openshift-agent
+    namespace: default
+    resourceVersion: "65316"
+    selfLink: /apis/extensions/v1beta1/namespaces/default/daemonsets/hawkular-openshift-agent
+    uid: 5cd4cf26-36f3-11e8-b543-fa163e332b7c
+  spec:
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        name: hawkular-openshift-agent
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          metrics-infra: agent
+          name: hawkular-openshift-agent
+      spec:
+        containers:
+        - command:
+          - hawkular-openshift-agent
+          - -config
+          - /hawkular-openshift-agent-configuration/config.yaml
+          - -v
+          - "3"
+          env:
+          - name: K8S_POD_NAMESPACE
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+          - name: K8S_POD_NAME
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.name
+          image: registry.access.redhat.com/openshift3/metrics-hawkular-openshift-agent:v3.9.14
+          imagePullPolicy: IfNotPresent
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /health
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 30
+            periodSeconds: 30
+            successThreshold: 1
+            timeoutSeconds: 1
+          name: hawkular-openshift-agent
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /hawkular-openshift-agent-configuration
+            name: hawkular-openshift-agent-configuration
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        serviceAccount: hawkular-openshift-agent
+        serviceAccountName: hawkular-openshift-agent
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - configMap:
+            defaultMode: 420
+            name: hawkular-openshift-agent-configuration
+          name: hawkular-openshift-agent-configuration
+        - configMap:
+            defaultMode: 420
+            name: hawkular-openshift-agent-configuration
+          name: hawkular-openshift-agent
+    templateGeneration: 1
+    updateStrategy:
+      type: OnDelete
+  status:
+    currentNumberScheduled: 1
+    desiredNumberScheduled: 1
+    numberAvailable: 1
+    numberMisscheduled: 0
+    numberReady: 1
+    observedGeneration: 1
+    updatedNumberScheduled: 1
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""
