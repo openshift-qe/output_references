@@ -1,0 +1,18 @@
+      apiVersion: servicecatalog.k8s.io/v1beta1
+      kind: ClusterServicePlan
+      metadata:
+        creationTimestamp: 2018-04-25T03:09:24Z
+        name: 86064792-7ea2-467b-af93-ac9694d96d52
+        resourceVersion: "104741"
+        selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceplans/86064792-7ea2-467b-af93-ac9694d96d52
+        uid: 0e6c30fc-4836-11e8-b03b-0a580a800005
+      spec:
+        clusterServiceBrokerName: ups-broker
+        clusterServiceClassRef:
+          name: 4f6e6cf6-ffdd-425f-a2c7-3c9258ad2468
+        description: Sample plan description
+        externalID: 86064792-7ea2-467b-af93-ac9694d96d52
+        externalName: default
+        free: true
+      status:
+        removedFromBrokerCatalog: false
