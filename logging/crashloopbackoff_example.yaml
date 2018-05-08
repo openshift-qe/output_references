@@ -1,0 +1,154 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    kubernetes.io/created-by: |
+      {"kind":"SerializedReference","apiVersion":"v1","reference":{"kind":"ReplicationController","namespace":"logging","name":"logging-curator-1","uid":"7091ce72-52c6-11e8-8306-fa163eb05f08","apiVersion":"v1","resourceVersion":"94437"}}
+    openshift.io/deployment-config.latest-version: "1"
+    openshift.io/deployment-config.name: logging-curator
+    openshift.io/deployment.name: logging-curator-1
+    openshift.io/scc: restricted
+  creationTimestamp: 2018-05-08T13:48:09Z
+  generateName: logging-curator-1-
+  labels:
+    component: curator
+    deployment: logging-curator-1
+    deploymentconfig: logging-curator
+    logging-infra: curator
+    provider: openshift
+  name: logging-curator-1-xtnn2
+  namespace: logging
+  ownerReferences:
+  - apiVersion: v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicationController
+    name: logging-curator-1
+    uid: 7091ce72-52c6-11e8-8306-fa163eb05f08
+  resourceVersion: "142150"
+  selfLink: /api/v1/namespaces/logging/pods/logging-curator-1-xtnn2
+  uid: 71a47e36-52c6-11e8-8306-fa163eb05f08
+spec:
+  containers:
+  - env:
+    - name: K8S_HOST_URL
+      value: https://kubernetes.default.svc.cluster.local
+    - name: ES_HOST
+      value: logging-es
+    - name: ES_PORT
+      value: "9200"
+    - name: ES_CLIENT_CERT
+      value: /etc/curator/keys/cert
+    - name: ES_CLIENT_KEY
+      value: /etc/curator/keys/key
+    - name: ES_CA
+      value: /etc/curator/keys/ca
+    - name: CURATOR_DEFAULT_DAYS
+      value: "30"
+    - name: CURATOR_RUN_HOUR
+      value: "3"
+    - name: CURATOR_RUN_MINUTE
+      value: "30"
+    - name: CURATOR_RUN_TIMEZONE
+      value: UTC
+    - name: CURATOR_SCRIPT_LOG_LEVEL
+      value: INFO
+    - name: CURATOR_LOG_LEVEL
+      value: ERROR
+    image: brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/openshift3/logging-curator:v3.7
+    imagePullPolicy: IfNotPresent
+    name: curator
+    resources:
+      limits:
+        memory: 256Mi
+      requests:
+        cpu: 100m
+        memory: 256Mi
+    securityContext:
+      capabilities:
+        drop:
+        - KILL
+        - MKNOD
+        - SETGID
+        - SETUID
+      privileged: false
+      runAsUser: 1000070000
+      seLinuxOptions:
+        level: s0:c8,c7
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /etc/curator/keys
+      name: certs
+      readOnly: true
+    - mountPath: /etc/curator/settings
+      name: config
+      readOnly: true
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: aggregated-logging-curator-token-rzfsd
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  imagePullSecrets:
+  - name: aggregated-logging-curator-dockercfg-84gfm
+  nodeName: 172.16.120.124
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext:
+    fsGroup: 1000070000
+    seLinuxOptions:
+      level: s0:c8,c7
+  serviceAccount: aggregated-logging-curator
+  serviceAccountName: aggregated-logging-curator
+  terminationGracePeriodSeconds: 30
+  volumes:
+  - name: certs
+    secret:
+      defaultMode: 420
+      secretName: logging-curator
+  - configMap:
+      defaultMode: 420
+      name: logging-curator
+    name: config
+  - name: aggregated-logging-curator-token-rzfsd
+    secret:
+      defaultMode: 420
+      secretName: aggregated-logging-curator-token-rzfsd
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: 2018-05-08T13:48:10Z
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: 2018-05-08T19:51:30Z
+    message: 'containers with unready status: [curator]'
+    reason: ContainersNotReady
+    status: "False"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: 2018-05-08T13:48:09Z
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: docker://ce8464fe1244bc2532871a471507b0270dc13c1231a97473b892576445a6dd2e
+    image: brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/openshift3/logging-curator:v3.7
+    imageID: docker-pullable://brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/openshift3/logging-curator@sha256:98f4113c3aab51f5f90106589c6e9d079bb1bd8b5f8de7eb7d6c658315d67fce
+    lastState:
+      terminated:
+        containerID: docker://ce8464fe1244bc2532871a471507b0270dc13c1231a97473b892576445a6dd2e
+        exitCode: 127
+        finishedAt: 2018-05-08T20:21:53Z
+        reason: Error
+        startedAt: 2018-05-08T20:21:53Z
+    name: curator
+    ready: false
+    restartCount: 82
+    state:
+      waiting:
+        message: Back-off 5m0s restarting failed container=curator pod=logging-curator-1-xtnn2_logging(71a47e36-52c6-11e8-8306-fa163eb05f08)
+        reason: CrashLoopBackOff
+  hostIP: 172.16.120.124
+  phase: Running
+  podIP: 10.129.0.70
+  qosClass: Burstable
+  startTime: 2018-05-08T13:48:10Z
