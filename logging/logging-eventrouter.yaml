@@ -1,0 +1,14 @@
+apiVersion: v1
+data:
+  config.json: |-
+    {
+      "sink": "glog"
+    }
+kind: ConfigMap
+metadata:
+  creationTimestamp: 2018-05-20T03:49:01Z
+  name: logging-eventrouter
+  namespace: default
+  resourceVersion: "651085"
+  selfLink: /api/v1/namespaces/default/configmaps/logging-eventrouter
+  uid: bbf4e6eb-5be0-11e8-8c83-fa163ec5059e
