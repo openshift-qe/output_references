@@ -1,0 +1,5033 @@
+apiVersion: v1
+items:
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T16:27:05Z
+    name: 03b69500305d9859bb9440d9f9023784
+    namespace: ""
+    resourceVersion: "115879"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/03b69500305d9859bb9440d9f9023784
+    uid: 732d3b8d-69a6-11e8-a6e0-0a580a800004
+  spec:
+    bindable: false
+    bindingRetrievable: false
+    clusterServiceBrokerName: ansible-service-broker
+    description: Mediawiki apb implementation
+    externalID: 03b69500305d9859bb9440d9f9023784
+    externalMetadata:
+      console.openshift.io/iconClass: icon-mediawiki
+      dependencies:
+      - registry.access.redhat.com/openshift3/mediawiki:latest
+      displayName: Mediawiki (APB)
+      documentationUrl: https://www.mediawiki.org/wiki/Documentation
+      longDescription: An apb that deploys Mediawiki
+      providerDisplayName: Red Hat, Inc.
+    externalName: rh-mediawiki-apb
+    planUpdatable: false
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T02:01:15Z
+    name: 1dda1477cace09730bd8ed7a6505607e
+    namespace: ""
+    resourceVersion: "43204"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/1dda1477cace09730bd8ed7a6505607e
+    uid: 7e719d58-692d-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: true
+    clusterServiceBrokerName: ansible-service-broker
+    description: SCL PostgreSQL apb implementation
+    externalID: 1dda1477cace09730bd8ed7a6505607e
+    externalMetadata:
+      console.openshift.io/iconClass: icon-postgresql
+      dependencies:
+      - registry.access.redhat.com/rhscl/postgresql-94-rhel7
+      - registry.access.redhat.com/rhscl/postgresql-95-rhel7
+      - registry.access.redhat.com/rhscl/postgresql-96-rhel7
+      displayName: PostgreSQL (APB)
+      documentationUrl: https://www.postgresql.org/docs/
+      longDescription: An apb that deploys postgresql 9.4, 9.5, or 9.6.
+      providerDisplayName: Red Hat, Inc.
+    externalName: dh-postgresql-apb
+    planUpdatable: true
+    tags:
+    - database
+    - postgresql
+  status:
+    removedFromBrokerCatalog: true
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T16:27:05Z
+    name: 2c259ddd8059b9bc65081e07bf20058f
+    namespace: ""
+    resourceVersion: "115880"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/2c259ddd8059b9bc65081e07bf20058f
+    uid: 732eac2a-69a6-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: ansible-service-broker
+    description: Mariadb apb implementation
+    externalID: 2c259ddd8059b9bc65081e07bf20058f
+    externalMetadata:
+      console.openshift.io/iconClass: icon-mariadb
+      dependencies:
+      - registry.access.redhat.com/rhscl/mariadb-100-rhel7
+      - registry.access.redhat.com/rhscl/mariadb-101-rhel7
+      - registry.access.redhat.com/rhscl/mariadb-102-rhel7
+      displayName: MariaDB (APB)
+      documentationUrl: https://mariadb.com/kb/en/mariadb/documentation/
+      longDescription: Deploys a bindable mariadb instance
+      providerDisplayName: Red Hat, Inc.
+    externalName: rh-mariadb-apb
+    planUpdatable: true
+    tags:
+    - database
+    - mariadb
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T05:56:34Z
+    name: 4f6e6cf6-ffdd-425f-a2c7-3c9258ad2468
+    namespace: ""
+    resourceVersion: "40813"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/4f6e6cf6-ffdd-425f-a2c7-3c9258ad2468
+    uid: 5e2e06ff-694e-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: ups-broker
+    description: A user provided service
+    externalID: 4f6e6cf6-ffdd-425f-a2c7-3c9258ad2468
+    externalName: user-provided-service
+    planUpdatable: false
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T16:27:05Z
+    name: 73ead67495322cc462794387fa9884f5
+    namespace: ""
+    resourceVersion: "115881"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/73ead67495322cc462794387fa9884f5
+    uid: 732fa1ff-69a6-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: ansible-service-broker
+    description: Software Collections MySQL APB
+    externalID: 73ead67495322cc462794387fa9884f5
+    externalMetadata:
+      console.openshift.io/iconClass: icon-mysql-database
+      dependencies:
+      - registry.access.redhat.com/rhscl/mysql-56-rhel7
+      - registry.access.redhat.com/rhscl/mysql-57-rhel7
+      displayName: MySQL (APB)
+      documentationUrl: https://github.com/sclorg/mysql-container/
+      longDescription: An Ansible Playbook Bundle (APB) that deploys MySQL
+      providerDisplayName: Red Hat, Inc.
+    externalName: rh-mysql-apb
+    planUpdatable: true
+    tags:
+    - database
+    - mysql
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T08:12:34Z
+    name: d5915e05b253df421efe6e41fb6a66ba
+    namespace: ""
+    resourceVersion: "115882"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/d5915e05b253df421efe6e41fb6a66ba
+    uid: 5dd96ded-6961-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: ansible-service-broker
+    description: SCL PostgreSQL apb implementation
+    externalID: d5915e05b253df421efe6e41fb6a66ba
+    externalMetadata:
+      console.openshift.io/iconClass: icon-postgresql
+      dependencies:
+      - registry.access.redhat.com/rhscl/postgresql-94-rhel7
+      - registry.access.redhat.com/rhscl/postgresql-95-rhel7
+      - registry.access.redhat.com/rhscl/postgresql-96-rhel7
+      displayName: PostgreSQL (APB)
+      documentationUrl: https://www.postgresql.org/docs/
+      longDescription: An apb that deploys postgresql 9.4, 9.5, or 9.6.
+      providerDisplayName: Red Hat, Inc.
+    externalName: rh-postgresql-apb
+    planUpdatable: true
+    tags:
+    - database
+    - postgresql
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:46Z
+    name: e8c10f06-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3453"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/e8c10f06-6929-11e8-9315-fa163e540406
+    uid: 0db99c3c-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: |-
+      MariaDB database service, without persistent storage. For more information about using this template, including OpenShift considerations, see https://github.com/sclorg/mariadb-container/blob/master/10.2/root/usr/share/container-scripts/mysql/README.md.
+
+      WARNING: Any data stored will be lost upon pod destruction. Only use this template for testing
+    externalID: e8c10f06-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-mariadb
+      displayName: MariaDB (Ephemeral)
+      documentationUrl: https://github.com/sclorg/mariadb-container/blob/master/10.2/root/usr/share/container-scripts/mysql/README.md
+      longDescription: This template provides a standalone MariaDB server with a database
+        created.  The database is not stored on persistent storage, so any restart
+        of the service will result in all data being lost.  The database name, username,
+        and password are chosen via parameters when provisioning this service.
+      providerDisplayName: Red Hat, Inc.
+      supportUrl: https://access.redhat.com
+    externalName: mariadb-ephemeral
+    planUpdatable: false
+    tags:
+    - database
+    - mariadb
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:49Z
+    name: e8c25136-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3515"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/e8c25136-6929-11e8-9315-fa163e540406
+    uid: 0f45b685-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: |-
+      MariaDB database service, with persistent storage. For more information about using this template, including OpenShift considerations, see https://github.com/sclorg/mariadb-container/blob/master/10.2/root/usr/share/container-scripts/mysql/README.md.
+
+      NOTE: Scaling to more than one replica is not supported. You must have persistent volumes available in your cluster to use this template.
+    externalID: e8c25136-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-mariadb
+      displayName: MariaDB
+      documentationUrl: https://github.com/sclorg/mariadb-container/blob/master/10.2/root/usr/share/container-scripts/mysql/README.md
+      longDescription: This template provides a standalone MariaDB server with a database
+        created.  The database is stored on persistent storage.  The database name,
+        username, and password are chosen via parameters when provisioning this service.
+      providerDisplayName: Red Hat, Inc.
+      supportUrl: https://access.redhat.com
+    externalName: mariadb-persistent
+    planUpdatable: false
+    tags:
+    - database
+    - mariadb
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:45Z
+    name: e8c474ef-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3371"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/e8c474ef-6929-11e8-9315-fa163e540406
+    uid: 0cc63f74-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: |-
+      MongoDB database service, without persistent storage. For more information about using this template, including OpenShift considerations, see https://github.com/sclorg/mongodb-container/blob/master/3.2/README.md.
+
+      WARNING: Any data stored will be lost upon pod destruction. Only use this template for testing
+    externalID: e8c474ef-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-mongodb
+      displayName: MongoDB (Ephemeral)
+      documentationUrl: https://docs.openshift.org/latest/using_images/db_images/mongodb.html
+      longDescription: This template provides a standalone MongoDB server with a database
+        created.  The database is not stored on persistent storage, so any restart
+        of the service will result in all data being lost.  The database name, username,
+        and password are chosen via parameters when provisioning this service.
+      providerDisplayName: Red Hat, Inc.
+      supportUrl: https://access.redhat.com
+    externalName: mongodb-ephemeral
+    planUpdatable: false
+    tags:
+    - database
+    - mongodb
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:45Z
+    name: e8c59ba5-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3396"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/e8c59ba5-6929-11e8-9315-fa163e540406
+    uid: 0d01df68-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: |-
+      MongoDB database service, with persistent storage. For more information about using this template, including OpenShift considerations, see https://github.com/sclorg/mongodb-container/blob/master/3.2/README.md.
+
+      NOTE: Scaling to more than one replica is not supported. You must have persistent volumes available in your cluster to use this template.
+    externalID: e8c59ba5-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-mongodb
+      displayName: MongoDB
+      documentationUrl: https://docs.openshift.org/latest/using_images/db_images/mongodb.html
+      longDescription: This template provides a standalone MongoDB server with a database
+        created.  The database is stored on persistent storage.  The database name,
+        username, and password are chosen via parameters when provisioning this service.
+      providerDisplayName: Red Hat, Inc.
+      supportUrl: https://access.redhat.com
+    externalName: mongodb-persistent
+    planUpdatable: false
+    tags:
+    - database
+    - mongodb
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:43Z
+    name: e8c70202-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3236"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/e8c70202-6929-11e8-9315-fa163e540406
+    uid: 0b75301f-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: |-
+      MySQL database service, without persistent storage. For more information about using this template, including OpenShift considerations, see https://github.com/sclorg/mysql-container/blob/master/5.7/root/usr/share/container-scripts/mysql/README.md.
+
+      WARNING: Any data stored will be lost upon pod destruction. Only use this template for testing
+    externalID: e8c70202-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-mysql-database
+      displayName: MySQL (Ephemeral)
+      documentationUrl: https://docs.openshift.org/latest/using_images/db_images/mysql.html
+      longDescription: This template provides a standalone MySQL server with a database
+        created.  The database is not stored on persistent storage, so any restart
+        of the service will result in all data being lost.  The database name, username,
+        and password are chosen via parameters when provisioning this service.
+      providerDisplayName: Red Hat, Inc.
+      supportUrl: https://access.redhat.com
+    externalName: mysql-ephemeral
+    planUpdatable: false
+    tags:
+    - database
+    - mysql
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:49Z
+    name: e8c8706c-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3518"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/e8c8706c-6929-11e8-9315-fa163e540406
+    uid: 0f82db57-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: |-
+      MySQL database service, with persistent storage. For more information about using this template, including OpenShift considerations, see https://github.com/sclorg/mysql-container/blob/master/5.7/root/usr/share/container-scripts/mysql/README.md.
+
+      NOTE: Scaling to more than one replica is not supported. You must have persistent volumes available in your cluster to use this template.
+    externalID: e8c8706c-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-mysql-database
+      displayName: MySQL
+      documentationUrl: https://docs.openshift.org/latest/using_images/db_images/mysql.html
+      longDescription: This template provides a standalone MySQL server with a database
+        created.  The database is stored on persistent storage.  The database name,
+        username, and password are chosen via parameters when provisioning this service.
+      providerDisplayName: Red Hat, Inc.
+      supportUrl: https://access.redhat.com
+    externalName: mysql-persistent
+    planUpdatable: false
+    tags:
+    - database
+    - mysql
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:39Z
+    name: e8c97a8d-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3213"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/e8c97a8d-6929-11e8-9315-fa163e540406
+    uid: 09314ff1-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: |-
+      PostgreSQL database service, without persistent storage. For more information about using this template, including OpenShift considerations, see https://github.com/sclorg/postgresql-container/.
+
+      WARNING: Any data stored will be lost upon pod destruction. Only use this template for testing
+    externalID: e8c97a8d-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-postgresql
+      displayName: PostgreSQL (Ephemeral)
+      documentationUrl: https://docs.openshift.org/latest/using_images/db_images/postgresql.html
+      longDescription: This template provides a standalone PostgreSQL server with
+        a database created.  The database is not stored on persistent storage, so
+        any restart of the service will result in all data being lost.  The database
+        name, username, and password are chosen via parameters when provisioning this
+        service.
+      providerDisplayName: Red Hat, Inc.
+      supportUrl: https://access.redhat.com
+    externalName: postgresql-ephemeral
+    planUpdatable: false
+    tags:
+    - database
+    - postgresql
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:35Z
+    name: e8ccbf34-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3188"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/e8ccbf34-6929-11e8-9315-fa163e540406
+    uid: 070c09b8-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: |-
+      PostgreSQL database service, with persistent storage. For more information about using this template, including OpenShift considerations, see https://github.com/sclorg/postgresql-container/.
+
+      NOTE: Scaling to more than one replica is not supported. You must have persistent volumes available in your cluster to use this template.
+    externalID: e8ccbf34-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-postgresql
+      displayName: PostgreSQL
+      documentationUrl: https://docs.openshift.org/latest/using_images/db_images/postgresql.html
+      longDescription: This template provides a standalone PostgreSQL server with
+        a database created.  The database is stored on persistent storage.  The database
+        name, username, and password are chosen via parameters when provisioning this
+        service.
+      providerDisplayName: Red Hat, Inc.
+      supportUrl: https://access.redhat.com
+    externalName: postgresql-persistent
+    planUpdatable: false
+    tags:
+    - database
+    - postgresql
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:39Z
+    name: e8ce2a3f-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3214"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/e8ce2a3f-6929-11e8-9315-fa163e540406
+    uid: 094fdbed-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: |-
+      Redis in-memory data structure store, without persistent storage. For more information about using this template, including OpenShift considerations, see https://github.com/sclorg/redis-container/blob/master/3.2.
+
+      WARNING: Any data stored will be lost upon pod destruction. Only use this template for testing
+    externalID: e8ce2a3f-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-redis
+      displayName: Redis (Ephemeral)
+      documentationUrl: https://github.com/sclorg/redis-container/tree/master/3.2
+      longDescription: This template provides a standalone Redis server.  The data
+        is not stored on persistent storage, so any restart of the service will result
+        in all data being lost.
+      providerDisplayName: Red Hat, Inc.
+      supportUrl: https://access.redhat.com
+    externalName: redis-ephemeral
+    planUpdatable: false
+    tags:
+    - database
+    - redis
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:42Z
+    name: e8cf52ec-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3230"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/e8cf52ec-6929-11e8-9315-fa163e540406
+    uid: 0b19968c-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: |-
+      Redis in-memory data structure store, with persistent storage. For more information about using this template, including OpenShift considerations, see https://github.com/sclorg/redis-container/blob/master/3.2.
+
+      NOTE: You must have persistent volumes available in your cluster to use this template.
+    externalID: e8cf52ec-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-redis
+      displayName: Redis
+      documentationUrl: https://github.com/sclorg/redis-container/tree/master/3.2
+      longDescription: This template provides a standalone Redis server.  The data
+        is stored on persistent storage.
+      providerDisplayName: Red Hat, Inc.
+      supportUrl: https://access.redhat.com
+    externalName: redis-persistent
+    planUpdatable: false
+    tags:
+    - database
+    - redis
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:33Z
+    name: eb83925e-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3170"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/eb83925e-6929-11e8-9315-fa163e540406
+    uid: 057f50b8-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: No description provided.
+    externalID: eb83925e-6929-11e8-9315-fa163e540406
+    externalName: system
+    planUpdatable: false
+    tags:
+    - ""
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:44:00Z
+    name: eb85477c-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3589"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/eb85477c-6929-11e8-9315-fa163e540406
+    uid: 15b6c5ec-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: 3scale API Gateway
+    externalID: eb85477c-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-load-balancer
+    externalName: 3scale-gateway
+    planUpdatable: false
+    tags:
+    - api
+    - gateway
+    - 3scale
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:38Z
+    name: eb8676c1-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3206"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/eb8676c1-6929-11e8-9315-fa163e540406
+    uid: 0898ce85-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: false
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example CakePHP application with a MySQL database. For more information
+      about using this template, including OpenShift considerations, see https://github.com/openshift/cakephp-ex/blob/master/README.md.
+    externalID: eb8676c1-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-php
+      displayName: CakePHP + MySQL
+      documentationUrl: https://github.com/openshift/cakephp-ex
+      longDescription: This template defines resources needed to develop a CakePHP
+        application, including a build configuration, application deployment configuration,
+        and database deployment configuration.
+      providerDisplayName: Red Hat, Inc.
+      supportUrl: https://access.redhat.com
+    externalName: cakephp-mysql-persistent
+    planUpdatable: false
+    tags:
+    - quickstart
+    - php
+    - cakephp
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:52Z
+    name: eb87d569-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3535"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/eb87d569-6929-11e8-9315-fa163e540406
+    uid: 11100f15-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: false
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: |-
+      An example CakePHP application with a MySQL database. For more information about using this template, including OpenShift considerations, see https://github.com/openshift/cakephp-ex/blob/master/README.md.
+
+      WARNING: Any data stored will be lost upon pod destruction. Only use this template for testing.
+    externalID: eb87d569-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-php
+      displayName: CakePHP + MySQL (Ephemeral)
+      documentationUrl: https://github.com/openshift/cakephp-ex
+      longDescription: This template defines resources needed to develop a CakePHP
+        application, including a build configuration, application deployment configuration,
+        and database deployment configuration.  The database is stored in non-persistent
+        storage, so this configuration should be used for experimental purposes only.
+      providerDisplayName: Red Hat, Inc.
+      supportUrl: https://access.redhat.com
+    externalName: cakephp-mysql-example
+    planUpdatable: false
+    tags:
+    - quickstart
+    - php
+    - cakephp
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:39Z
+    name: eb891ddf-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3212"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/eb891ddf-6929-11e8-9315-fa163e540406
+    uid: 0912e7d1-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: false
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example Dancer application with a MySQL database. For more information
+      about using this template, including OpenShift considerations, see https://github.com/openshift/dancer-ex/blob/master/README.md.
+    externalID: eb891ddf-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-perl
+      displayName: Dancer + MySQL
+      documentationUrl: https://github.com/openshift/dancer-ex
+      longDescription: This template defines resources needed to develop a Dancer
+        based application, including a build configuration, application deployment
+        configuration, and database deployment configuration.
+      providerDisplayName: Red Hat, Inc.
+      supportUrl: https://access.redhat.com
+    externalName: dancer-mysql-persistent
+    planUpdatable: false
+    tags:
+    - quickstart
+    - perl
+    - dancer
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:53Z
+    name: eb8adcc6-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3544"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/eb8adcc6-6929-11e8-9315-fa163e540406
+    uid: 11c69bf0-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: false
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: |-
+      An example Dancer application with a MySQL database. For more information about using this template, including OpenShift considerations, see https://github.com/openshift/dancer-ex/blob/master/README.md.
+
+      WARNING: Any data stored will be lost upon pod destruction. Only use this template for testing.
+    externalID: eb8adcc6-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-perl
+      displayName: Dancer + MySQL (Ephemeral)
+      documentationUrl: https://github.com/openshift/dancer-ex
+      longDescription: This template defines resources needed to develop a Dancer
+        based application, including a build configuration, application deployment
+        configuration, and database deployment configuration.  The database is stored
+        in non-persistent storage, so this configuration should be used for experimental
+        purposes only.
+      providerDisplayName: Red Hat, Inc.
+      supportUrl: https://access.redhat.com
+    externalName: dancer-mysql-example
+    planUpdatable: false
+    tags:
+    - quickstart
+    - perl
+    - dancer
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:51Z
+    name: eb8c0850-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3530"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/eb8c0850-6929-11e8-9315-fa163e540406
+    uid: 10961ad1-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: false
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example Django application with a PostgreSQL database. For more
+      information about using this template, including OpenShift considerations, see
+      https://github.com/openshift/django-ex/blob/master/README.md.
+    externalID: eb8c0850-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-python
+      displayName: Django + PostgreSQL
+      documentationUrl: https://github.com/openshift/django-ex
+      longDescription: This template defines resources needed to develop a Django
+        based application, including a build configuration, application deployment
+        configuration, and database deployment configuration.
+      providerDisplayName: Red Hat, Inc.
+      supportUrl: https://access.redhat.com
+    externalName: django-psql-persistent
+    planUpdatable: false
+    tags:
+    - quickstart
+    - python
+    - django
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:31Z
+    name: eb8d93e9-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3160"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/eb8d93e9-6929-11e8-9315-fa163e540406
+    uid: 04a9a822-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: false
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: |-
+      An example Django application with a PostgreSQL database. For more information about using this template, including OpenShift considerations, see https://github.com/openshift/django-ex/blob/master/README.md.
+
+      WARNING: Any data stored will be lost upon pod destruction. Only use this template for testing.
+    externalID: eb8d93e9-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-python
+      displayName: Django + PostgreSQL (Ephemeral)
+      documentationUrl: https://github.com/openshift/django-ex
+      longDescription: This template defines resources needed to develop a Django
+        based application, including a build configuration, application deployment
+        configuration, and database deployment configuration.  The database is stored
+        in non-persistent storage, so this configuration should be used for experimental
+        purposes only.
+      providerDisplayName: Red Hat, Inc.
+      supportUrl: https://access.redhat.com
+    externalName: django-psql-example
+    planUpdatable: false
+    tags:
+    - quickstart
+    - python
+    - django
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:29Z
+    name: eb8f2c75-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3144"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/eb8f2c75-6929-11e8-9315-fa163e540406
+    uid: 0383fc86-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example .NET Core application.
+    externalID: eb8f2c75-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-dotnet
+      displayName: .NET Core Example
+    externalName: dotnet-example
+    planUpdatable: false
+    tags:
+    - quickstart
+    - dotnet
+    - .net
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:55Z
+    name: eb906b76-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3560"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/eb906b76-6929-11e8-9315-fa163e540406
+    uid: 131652a5-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example .NET Core application with a PostgreSQL database. For
+      more information about using this template, including OpenShift considerations,
+      see https://github.com/redhat-developer/s2i-dotnetcore.
+    externalID: eb906b76-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-dotnet
+      displayName: .NET Core + PostgreSQL (Persistent)
+    externalName: dotnet-pgsql-persistent
+    planUpdatable: false
+    tags:
+    - quickstart
+    - dotnet
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:34Z
+    name: eb92a1dc-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3176"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/eb92a1dc-6929-11e8-9315-fa163e540406
+    uid: 06365801-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example .NET Core Runtime example application.
+    externalID: eb92a1dc-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-dotnet
+      displayName: .NET Core Runtime Example
+    externalName: dotnet-runtime-example
+    planUpdatable: false
+    tags:
+    - quickstart
+    - dotnet
+    - .net
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:47Z
+    name: eb94b118-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3469"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/eb94b118-6929-11e8-9315-fa163e540406
+    uid: 0df605d3-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: false
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example Apache HTTP Server (httpd) application that serves static
+      content. For more information about using this template, including OpenShift
+      considerations, see https://github.com/openshift/httpd-ex/blob/master/README.md.
+    externalID: eb94b118-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-apache
+      displayName: Apache HTTP Server
+      documentationUrl: https://github.com/openshift/httpd-ex
+      longDescription: This template defines resources needed to develop a static
+        application served by Apache HTTP Server (httpd), including a build configuration
+        and application deployment configuration.
+      providerDisplayName: Red Hat, Inc.
+      supportUrl: https://access.redhat.com
+    externalName: httpd-example
+    planUpdatable: false
+    tags:
+    - quickstart
+    - httpd
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:50Z
+    name: eb95a956-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3519"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/eb95a956-6929-11e8-9315-fa163e540406
+    uid: 0fa240c2-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: |-
+      Jenkins service, without persistent storage.
+
+      WARNING: Any data stored will be lost upon pod destruction. Only use this template for testing.
+    externalID: eb95a956-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-jenkins
+      displayName: Jenkins (Ephemeral)
+      documentationUrl: https://docs.openshift.org/latest/using_images/other_images/jenkins.html
+      longDescription: This template deploys a Jenkins server capable of managing
+        OpenShift Pipeline builds and supporting OpenShift-based oauth login.  The
+        Jenkins configuration is stored in non-persistent storage, so this configuration
+        should be used for experimental purposes only.
+      providerDisplayName: Red Hat, Inc.
+      supportUrl: https://access.redhat.com
+    externalName: jenkins-ephemeral
+    planUpdatable: false
+    tags:
+    - instant-app
+    - jenkins
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:37Z
+    name: eb99323f-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3202"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/eb99323f-6929-11e8-9315-fa163e540406
+    uid: 083d33c6-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: |-
+      Jenkins service, with persistent storage.
+
+      NOTE: You must have persistent volumes available in your cluster to use this template.
+    externalID: eb99323f-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-jenkins
+      displayName: Jenkins
+      documentationUrl: https://docs.openshift.org/latest/using_images/other_images/jenkins.html
+      longDescription: This template deploys a Jenkins server capable of managing
+        OpenShift Pipeline builds and supporting OpenShift-based oauth login.
+      providerDisplayName: Red Hat, Inc.
+      supportUrl: https://access.redhat.com
+    externalName: jenkins-persistent
+    planUpdatable: false
+    tags:
+    - instant-app
+    - jenkins
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:48Z
+    name: eb9aab8a-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3501"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/eb9aab8a-6929-11e8-9315-fa163e540406
+    uid: 0e7089cf-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example Nginx HTTP server and a reverse proxy (nginx) application
+      that serves static content. For more information about using this template,
+      including OpenShift considerations, see https://github.com/sclorg/nginx-ex/blob/master/README.md.
+    externalID: eb9aab8a-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-nginx
+      displayName: Nginx HTTP server and a reverse proxy
+      documentationUrl: https://github.com/sclorg/nginx-ex
+      longDescription: This template defines resources needed to develop a static
+        application served by Nginx HTTP server and a reverse proxy (nginx), including
+        a build configuration and application deployment configuration.
+      providerDisplayName: Red Hat, Inc.
+      supportUrl: https://access.redhat.com
+    externalName: nginx-example
+    planUpdatable: false
+    tags:
+    - quickstart
+    - nginx
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:31Z
+    name: eb9bd255-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3159"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/eb9bd255-6929-11e8-9315-fa163e540406
+    uid: 048b1d36-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: false
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example Node.js application with a MongoDB database. For more
+      information about using this template, including OpenShift considerations, see
+      https://github.com/openshift/nodejs-ex/blob/master/README.md.
+    externalID: eb9bd255-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-nodejs
+      displayName: Node.js + MongoDB
+      documentationUrl: https://github.com/openshift/nodejs-ex
+      longDescription: This template defines resources needed to develop a NodeJS
+        application, including a build configuration, application deployment configuration,
+        and database deployment configuration.
+      providerDisplayName: Red Hat, Inc.
+      supportUrl: https://access.redhat.com
+    externalName: nodejs-mongo-persistent
+    planUpdatable: false
+    tags:
+    - quickstart
+    - nodejs
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:46Z
+    name: eb9d5cee-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3425"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/eb9d5cee-6929-11e8-9315-fa163e540406
+    uid: 0d5de554-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: false
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: |-
+      An example Node.js application with a MongoDB database. For more information about using this template, including OpenShift considerations, see https://github.com/openshift/nodejs-ex/blob/master/README.md.
+
+      WARNING: Any data stored will be lost upon pod destruction. Only use this template for testing.
+    externalID: eb9d5cee-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-nodejs
+      displayName: Node.js + MongoDB (Ephemeral)
+      documentationUrl: https://github.com/openshift/nodejs-ex
+      longDescription: This template defines resources needed to develop a NodeJS
+        application, including a build configuration, application deployment configuration,
+        and database deployment configuration.  The database is stored in non-persistent
+        storage, so this configuration should be used for experimental purposes only.
+      providerDisplayName: Red Hat, Inc.
+      supportUrl: https://access.redhat.com
+    externalName: nodejs-mongodb-example
+    planUpdatable: false
+    tags:
+    - quickstart
+    - nodejs
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:55Z
+    name: eb9e9626-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3553"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/eb9e9626-6929-11e8-9315-fa163e540406
+    uid: 129c3d96-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: No description provided.
+    externalID: eb9e9626-6929-11e8-9315-fa163e540406
+    externalName: amp-pvc
+    planUpdatable: false
+    tags:
+    - ""
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:56Z
+    name: eb9fb3e6-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3568"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/eb9fb3e6-6929-11e8-9315-fa163e540406
+    uid: 13aeeb17-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: false
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example Rails application with a PostgreSQL database. For more
+      information about using this template, including OpenShift considerations, see
+      https://github.com/openshift/rails-ex/blob/master/README.md.
+    externalID: eb9fb3e6-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-ruby
+      displayName: Rails + PostgreSQL
+      documentationUrl: https://github.com/openshift/rails-ex
+      longDescription: This template defines resources needed to develop a Rails application,
+        including a build configuration, application deployment configuration, and
+        database deployment configuration.
+      providerDisplayName: Red Hat, Inc.
+      supportUrl: https://access.redhat.com
+    externalName: rails-pgsql-persistent
+    planUpdatable: false
+    tags:
+    - quickstart
+    - ruby
+    - rails
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:48Z
+    name: eba1acde-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3511"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/eba1acde-6929-11e8-9315-fa163e540406
+    uid: 0eea381f-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: false
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: |-
+      An example Rails application with a PostgreSQL database. For more information about using this template, including OpenShift considerations, see https://github.com/openshift/rails-ex/blob/master/README.md.
+
+      WARNING: Any data stored will be lost upon pod destruction. Only use this template for testing.
+    externalID: eba1acde-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-ruby
+      displayName: Rails + PostgreSQL (Ephemeral)
+      documentationUrl: https://github.com/openshift/rails-ex
+      longDescription: This template defines resources needed to develop a Rails application,
+        including a build configuration, application deployment configuration, and
+        database deployment configuration.  The database is stored in non-persistent
+        storage, so this configuration should be used for experimental purposes only.
+      providerDisplayName: Red Hat, Inc.
+      supportUrl: https://access.redhat.com
+    externalName: rails-postgresql-example
+    planUpdatable: false
+    tags:
+    - quickstart
+    - ruby
+    - rails
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:55Z
+    name: eba305e8-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3558"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/eba305e8-6929-11e8-9315-fa163e540406
+    uid: 12f7d252-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: No description provided.
+    externalID: eba305e8-6929-11e8-9315-fa163e540406
+    externalName: amp-apicast-wildcard-router
+    planUpdatable: false
+    tags:
+    - ""
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:43Z
+    name: ed199f69-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3244"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed199f69-6929-11e8-9315-fa163e540406
+    uid: 0bd0ae99-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: Application template for JBoss A-MQ brokers. These can be deployed
+      as standalone or in a mesh. This template doesn't feature SSL support.
+    externalID: ed199f69-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-amq
+      displayName: JBoss A-MQ 6.2 (Ephemeral, no SSL)
+      providerDisplayName: Red Hat, Inc.
+    externalName: amq62-basic
+    planUpdatable: false
+    tags:
+    - messaging
+    - amq
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:49Z
+    name: ed1b0a63-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3512"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed1b0a63-6929-11e8-9315-fa163e540406
+    uid: 0f08d5cd-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example JBoss A-MQ application. For more information about using
+      this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed1b0a63-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-amq
+      displayName: JBoss A-MQ 6.2 (with SSL)
+      providerDisplayName: Red Hat, Inc.
+    externalName: amq62-persistent-ssl
+    planUpdatable: false
+    tags:
+    - messaging
+    - amq
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:39Z
+    name: ed1dafb3-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3215"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed1dafb3-6929-11e8-9315-fa163e540406
+    uid: 096e545b-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: Application template for JBoss A-MQ brokers. These can be deployed
+      as standalone and use persistent storage for saving messages, including message
+      migration when the number of pods are reduced. This template doesn't feature
+      SSL support.
+    externalID: ed1dafb3-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-amq
+      displayName: JBoss A-MQ 6.2 (no SSL)
+      providerDisplayName: Red Hat, Inc.
+    externalName: amq62-persistent
+    planUpdatable: false
+    tags:
+    - messaging
+    - amq
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:37Z
+    name: ed1ee0a2-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3198"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed1ee0a2-6929-11e8-9315-fa163e540406
+    uid: 07e1a620-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: Application template for JBoss A-MQ brokers. These can be deployed
+      as standalone or in a mesh. This template supports SSL and requires usage of
+      OpenShift secrets.
+    externalID: ed1ee0a2-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-amq
+      displayName: JBoss A-MQ 6.2 (Ephemeral with SSL)
+      providerDisplayName: Red Hat, Inc.
+    externalName: amq62-ssl
+    planUpdatable: false
+    tags:
+    - messaging
+    - amq
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:49Z
+    name: ed1fe3d0-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3513"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed1fe3d0-6929-11e8-9315-fa163e540406
+    uid: 0f272e3a-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: Application template for JBoss A-MQ brokers. These can be deployed
+      as standalone or in a mesh. This template doesn't feature SSL support.
+    externalID: ed1fe3d0-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-amq
+      displayName: Red Hat JBoss A-MQ 6.3 (Ephemeral, no SSL)
+      providerDisplayName: Red Hat, Inc.
+    externalName: amq63-basic
+    planUpdatable: false
+    tags:
+    - messaging
+    - amq
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:58Z
+    name: ed212c90-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3579"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed212c90-6929-11e8-9315-fa163e540406
+    uid: 14c19462-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example JBoss A-MQ application. For more information about using
+      this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed212c90-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-amq
+      displayName: JBoss A-MQ 6.3 (with SSL)
+      providerDisplayName: Red Hat, Inc.
+    externalName: amq63-persistent-ssl
+    planUpdatable: false
+    tags:
+    - messaging
+    - amq
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:44Z
+    name: ed2258ba-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3325"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed2258ba-6929-11e8-9315-fa163e540406
+    uid: 0c2c3cf3-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example JBoss A-MQ application. For more information about using
+      this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed2258ba-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-amq
+      displayName: JBoss A-MQ 6.3 (no SSL)
+      providerDisplayName: Red Hat, Inc.
+    externalName: amq63-persistent
+    planUpdatable: false
+    tags:
+    - messaging
+    - amq
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:58Z
+    name: ed23bc90-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3575"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed23bc90-6929-11e8-9315-fa163e540406
+    uid: 14847471-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example JBoss A-MQ application. For more information about using
+      this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed23bc90-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-amq
+      displayName: JBoss A-MQ 6.3 (Ephemeral with SSL)
+      providerDisplayName: Red Hat, Inc.
+    externalName: amq63-ssl
+    planUpdatable: false
+    tags:
+    - messaging
+    - amq
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:59Z
+    name: ed24d0d6-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3584"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed24d0d6-6929-11e8-9315-fa163e540406
+    uid: 151d2176-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: Application template for JDG 6.5 applications.
+    externalID: ed24d0d6-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-datagrid
+      displayName: JBoss Data Grid 6.5 (Ephemeral, no https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: datagrid65-basic
+    planUpdatable: false
+    tags:
+    - datagrid
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:35Z
+    name: ed25d446-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3187"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed25d446-6929-11e8-9315-fa163e540406
+    uid: 06ed7ddf-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: Application template for JDG 6.5 applications.
+    externalID: ed25d446-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-datagrid
+      displayName: JBoss Data Grid 6.5 (Ephemeral with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: datagrid65-https
+    planUpdatable: false
+    tags:
+    - datagrid
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:53Z
+    name: ed2747aa-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3541"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed2747aa-6929-11e8-9315-fa163e540406
+    uid: 116b0358-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example JBoss Data Grid application with a MySQL database. For
+      more information about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed2747aa-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-datagrid
+      displayName: JBoss Data Grid 6.5 + MySQL (with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: datagrid65-mysql-persistent
+    planUpdatable: false
+    tags:
+    - datagrid
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:38Z
+    name: ed28d751-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3211"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed28d751-6929-11e8-9315-fa163e540406
+    uid: 08f44c73-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: Application template for JDG 6.5 and MySQL applications.
+    externalID: ed28d751-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-datagrid
+      displayName: JBoss Data Grid 6.5 + MySQL (Ephemeral with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: datagrid65-mysql
+    planUpdatable: false
+    tags:
+    - datagrid
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:45Z
+    name: ed2a4510-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3404"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed2a4510-6929-11e8-9315-fa163e540406
+    uid: 0d21c24d-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example JBoss Data Grid application with a PostgreSQL database.
+      For more information about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed2a4510-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-datagrid
+      displayName: JBoss Data Grid 6.5 + PostgreSQL (with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: datagrid65-postgresql-persistent
+    planUpdatable: false
+    tags:
+    - datagrid
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:37Z
+    name: ed2bad73-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3199"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed2bad73-6929-11e8-9315-fa163e540406
+    uid: 0800232b-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: Application template for JDG 6.5 and PostgreSQL applications built
+      using.
+    externalID: ed2bad73-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-datagrid
+      displayName: JBoss Data Grid 6.5 + PostgreSQL (Ephemeral with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: datagrid65-postgresql
+    planUpdatable: false
+    tags:
+    - datagrid
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:32Z
+    name: ed2cc395-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3163"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed2cc395-6929-11e8-9315-fa163e540406
+    uid: 04e6b948-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example JBoss Data Grid application. For more information about
+      using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed2cc395-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-datagrid
+      displayName: JBoss Data Grid 7.1 (Ephemeral, no https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: datagrid71-basic
+    planUpdatable: false
+    tags:
+    - datagrid
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:40Z
+    name: ed2df342-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3217"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed2df342-6929-11e8-9315-fa163e540406
+    uid: 09ab60b6-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example JBoss Data Grid application. For more information about
+      using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed2df342-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-datagrid
+      displayName: JBoss Data Grid 7.1 (Ephemeral with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: datagrid71-https
+    planUpdatable: false
+    tags:
+    - datagrid
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:50Z
+    name: ed30ce11-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3524"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed30ce11-6929-11e8-9315-fa163e540406
+    uid: 0ffcd7dd-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example JBoss Data Grid application with a MySQL database. For
+      more information about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed30ce11-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-datagrid
+      displayName: JBoss Data Grid 7.1 + MySQL (with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: datagrid71-mysql-persistent
+    planUpdatable: false
+    tags:
+    - datagrid
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:29Z
+    name: ed3280cc-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3146"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed3280cc-6929-11e8-9315-fa163e540406
+    uid: 0385f751-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example JBoss Data Grid application with a MySQL database. For
+      more information about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed3280cc-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-datagrid
+      displayName: JBoss Data Grid 7.1 + MySQL (Ephemeral with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: datagrid71-mysql
+    planUpdatable: false
+    tags:
+    - datagrid
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:29Z
+    name: ed33b30b-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3141"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed33b30b-6929-11e8-9315-fa163e540406
+    uid: 037fcf03-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example JBoss Data Grid application. For more information about
+      using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed33b30b-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-datagrid
+      displayName: JBoss Data Grid 7.1 (Ephemeral, no https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: datagrid71-partition
+    planUpdatable: false
+    tags:
+    - datagrid
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:29Z
+    name: ed35438d-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3142"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed35438d-6929-11e8-9315-fa163e540406
+    uid: 038179d5-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example JBoss Data Grid application with a PostgreSQL database.
+      For more information about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed35438d-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-datagrid
+      displayName: JBoss Data Grid 7.1 + PostgreSQL (with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: datagrid71-postgresql-persistent
+    planUpdatable: false
+    tags:
+    - datagrid
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:59Z
+    name: ed36ca40-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3585"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed36ca40-6929-11e8-9315-fa163e540406
+    uid: 153b9ac4-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example JBoss Data Grid application with a PostgreSQL database.
+      For more information about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed36ca40-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-datagrid
+      displayName: JBoss Data Grid 7.1 + PostgreSQL (Ephemeral with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: datagrid71-postgresql
+    planUpdatable: false
+    tags:
+    - datagrid
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:44:00Z
+    name: ed37f022-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3592"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed37f022-6929-11e8-9315-fa163e540406
+    uid: 15f2b8f6-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: Application template for JBoss Data Virtualization 6.3 services built
+      using S2I.
+    externalID: ed37f022-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-datavirt
+      displayName: JBoss Data Virtualization 6.3 (no SSL)
+      providerDisplayName: Red Hat, Inc.
+    externalName: datavirt63-basic-s2i
+    planUpdatable: false
+    tags:
+    - jdv
+    - datavirt
+    - database
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:33Z
+    name: ed396db9-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3173"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed396db9-6929-11e8-9315-fa163e540406
+    uid: 05db07c0-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example JBoss Data Virtualization application. For more information
+      about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed396db9-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-datavirt
+      displayName: JBoss Data Virtualization 6.3 (with SSL and Extensions)
+      providerDisplayName: Red Hat, Inc.
+    externalName: datavirt63-extensions-support-s2i
+    planUpdatable: false
+    tags:
+    - jdv
+    - datavirt
+    - database
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:36Z
+    name: ed3b02b5-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3194"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed3b02b5-6929-11e8-9315-fa163e540406
+    uid: 07861889-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example JBoss Data Virtualization application. For more information
+      about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed3b02b5-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-datavirt
+      displayName: JBoss Data Virtualization 6.3 (with SSL)
+      providerDisplayName: Red Hat, Inc.
+    externalName: datavirt63-secure-s2i
+    planUpdatable: false
+    tags:
+    - jdv
+    - datavirt
+    - database
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:34Z
+    name: ed3c727b-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3183"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed3c727b-6929-11e8-9315-fa163e540406
+    uid: 0691e54f-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example BRMS decision server A-MQ application. For more information
+      about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed3c727b-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-decisionserver
+      displayName: JBoss BRMS 6.4 decision server + A-MQ (with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: decisionserver64-amq-s2i
+    planUpdatable: false
+    tags:
+    - decisionserver
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:54Z
+    name: ed3d946c-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3547"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed3d946c-6929-11e8-9315-fa163e540406
+    uid: 122230b5-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: Application template for Red Hat JBoss BRMS 6.4 decision server applications
+      built using S2I.
+    externalID: ed3d946c-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-decisionserver
+      displayName: Red Hat JBoss BRMS 6.4 decision server (no https)
+    externalName: decisionserver64-basic-s2i
+    planUpdatable: false
+    tags:
+    - decisionserver
+    - jboss
+    - xpaas
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:50Z
+    name: ed3e943c-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3525"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed3e943c-6929-11e8-9315-fa163e540406
+    uid: 101b7d4b-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example BRMS decision server application. For more information
+      about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed3e943c-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-decisionserver
+      displayName: JBoss BRMS 6.4 decision server (with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: decisionserver64-https-s2i
+    planUpdatable: false
+    tags:
+    - decisionserver
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:53Z
+    name: ed3ff845-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3545"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed3ff845-6929-11e8-9315-fa163e540406
+    uid: 11e51a69-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example JBoss Enterprise Application Platform continuous delivery
+      application using Red Hat JBoss A-MQ with persistence and secure communication
+      using https. For more information about using this template, see https://github.com/jboss-container-images/jboss-eap-7-openshift-image/blob/eap-cd/README.adoc
+    externalID: ed3ff845-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP CD + A-MQ (with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap-cd-amq-persistent-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:30Z
+    name: ed43ab82-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3154"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed43ab82-6929-11e8-9315-fa163e540406
+    uid: 04112476-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example JBoss Enterprise Application Platform continuous delivery
+      application using Red Hat JBoss A-MQ. For more information about using this
+      template, see https://github.com/jboss-container-images/jboss-eap-7-openshift-image/blob/eap-cd/README.adoc
+    externalID: ed43ab82-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP CD + A-MQ (with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap-cd-amq-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:35Z
+    name: ed452172-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3185"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed452172-6929-11e8-9315-fa163e540406
+    uid: 06cefb5e-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example JBoss Enterprise Application Platform continuous delivery
+      application. For more information about using this template, see https://github.com/jboss-container-images/jboss-eap-7-openshift-image/blob/eap-cd/README.adoc
+    externalID: ed452172-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP CD (no https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap-cd-basic-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:44:00Z
+    name: ed463dfc-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3594"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed463dfc-6929-11e8-9315-fa163e540406
+    uid: 16115dc4-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example JBoss Enterprise Application Platform continuous delivery
+      application configured with secure communication using HTTPS. For more information
+      about using this template, see https://github.com/jboss-container-images/jboss-eap-7-openshift-image/blob/eap-cd/README.adoc
+    externalID: ed463dfc-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP CD (with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap-cd-https-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:54Z
+    name: ed47bfd7-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3546"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed47bfd7-6929-11e8-9315-fa163e540406
+    uid: 1203a7cc-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example JBoss Enterprise Application Platform continuous delivery
+      application with a MongoDB database. For more information about using this template,
+      see https://github.com/jboss-container-images/jboss-eap-7-openshift-image/blob/eap-cd/README.adoc.
+    externalID: ed47bfd7-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP CD + MongoDB (with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap-cd-mongodb-persistent-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:51Z
+    name: ed491ac0-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3528"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed491ac0-6929-11e8-9315-fa163e540406
+    uid: 10587d4f-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example JBoss Enterprise Application Platform continuous delivery
+      application with a MongoDB database. For more information about using this template,
+      see https://github.com/jboss-container-images/jboss-eap-7-openshift-image/blob/eap-cd/README.adoc.
+    externalID: ed491ac0-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP CD + MongoDB (Ephemeral with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap-cd-mongodb-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:36Z
+    name: ed4ae7bf-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3196"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed4ae7bf-6929-11e8-9315-fa163e540406
+    uid: 07a497f7-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example JBoss Enterprise Application Platform continuous delivery
+      application with a MySQL database. For more information about using this template,
+      see https://github.com/jboss-container-images/jboss-eap-7-openshift-image/blob/eap-cd/README.adoc.
+    externalID: ed4ae7bf-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP CD + MySQL (with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap-cd-mysql-persistent-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:58Z
+    name: ed4c53bd-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3576"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed4c53bd-6929-11e8-9315-fa163e540406
+    uid: 14a328cd-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example JBoss Enterprise Application Platform continuous delivery
+      application with a MySQL database. For more information about using this template,
+      see https://github.com/jboss-container-images/jboss-eap-7-openshift-image/blob/eap-cd/README.adoc.
+    externalID: ed4c53bd-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP CD + MySQL (Ephemeral with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap-cd-mysql-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:37Z
+    name: ed4db988-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3201"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed4db988-6929-11e8-9315-fa163e540406
+    uid: 081eadb9-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example JBoss Enterprise Application Platform continuous delivery
+      application with a persistent PostgreSQL database. For more information about
+      using this template, see https://github.com/jboss-container-images/jboss-eap-7-openshift-image/blob/eap-cd/README.adoc
+    externalID: ed4db988-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP CD + PostgreSQL (Persistent with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap-cd-postgresql-persistent-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:43Z
+    name: ed4f3782-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3243"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed4f3782-6929-11e8-9315-fa163e540406
+    uid: 0bb23acb-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example JBoss Enterprise Application Platform continuous delivery
+      application with an PostgreSQL database configured with secure communication
+      using https and ephemeral storage. For more information about using this template,
+      see https://github.com/jboss-container-images/jboss-eap-7-openshift-image/blob/eap-cd/README.adoc
+    externalID: ed4f3782-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP CD + PostgreSQL (Ephemeral with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap-cd-postgresql-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:55Z
+    name: ed50935b-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3557"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed50935b-6929-11e8-9315-fa163e540406
+    uid: 12d95659-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example JBoss Enterprise Application Platform continuous delivery
+      application Single Sign-On application. For more information about using this
+      template, see https://github.com/jboss-container-images/jboss-eap-7-openshift-image/blob/eap-cd/README.adoc
+    externalID: ed50935b-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP CD + Single Sign-On (with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap-cd-sso-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:41Z
+    name: ed51ea17-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3227"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed51ea17-6929-11e8-9315-fa163e540406
+    uid: 0a9f8fd3-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example JBoss Enterprise Application Platform continuous delivery
+      application. For more information about using this template, see https://github.com/jboss-container-images/jboss-eap-7-openshift-image/blob/eap-cd/README.adoc.
+    externalID: ed51ea17-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP CD (with https, DB drivers)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap-cd-third-party-db-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:33Z
+    name: ed53447f-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3172"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed53447f-6929-11e8-9315-fa163e540406
+    uid: 05bc4fea-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example JBoss Enterprise Application Platform continuous delivery
+      application with transaction recovery configured. For more information about
+      using this template, see https://github.com/jboss-container-images/jboss-eap-7-openshift-image/blob/eap-cd/README.adoc
+    externalID: ed53447f-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP CD (tx recovery)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap-cd-tx-recovery-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:29Z
+    name: ed54a854-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3145"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed54a854-6929-11e8-9315-fa163e540406
+    uid: 03852907-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example EAP 6 A-MQ application. For more information about using
+      this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed54a854-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP 6.4 + A-MQ (with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap64-amq-persistent-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:52Z
+    name: ed585960-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3538"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed585960-6929-11e8-9315-fa163e540406
+    uid: 112dfda2-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example EAP 6 A-MQ application. For more information about using
+      this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed585960-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP 6.4 + A-MQ (Ephemeral with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap64-amq-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:49Z
+    name: ed5a03e4-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3516"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed5a03e4-6929-11e8-9315-fa163e540406
+    uid: 0f643492-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example EAP 6 application. For more information about using this
+      template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed5a03e4-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP 6.4 (no https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap64-basic-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:32Z
+    name: ed5be1fa-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3166"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed5be1fa-6929-11e8-9315-fa163e540406
+    uid: 0523c75b-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example EAP 6 application. For more information about using this
+      template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed5be1fa-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP 6.4 (with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap64-https-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:56Z
+    name: ed5d727c-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3561"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed5d727c-6929-11e8-9315-fa163e540406
+    uid: 1334f2a8-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example EAP 6 application with a MongoDB database. For more information
+      about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed5d727c-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP 6.4 + MongoDB (with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap64-mongodb-persistent-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:46Z
+    name: ed5fe761-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3434"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed5fe761-6929-11e8-9315-fa163e540406
+    uid: 0d7c4017-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example EAP 6 application with a MongoDB database. For more information
+      about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed5fe761-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP 6.4 + MongoDB (Ephemeral with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap64-mongodb-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:34Z
+    name: ed622d04-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3179"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed622d04-6929-11e8-9315-fa163e540406
+    uid: 0654f19d-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example EAP 6 application with a MySQL database. For more information
+      about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed622d04-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP 6.4 + MySQL (with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap64-mysql-persistent-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:43Z
+    name: ed6446e5-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3254"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed6446e5-6929-11e8-9315-fa163e540406
+    uid: 0bf10a5f-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example EAP 6 application with a MySQL database. For more information
+      about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed6446e5-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP 6.4 + MySQL (Ephemeral with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap64-mysql-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:53Z
+    name: ed65e2c9-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3542"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed65e2c9-6929-11e8-9315-fa163e540406
+    uid: 1189959c-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example EAP 6 application with a PostgreSQL database. For more
+      information about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed65e2c9-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: Red Hat JBoss EAP 6.4 + PostgreSQL (Persistent with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap64-postgresql-persistent-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:37Z
+    name: ed67f79f-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3204"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed67f79f-6929-11e8-9315-fa163e540406
+    uid: 085bb5d7-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example EAP 6 application with a PostgreSQL database. For more
+      information about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed67f79f-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP 6.4 + PostgreSQL (Ephemeral with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap64-postgresql-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:29Z
+    name: ed6a0356-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3139"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed6a0356-6929-11e8-9315-fa163e540406
+    uid: 037b8343-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example EAP 6 Single Sign-On application. For more information
+      about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed6a0356-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP 6.4 + Single Sign-On (with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap64-sso-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:33Z
+    name: ed6c50a9-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3171"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed6c50a9-6929-11e8-9315-fa163e540406
+    uid: 059dc7a4-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example EAP 6 DB application. For more information about using
+      this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed6c50a9-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: Red Hat JBoss EAP 6.4 (with https, DB drivers)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap64-third-party-db-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:56Z
+    name: ed6e3e8f-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3562"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed6e3e8f-6929-11e8-9315-fa163e540406
+    uid: 1353666d-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example EAP 6 application. For more information about using this
+      template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed6e3e8f-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP 6.4 (tx recovery)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap64-tx-recovery-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:50Z
+    name: ed70d32b-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3520"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed70d32b-6929-11e8-9315-fa163e540406
+    uid: 0fbfc65f-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example EAP 7 A-MQ application. For more information about using
+      this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed70d32b-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP 7.0 + A-MQ (with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap70-amq-persistent-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:30Z
+    name: ed72a3bd-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3152"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed72a3bd-6929-11e8-9315-fa163e540406
+    uid: 03f29e02-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example EAP 7 A-MQ application. For more information about using
+      this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed72a3bd-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP 7.0 + A-MQ (with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap70-amq-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:31Z
+    name: ed73cecf-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3156"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed73cecf-6929-11e8-9315-fa163e540406
+    uid: 044e226b-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example EAP 7 application. For more information about using this
+      template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed73cecf-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP 7.0 (no https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap70-basic-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:36Z
+    name: ed75068b-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3192"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed75068b-6929-11e8-9315-fa163e540406
+    uid: 076780df-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example EAP 7 application. For more information about using this
+      template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed75068b-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP 7.0 (with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap70-https-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:51Z
+    name: ed76a95e-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3529"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed76a95e-6929-11e8-9315-fa163e540406
+    uid: 1076e062-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example EAP 7 application with a MongoDB database. For more information
+      about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed76a95e-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP 7.0 + MongoDB (with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap70-mongodb-persistent-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:38Z
+    name: ed79ffda-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3210"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed79ffda-6929-11e8-9315-fa163e540406
+    uid: 08d5c20a-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example EAP 7 application with a MongoDB database. For more information
+      about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed79ffda-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: Boss EAP 7.0 + MongoDB (Ephemeral with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap70-mongodb-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:44:00Z
+    name: ed7c868f-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3588"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed7c868f-6929-11e8-9315-fa163e540406
+    uid: 15973af5-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example EAP 7 application with a MySQL database. For more information
+      about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed7c868f-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP 7.0 + MySQL (with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap70-mysql-persistent-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:59Z
+    name: ed7ea4fe-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3586"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed7ea4fe-6929-11e8-9315-fa163e540406
+    uid: 155a1fe9-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example EAP 7 application with a MySQL database. For more information
+      about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed7ea4fe-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP 7.0 + MySQL (Ephemeral with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap70-mysql-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:43Z
+    name: ed804f36-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3241"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed804f36-6929-11e8-9315-fa163e540406
+    uid: 0b93d3af-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example EAP 7 application with a PostgreSQL database. For more
+      information about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed804f36-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP 7.0 + PostgreSQL (Persistent with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap70-postgresql-persistent-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:36Z
+    name: ed81fe97-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3191"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed81fe97-6929-11e8-9315-fa163e540406
+    uid: 074913ee-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example EAP 7 application with a PostgreSQL database. For more
+      information about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed81fe97-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP 7.0 + PostgreSQL (Ephemeral with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap70-postgresql-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:47Z
+    name: ed83925f-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3493"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed83925f-6929-11e8-9315-fa163e540406
+    uid: 0e51ae40-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example EAP 7 Single Sign-On application. For more information
+      about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed83925f-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP 7.0 + Single Sign-On (with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap70-sso-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:36Z
+    name: ed8526e1-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3197"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed8526e1-6929-11e8-9315-fa163e540406
+    uid: 07c32249-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example EAP 7 DB application. For more information about using
+      this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed8526e1-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP 7.0 (with https, DB drivers)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap70-third-party-db-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:44Z
+    name: ed86b4b8-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3333"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed86b4b8-6929-11e8-9315-fa163e540406
+    uid: 0c4abba4-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example EAP 7 application. For more information about using this
+      template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed86b4b8-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP 7.0 (tx recovery)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap70-tx-recovery-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:34Z
+    name: ed886cb5-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3181"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed886cb5-6929-11e8-9315-fa163e540406
+    uid: 067374d2-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example EAP 7 A-MQ application. For more information about using
+      this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed886cb5-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP 7.1 + A-MQ (with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap71-amq-persistent-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:46Z
+    name: ed8ca4ff-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3417"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed8ca4ff-6929-11e8-9315-fa163e540406
+    uid: 0d3efee5-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example EAP 7 A-MQ application. For more information about using
+      this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed8ca4ff-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP 7.1 + A-MQ (with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap71-amq-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:44:01Z
+    name: ed8e39d4-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3595"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed8e39d4-6929-11e8-9315-fa163e540406
+    uid: 162fcb07-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example EAP 7 application. For more information about using this
+      template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed8e39d4-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP 7.1 (no https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap71-basic-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:44Z
+    name: ed8fa6e1-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3299"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed8fa6e1-6929-11e8-9315-fa163e540406
+    uid: 0c10f3c9-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example EAP 7 application. For more information about using this
+      template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed8fa6e1-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP 7.1 (with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap71-https-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:42Z
+    name: ed9127f7-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3235"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed9127f7-6929-11e8-9315-fa163e540406
+    uid: 0b56a2d9-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example EAP 7 application with a MongoDB database. For more information
+      about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed9127f7-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP 7.1 + MongoDB (with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap71-mongodb-persistent-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:51Z
+    name: ed92b61c-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3531"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed92b61c-6929-11e8-9315-fa163e540406
+    uid: 10b3e8d4-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example EAP 7 application with a MongoDB database. For more information
+      about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed92b61c-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP 7.1 + MongoDB (Ephemeral with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap71-mongodb-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:56Z
+    name: ed946eef-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3563"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed946eef-6929-11e8-9315-fa163e540406
+    uid: 1371db33-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example EAP 7 application with a MySQL database. For more information
+      about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed946eef-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP 7.1 + MySQL (with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap71-mysql-persistent-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:44Z
+    name: ed962339-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3350"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed962339-6929-11e8-9315-fa163e540406
+    uid: 0c87d309-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example EAP 7 application with a MySQL database. For more information
+      about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed962339-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP 7.1 + MySQL (Ephemeral with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap71-mysql-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:44:01Z
+    name: ed97cd64-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3596"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed97cd64-6929-11e8-9315-fa163e540406
+    uid: 164e52ed-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example EAP 7 application with a PostgreSQL database. For more
+      information about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed97cd64-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP 7.1 + PostgreSQL (Persistent with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap71-postgresql-persistent-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:34Z
+    name: ed994505-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3175"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed994505-6929-11e8-9315-fa163e540406
+    uid: 0617db40-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example EAP 7 application with a PostgreSQL database. For more
+      information about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed994505-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP 7.1 + PostgreSQL (Ephemeral with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap71-postgresql-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:30Z
+    name: ed9ae540-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3155"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed9ae540-6929-11e8-9315-fa163e540406
+    uid: 042f8fad-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example EAP 7 Single Sign-On application. For more information
+      about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed9ae540-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP 7.1 + Single Sign-On (with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap71-sso-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:45Z
+    name: ed9c3f81-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3356"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed9c3f81-6929-11e8-9315-fa163e540406
+    uid: 0ca64e48-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example EAP 7 DB application. For more information about using
+      this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed9c3f81-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP 7.1 (with https, DB drivers)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap71-third-party-db-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:44:01Z
+    name: ed9dba8b-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3602"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed9dba8b-6929-11e8-9315-fa163e540406
+    uid: 16aa8d03-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example EAP 7 application. For more information about using this
+      template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ed9dba8b-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-eap
+      displayName: JBoss EAP 7.1 (tx recovery)
+      providerDisplayName: Red Hat, Inc.
+    externalName: eap71-tx-recovery-s2i
+    planUpdatable: false
+    tags:
+    - eap
+    - javaee
+    - java
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:54Z
+    name: ed9ee210-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3552"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ed9ee210-6929-11e8-9315-fa163e540406
+    uid: 127dac71-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: Application template for JWS applications built using S2I.
+    externalID: ed9ee210-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-rh-tomcat
+      displayName: JBoss Web Server 3.1 Apache Tomcat 7 (no https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: jws31-tomcat7-basic-s2i
+    planUpdatable: false
+    tags:
+    - tomcat
+    - tomcat7
+    - java
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:40Z
+    name: eda13974-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3221"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/eda13974-6929-11e8-9315-fa163e540406
+    uid: 09e867fc-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example JBoss Web Server application configured for use with https.
+      For more information about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: eda13974-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-rh-tomcat
+      displayName: JBoss Web Server 3.1 Apache Tomcat 7 (with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: jws31-tomcat7-https-s2i
+    planUpdatable: false
+    tags:
+    - tomcat
+    - tomcat7
+    - java
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:52Z
+    name: eda2b5df-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3532"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/eda2b5df-6929-11e8-9315-fa163e540406
+    uid: 10d28189-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example JBoss Web Server application with a MongoDB database.
+      For more information about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: eda2b5df-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-rh-tomcat
+      displayName: JBoss Web Server 3.1 Apache Tomcat 7 + MongoDB (with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: jws31-tomcat7-mongodb-persistent-s2i
+    planUpdatable: false
+    tags:
+    - tomcat
+    - tomcat7
+    - java
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:40Z
+    name: eda42c11-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3225"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/eda42c11-6929-11e8-9315-fa163e540406
+    uid: 0a257edc-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: Application template for JWS MongoDB applications built using S2I.
+    externalID: eda42c11-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-rh-tomcat
+      displayName: JBoss Web Server 3.1 Apache Tomcat 7 + MongoDB (Ephemeral with
+        https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: jws31-tomcat7-mongodb-s2i
+    planUpdatable: false
+    tags:
+    - tomcat
+    - tomcat7
+    - java
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:54Z
+    name: eda57230-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3548"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/eda57230-6929-11e8-9315-fa163e540406
+    uid: 1240a8e9-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example JBoss Web Server application with a MySQL database. For
+      more information about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: eda57230-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-rh-tomcat
+      displayName: Red Hat JBoss Web Server 3.1 Apache Tomcat 7 + MySQL (with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: jws31-tomcat7-mysql-persistent-s2i
+    planUpdatable: false
+    tags:
+    - tomcat
+    - tomcat7
+    - java
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:44:02Z
+    name: eda6e536-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3603"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/eda6e536-6929-11e8-9315-fa163e540406
+    uid: 16c84709-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: Application template for JWS MySQL applications built using S2I.
+    externalID: eda6e536-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-rh-tomcat
+      displayName: JBoss Web Server 3.1 Apache Tomcat 7 + MySQL (Ephemeral with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: jws31-tomcat7-mysql-s2i
+    planUpdatable: false
+    tags:
+    - tomcat
+    - tomcat7
+    - java
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:29Z
+    name: eda883c0-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3147"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/eda883c0-6929-11e8-9315-fa163e540406
+    uid: 03972400-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example JBoss Web Server application with a PostgreSQL database.
+      For more information about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: eda883c0-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-rh-tomcat
+      displayName: JBoss Web Server 3.1 Apache Tomcat 7 + PostgreSQL (with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: jws31-tomcat7-postgresql-persistent-s2i
+    planUpdatable: false
+    tags:
+    - tomcat
+    - tomcat7
+    - java
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:30Z
+    name: eda9e5d5-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3150"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/eda9e5d5-6929-11e8-9315-fa163e540406
+    uid: 03d40483-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: Application template for JWS PostgreSQL applications built using
+      S2I.
+    externalID: eda9e5d5-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-rh-tomcat
+      displayName: JBoss Web Server 3.1 Apache Tomcat 7 + PostgreSQL (Ephemeral with
+        https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: jws31-tomcat7-postgresql-s2i
+    planUpdatable: false
+    tags:
+    - tomcat
+    - tomcat7
+    - java
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:38Z
+    name: edab7bc1-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3208"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/edab7bc1-6929-11e8-9315-fa163e540406
+    uid: 08b745b7-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example JBoss Web Server application. For more information about
+      using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: edab7bc1-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-rh-tomcat
+      displayName: JBoss Web Server 3.1 Apache Tomcat 8 (no https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: jws31-tomcat8-basic-s2i
+    planUpdatable: false
+    tags:
+    - tomcat
+    - tomcat8
+    - java
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:57Z
+    name: edaca4a5-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3573"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/edaca4a5-6929-11e8-9315-fa163e540406
+    uid: 144779a3-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example JBoss Web Server application. For more information about
+      using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: edaca4a5-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-rh-tomcat
+      displayName: JBoss Web Server 3.1 Apache Tomcat 8 (with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: jws31-tomcat8-https-s2i
+    planUpdatable: false
+    tags:
+    - tomcat
+    - tomcat8
+    - java
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:39Z
+    name: edae3541-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3216"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/edae3541-6929-11e8-9315-fa163e540406
+    uid: 098db2a5-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example JBoss Web Server application with a MongoDB database.
+      For more information about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: edae3541-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-rh-tomcat
+      displayName: JBoss Web Server 3.1 Apache Tomcat 8 + MongoDB (with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: jws31-tomcat8-mongodb-persistent-s2i
+    planUpdatable: false
+    tags:
+    - tomcat
+    - tomcat8
+    - java
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:44Z
+    name: edafc783-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3344"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/edafc783-6929-11e8-9315-fa163e540406
+    uid: 0c694b36-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: Application template for JWS MongoDB applications built using S2I.
+    externalID: edafc783-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-rh-tomcat
+      displayName: JBoss Web Server 3.1 Apache Tomcat 8 + MongoDB (Ephemeral with
+        https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: jws31-tomcat8-mongodb-s2i
+    planUpdatable: false
+    tags:
+    - tomcat
+    - tomcat8
+    - java
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:31Z
+    name: edb15252-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3157"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/edb15252-6929-11e8-9315-fa163e540406
+    uid: 046ca915-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example JBoss Web Server application with a MySQL database. For
+      more information about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: edb15252-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-rh-tomcat
+      displayName: JBoss Web Server 3.1 Apache Tomcat 8 + MySQL (with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: jws31-tomcat8-mysql-persistent-s2i
+    planUpdatable: false
+    tags:
+    - tomcat
+    - tomcat8
+    - java
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:52Z
+    name: edb2d848-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3540"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/edb2d848-6929-11e8-9315-fa163e540406
+    uid: 114c86b2-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: Application template for JWS MySQL applications built using S2I.
+    externalID: edb2d848-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-rh-tomcat
+      displayName: JBoss Web Server 3.1 Apache Tomcat 8 + MySQL (Ephemeral with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: jws31-tomcat8-mysql-s2i
+    planUpdatable: false
+    tags:
+    - tomcat
+    - tomcat8
+    - java
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:32Z
+    name: edb4559f-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3168"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/edb4559f-6929-11e8-9315-fa163e540406
+    uid: 054246bb-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: Application template for JWS PostgreSQL applications with persistent
+      storage built using S2I.
+    externalID: edb4559f-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-rh-tomcat
+      displayName: JBoss Web Server 3.1 Apache Tomcat 8 + PostgreSQL (with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: jws31-tomcat8-postgresql-persistent-s2i
+    planUpdatable: false
+    tags:
+    - tomcat
+    - tomcat8
+    - java
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:35Z
+    name: edb5ae6a-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3189"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/edb5ae6a-6929-11e8-9315-fa163e540406
+    uid: 072a91af-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: Application template for JWS PostgreSQL applications built using
+      S2I.
+    externalID: edb5ae6a-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-rh-tomcat
+      displayName: JBoss Web Server 3.0 Apache Tomcat 8 + PostgreSQL (Ephemeral with
+        https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: jws31-tomcat8-postgresql-s2i
+    planUpdatable: false
+    tags:
+    - tomcat
+    - tomcat8
+    - java
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:58Z
+    name: edb711e4-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3574"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/edb711e4-6929-11e8-9315-fa163e540406
+    uid: 1465f3ff-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: Camel route using ActiveMQ in Karaf container. This quickstart shows
+      how to use Camel in a Karaf Container using Blueprint to connect to the A-MQ
+      xPaaS message broker on OpenShift that should already be installed, one simple
+      way to run a A-MQ service is following the documentation of the A-MQ xPaaS image
+      for OpenShift related to the amq63-basic template.
+    externalID: edb711e4-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-jboss
+    externalName: s2i-karaf2-camel-amq
+    planUpdatable: false
+    tags:
+    - quickstart
+    - java
+    - karaf
+    - fis
+    - jboss-fuse
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:57Z
+    name: edb83815-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3570"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/edb83815-6929-11e8-9315-fa163e540406
+    uid: 13ebfcb7-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: A simple Camel route in Karaf container. This quickstart shows a
+      simple Apache Camel application that logs a message to the server log every
+      5th second.
+    externalID: edb83815-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-jboss
+    externalName: s2i-karaf2-camel-log
+    planUpdatable: false
+    tags:
+    - quickstart
+    - java
+    - karaf
+    - fis
+    - jboss-fuse
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:57Z
+    name: edb97105-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3569"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/edb97105-6929-11e8-9315-fa163e540406
+    uid: 13cd8a7e-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: Camel example using Rest DSL with SQL Database in Karaf container.  This
+      example demonstrates how to use SQL via JDBC along with Camel's REST DSL to
+      expose a RESTful API. The OpenShift MySQL container image should already be
+      installed and running on your OpenShift installation, one simple way to run
+      a MySQL service is following the documentation of the Openshift MySQL container
+      image related to the mysql-ephemeral template..
+    externalID: edb97105-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-jboss
+    externalName: s2i-karaf2-camel-rest-sql
+    planUpdatable: false
+    tags:
+    - quickstart
+    - java
+    - karaf
+    - fis
+    - jboss-fuse
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:47Z
+    name: edbaa741-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3476"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/edbaa741-6929-11e8-9315-fa163e540406
+    uid: 0e14a331-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: REST example using CXF in Karaf container. This quickstart demonstrates
+      how to create a RESTful (JAX-RS) web service using CXF and expose it through
+      the OSGi HTTP Service
+    externalID: edbaa741-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-jboss
+    externalName: s2i-karaf2-cxf-rest
+    planUpdatable: false
+    tags:
+    - quickstart
+    - java
+    - karaf
+    - fis
+    - jboss-fuse
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:35Z
+    name: edbe0413-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3184"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/edbe0413-6929-11e8-9315-fa163e540406
+    uid: 06b06dfc-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example Java application using OpenJDK 8. For more information
+      about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: edbe0413-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-rh-openjdk
+      displayName: OpenJDK 8
+      providerDisplayName: Red Hat, Inc.
+    externalName: openjdk18-web-basic-s2i
+    planUpdatable: false
+    tags:
+    - java
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:58Z
+    name: edc09d1a-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3582"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/edc09d1a-6929-11e8-9315-fa163e540406
+    uid: 14e01158-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example BPM Suite application with A-MQ and a MySQL database.
+      For more information about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: edc09d1a-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-processserver
+      displayName: JBoss BPM Suite 6.4 intelligent process server + A-MQ + MySQL (with
+        https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: processserver64-amq-mysql-persistent-s2i
+    planUpdatable: false
+    tags:
+    - processserver
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:31Z
+    name: edc2e39b-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3162"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/edc2e39b-6929-11e8-9315-fa163e540406
+    uid: 04c8328c-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example BPM Suite application with A-MQ and a MySQL database.
+      For more information about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: edc2e39b-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-processserver
+      displayName: JBoss BPM Suite 6.4 intelligent process server + A-MQ + MySQL (Ephemeral
+        with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: processserver64-amq-mysql-s2i
+    planUpdatable: false
+    tags:
+    - processserver
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:48Z
+    name: edc5c28c-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3506"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/edc5c28c-6929-11e8-9315-fa163e540406
+    uid: 0e8ead48-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example BPM Suite application with A-MQ and a PostgreSQL database.
+      For more information about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: edc5c28c-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-processserver
+      displayName: JBoss BPM Suite 6.4 intelligent process server + A-MQ + PostgreSQL
+        (with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: processserver64-amq-postgresql-persistent-s2i
+    planUpdatable: false
+    tags:
+    - processserver
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:59Z
+    name: edc89189-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3587"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/edc89189-6929-11e8-9315-fa163e540406
+    uid: 1578b5b6-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example BPM Suite application with A-MQ and a PostgreSQL database.
+      For more information about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: edc89189-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-processserver
+      displayName: JBoss BPM Suite 6.4 intelligent process server + A-MQ + PostgreSQL
+        (Ephemeral with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: processserver64-amq-postgresql-s2i
+    planUpdatable: false
+    tags:
+    - processserver
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:32Z
+    name: edc9d7a2-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3164"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/edc9d7a2-6929-11e8-9315-fa163e540406
+    uid: 0506712f-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example BPM Suite application. For more information about using
+      this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: edc9d7a2-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-processserver
+      displayName: JBoss BPM Suite 6.4 intelligent process server (no https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: processserver64-basic-s2i
+    planUpdatable: false
+    tags:
+    - processserver
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:57Z
+    name: edcb82f4-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3571"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/edcb82f4-6929-11e8-9315-fa163e540406
+    uid: 140a69e6-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example BPM Suite application with a MySQL database. For more
+      information about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: edcb82f4-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-processserver
+      displayName: JBoss BPM Suite 6.4 intelligent process server + MySQL (with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: processserver64-mysql-persistent-s2i
+    planUpdatable: false
+    tags:
+    - processserver
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:29Z
+    name: edcd550f-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3143"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/edcd550f-6929-11e8-9315-fa163e540406
+    uid: 03829b1a-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example BPM Suite application with a MySQL database. For more
+      information about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: edcd550f-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-processserver
+      displayName: JBoss BPM Suite 6.4 intelligent process server + MySQL (Ephemeral
+        with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: processserver64-mysql-s2i
+    planUpdatable: false
+    tags:
+    - processserver
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:53Z
+    name: edcede8e-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3543"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/edcede8e-6929-11e8-9315-fa163e540406
+    uid: 11a81e92-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example BPM Suite application with a PostgreSQL database. For
+      more information about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: edcede8e-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-processserver
+      displayName: JBoss BPM Suite 6.4 intelligent process server + PostgreSQL (with
+        https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: processserver64-postgresql-persistent-s2i
+    planUpdatable: false
+    tags:
+    - processserver
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:44:00Z
+    name: edd023eb-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3590"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/edd023eb-6929-11e8-9315-fa163e540406
+    uid: 15d43431-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example BPM Suite application with a PostgreSQL database. For
+      more information about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: edd023eb-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-processserver
+      displayName: JBoss BPM Suite 6.4 intelligent process server + PostgreSQL (Ephemeral
+        with https)
+      providerDisplayName: Red Hat, Inc.
+    externalName: processserver64-postgresql-s2i
+    planUpdatable: false
+    tags:
+    - processserver
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:38Z
+    name: edd21409-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3205"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/edd21409-6929-11e8-9315-fa163e540406
+    uid: 087ae1a5-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: Application template for Red Hat Decision Manager 7.0 applications
+      with persistent storage.
+    externalID: edd21409-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-decisionserver
+      displayName: Red Hat Decision Manager 7.0 applications (Persistent with https)
+    externalName: rhdm70-full-persistent
+    planUpdatable: false
+    tags:
+    - rhdm
+    - jboss
+    - xpaas
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:57Z
+    name: edd56bb3-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3572"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/edd56bb3-6929-11e8-9315-fa163e540406
+    uid: 1429068a-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: Application template for Red Hat Decision Manager Execution Server
+      7.0 application built using S2I.
+    externalID: edd56bb3-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-decisionserver
+      displayName: Red Hat Decision Manager Execution Server 7.0 S2I Ephemeral (no
+        https)
+    externalName: rhdm70-kieserver-basic-s2i
+    planUpdatable: false
+    tags:
+    - rhdm
+    - jboss
+    - xpaas
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:47Z
+    name: edd71c96-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3485"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/edd71c96-6929-11e8-9315-fa163e540406
+    uid: 0e332746-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: Application template for Red Hat Decision Manager Execution Server
+      7.0 application built using S2I.
+    externalID: edd71c96-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-decisionserver
+      displayName: Red Hat Decision Manager Execution Server 7.0 S2I (Ephemeral with
+        https)
+    externalName: rhdm70-kieserver-https-s2i
+    planUpdatable: false
+    tags:
+    - rhdm
+    - jboss
+    - xpaas
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:29Z
+    name: edd89e11-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3140"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/edd89e11-6929-11e8-9315-fa163e540406
+    uid: 037da891-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: Application template for Red Hat Decision Manager Execution Server
+      7.0 application.
+    externalID: edd89e11-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-decisionserver
+      displayName: Red Hat Decision Manager Execution Server 7.0 (Ephemeral with https)
+    externalName: rhdm70-kieserver
+    planUpdatable: false
+    tags:
+    - rhdm
+    - jboss
+    - xpaas
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:55Z
+    name: edd9bb89-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3554"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/edd9bb89-6929-11e8-9315-fa163e540406
+    uid: 12bab8e6-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: Spring Boot, Camel and ActiveMQ QuickStart. This quickstart demonstrates
+      how to connect a Spring-Boot application to an ActiveMQ broker and use JMS messaging
+      between two Camel routes using OpenShift. In this example we will use two containers,
+      one container to run as a ActiveMQ broker, and another as a client to the broker,
+      where the Camel routes are running. This quickstart requires the ActiveMQ broker
+      has been deployed and running first, one simple way to run a A-MQ service is
+      following the documentation of the A-MQ xPaaS image for OpenShift related to
+      the amq63-basic template
+    externalID: edd9bb89-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-jboss
+    externalName: s2i-spring-boot-camel-amq
+    planUpdatable: false
+    tags:
+    - quickstart
+    - java
+    - springboot
+    - fis
+    - jboss-fuse
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:32Z
+    name: eddae3bd-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3169"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/eddae3bd-6929-11e8-9315-fa163e540406
+    uid: 0560bd52-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: 'Spring Boot and Camel using ConfigMaps and Secrets. This quickstart
+      demonstrates how to configure a Spring-Boot application using OpenShift ConfigMaps
+      and Secrets. This example requires that a ConfigMap named camel-config and a
+      Secret named camel-config are present in the namespace before the application
+      is deployed, instruction about how to manually create them can be found here:
+      https://github.com/fabric8-quickstarts/spring-boot-camel-config/blob/fis-2.0.x.redhat/README.redhat.md '
+    externalID: eddae3bd-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-jboss
+    externalName: s2i-spring-boot-camel-config
+    planUpdatable: false
+    tags:
+    - quickstart
+    - java
+    - springboot
+    - fis
+    - jboss-fuse
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:52Z
+    name: eddc18c8-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3533"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/eddc18c8-6929-11e8-9315-fa163e540406
+    uid: 10f11d46-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: Spring-Boot, Camel and JBoss BRMS QuickStart. This example demonstrates
+      how you can use Apache Camel and JBoss BRMS with Spring Boot on OpenShift. DRL
+      files contain simple rules which are used to create knowledge session via Spring
+      configuration file. Camel routes, defined via Spring as well, are then used
+      to e.g. pass (insert) the Body of the message as a POJO to Drools engine for
+      execution. A Kie Server should be deployed and configured before running the
+      application, more information about how to configure it can be found at https://github.com/fabric8-quickstarts/spring-boot-camel-drools/blob/fis-2.0.x.redhat/README.redhat.md
+    externalID: eddc18c8-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-jboss
+    externalName: s2i-spring-boot-camel-drools
+    planUpdatable: false
+    tags:
+    - quickstart
+    - java
+    - springboot
+    - fis
+    - jboss-fuse
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:41Z
+    name: eddd134c-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3226"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/eddd134c-6929-11e8-9315-fa163e540406
+    uid: 0a62933a-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: Spring Boot, Camel and JBoss Data Grid QuickStart. This quickstart
+      demonstrates how to connect a Spring-Boot application to a JBoss Data Grid (or
+      Infinispan) server using the Hot Rod protocol. It requires that the data grid
+      server (or cluster) has been deployed first, one simple way to run a JDG service
+      is following the documentation of the JDG xPaaS image for OpenShift related
+      to the datagrid65-basic template.
+    externalID: eddd134c-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-jboss
+    externalName: s2i-spring-boot-camel-infinispan
+    planUpdatable: false
+    tags:
+    - quickstart
+    - java
+    - springboot
+    - fis
+    - jboss-fuse
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:51Z
+    name: edde2e8f-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3527"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/edde2e8f-6929-11e8-9315-fa163e540406
+    uid: 1039e4e0-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: Spring Boot, Camel REST DSL and MySQL QuickStart. This quickstart
+      demonstrates how to connect a Spring Boot application to a MySQL database and
+      expose a REST API with Camel on OpenShift. In this example we will use two containers,
+      one container to run as a MySQL server, and another as a client to the database,
+      where the Camel routes are running. This quickstart requires the MySQL server
+      to be deployed and started first, one simple way to run a MySQL service is following
+      the documentation of the OpenShift MySQL container image related to the mysql-ephemeral
+      template.
+    externalID: edde2e8f-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-jboss
+    externalName: s2i-spring-boot-camel-rest-sql
+    planUpdatable: false
+    tags:
+    - quickstart
+    - java
+    - springboot
+    - fis
+    - jboss-fuse
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:44:01Z
+    name: eddf2c55-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3600"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/eddf2c55-6929-11e8-9315-fa163e540406
+    uid: 168b474d-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: Spring-Boot, Camel and JBoss Data Virtualization QuickStart. This
+      example demonstrates how to connect Apache Camel to a remote JBoss Data Virtualization
+      (or Teiid) Server using the JDBC protocol. This quickstart assumes that the
+      JDV server is already running and configured on OpenShift, more information
+      about to setup a JDV server can be found at https://github.com/fabric8-quickstarts/spring-boot-camel-teiid/blob/fis-2.0.x.redhat/README.redhat.md
+    externalID: eddf2c55-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-jboss
+    externalName: s2i-spring-boot-camel-teiid
+    planUpdatable: false
+    tags:
+    - quickstart
+    - java
+    - springboot
+    - fis
+    - jboss-fuse
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:56Z
+    name: ede04839-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3566"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ede04839-6929-11e8-9315-fa163e540406
+    uid: 13906508-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: Spring-Boot and Camel QuickStart. This example demonstrates how you
+      can use Apache Camel with Spring Boot on Openshift. The quickstart uses Spring
+      Boot to configure a little application that includes a Camel route that triggeres
+      a message every 5th second, and routes the message to a log.
+    externalID: ede04839-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-jboss
+    externalName: s2i-spring-boot-camel
+    planUpdatable: false
+    tags:
+    - quickstart
+    - java
+    - springboot
+    - fis
+    - jboss-fuse
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:46Z
+    name: ede1511d-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3443"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ede1511d-6929-11e8-9315-fa163e540406
+    uid: 0d9a92bb-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: Spring-Boot and Camel Xml QuickStart. This example demonstrates how
+      you can use Apache Camel with Spring Boot on Openshift. The quickstart uses
+      Spring Boot to configure a little application that includes a Camel route (in
+      Spring xml) that triggeres a message every 5th second, and routes the message
+      to a log.
+    externalID: ede1511d-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-jboss
+    externalName: s2i-spring-boot-camel-xml
+    planUpdatable: false
+    tags:
+    - quickstart
+    - java
+    - springboot
+    - fis
+    - jboss-fuse
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:30Z
+    name: ede226c5-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3148"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ede226c5-6929-11e8-9315-fa163e540406
+    uid: 03b5a1b5-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: Spring-Boot and CXF JAXRS QuickStart. This example demonstrates how
+      you can use Apache CXF JAXRS with Spring Boot on Openshift. The quickstart uses
+      Spring Boot to configure a little application that includes a CXF JAXRS endpoint
+      with Swagger enabled.
+    externalID: ede226c5-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-jboss
+    externalName: s2i-spring-boot-cxf-jaxrs
+    planUpdatable: false
+    tags:
+    - quickstart
+    - java
+    - springboot
+    - fis
+    - jboss-fuse
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:48Z
+    name: ede31f9b-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3507"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ede31f9b-6929-11e8-9315-fa163e540406
+    uid: 0ead28e6-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: Spring-Boot and CXF JAXWS QuickStart. This example demonstrates how
+      you can use Apache CXF JAXWS with Spring Boot on Openshift. The quickstart uses
+      Spring Boot to configure a little application that includes a CXF JAXWS endpoint.
+    externalID: ede31f9b-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-jboss
+    externalName: s2i-spring-boot-cxf-jaxws
+    planUpdatable: false
+    tags:
+    - quickstart
+    - java
+    - springboot
+    - fis
+    - jboss-fuse
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:47Z
+    name: ede4ad8c-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3461"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ede4ad8c-6929-11e8-9315-fa163e540406
+    uid: 0dd79580-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example RH-SSO 7 application. For more information about using
+      this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ede4ad8c-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-sso
+      displayName: Red Hat Single Sign-On 7.2 (Ephemeral with passthrough TLS)
+      providerDisplayName: Red Hat, Inc.
+    externalName: sso72-https
+    planUpdatable: false
+    tags:
+    - sso
+    - keycloak
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:48Z
+    name: ede61d03-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3510"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ede61d03-6929-11e8-9315-fa163e540406
+    uid: 0ecbb9b1-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example RH-SSO 7 application with a MySQL database. For more information
+      about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ede61d03-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-sso
+      displayName: Red Hat Single Sign-On 7.2 + MySQL (Persistent with passthrough
+        TLS)
+      providerDisplayName: Red Hat, Inc.
+    externalName: sso72-mysql-persistent
+    planUpdatable: false
+    tags:
+    - sso
+    - keycloak
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:54Z
+    name: ede79ee0-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3550"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ede79ee0-6929-11e8-9315-fa163e540406
+    uid: 125f4147-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example RH-SSO 7 application with a MySQL database. For more information
+      about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ede79ee0-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-sso
+      displayName: Red Hat Single Sign-On 7.2 + MySQL (Ephemeral with passthrough
+        TLS)
+      providerDisplayName: Red Hat, Inc.
+    externalName: sso72-mysql
+    planUpdatable: false
+    tags:
+    - sso
+    - keycloak
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:33Z
+    name: ede8fde7-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3174"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ede8fde7-6929-11e8-9315-fa163e540406
+    uid: 05f95721-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example RH-SSO 7 application with a PostgreSQL database. For more
+      information about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ede8fde7-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-sso
+      displayName: Red Hat Single Sign-On 7.2 + PostgreSQL (Persistent with passthrough
+        TLS)
+      providerDisplayName: Red Hat, Inc.
+    externalName: sso72-postgresql-persistent
+    planUpdatable: false
+    tags:
+    - sso
+    - keycloak
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:42Z
+    name: edea5314-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3228"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/edea5314-6929-11e8-9315-fa163e540406
+    uid: 0adcb10f-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example RH-SSO 7 application with a PostgreSQL database. For more
+      information about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: edea5314-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-sso
+      displayName: Red Hat Single Sign-On 7.2 + PostgreSQL (Ephemeral with passthrough
+        TLS)
+      providerDisplayName: Red Hat, Inc.
+    externalName: sso72-postgresql
+    planUpdatable: false
+    tags:
+    - sso
+    - keycloak
+    - jboss
+    - hidden
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:45Z
+    name: edeb859c-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3389"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/edeb859c-6929-11e8-9315-fa163e540406
+    uid: 0ce38417-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example RH-SSO 7 application. For more information about using
+      this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: edeb859c-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-sso
+      displayName: Red Hat Single Sign-On 7.2 (Ephemeral)
+      providerDisplayName: Red Hat, Inc.
+    externalName: sso72-x509-https
+    planUpdatable: false
+    tags:
+    - sso
+    - keycloak
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:50Z
+    name: ededdae2-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3521"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/ededdae2-6929-11e8-9315-fa163e540406
+    uid: 0fde4b3d-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example RH-SSO 7 application with a MySQL database. For more information
+      about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: ededdae2-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-sso
+      displayName: Red Hat Single Sign-On 7.2 + MySQL (Persistent)
+      providerDisplayName: Red Hat, Inc.
+    externalName: sso72-x509-mysql-persistent
+    planUpdatable: false
+    tags:
+    - sso
+    - keycloak
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:43:59Z
+    name: edef978d-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3583"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/edef978d-6929-11e8-9315-fa163e540406
+    uid: 14fe9231-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: An example RH-SSO 7 application with a PostgreSQL database. For more
+      information about using this template, see https://github.com/jboss-openshift/application-templates.
+    externalID: edef978d-6929-11e8-9315-fa163e540406
+    externalMetadata:
+      console.openshift.io/iconClass: icon-sso
+      displayName: Red Hat Single Sign-On 7.2 + PostgreSQL (Persistent)
+      providerDisplayName: Red Hat, Inc.
+    externalName: sso72-x509-postgresql-persistent
+    planUpdatable: false
+    tags:
+    - sso
+    - keycloak
+    - jboss
+  status:
+    removedFromBrokerCatalog: false
+- apiVersion: servicecatalog.k8s.io/v1beta1
+  kind: ClusterServiceClass
+  metadata:
+    creationTimestamp: 2018-06-06T01:44:01Z
+    name: f0599b40-6929-11e8-9315-fa163e540406
+    namespace: ""
+    resourceVersion: "3597"
+    selfLink: /apis/servicecatalog.k8s.io/v1beta1/clusterserviceclasses/f0599b40-6929-11e8-9315-fa163e540406
+    uid: 166cbfde-692b-11e8-a6e0-0a580a800004
+  spec:
+    bindable: true
+    bindingRetrievable: false
+    clusterServiceBrokerName: template-service-broker
+    description: Template for deploying registry web console. Requires cluster-admin.
+    externalID: f0599b40-6929-11e8-9315-fa163e540406
+    externalName: registry-console
+    planUpdatable: false
+    tags:
+    - infrastructure
+  status:
+    removedFromBrokerCatalog: false
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""

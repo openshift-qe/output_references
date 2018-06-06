@@ -1,0 +1,67 @@
+# oc -n test get serviceinstance rh-postgresql-apb-wgwhg -o yaml
+apiVersion: servicecatalog.k8s.io/v1beta1
+kind: ServiceInstance
+metadata:
+  creationTimestamp: 2018-06-06T08:13:07Z
+  finalizers:
+  - kubernetes-incubator/service-catalog
+  generateName: rh-postgresql-apb-
+  generation: 1
+  name: rh-postgresql-apb-wgwhg
+  namespace: test
+  resourceVersion: "56868"
+  selfLink: /apis/servicecatalog.k8s.io/v1beta1/namespaces/test/serviceinstances/rh-postgresql-apb-wgwhg
+  uid: 71d61563-6961-11e8-a6e0-0a580a800004
+spec:
+  clusterServiceClassExternalName: rh-postgresql-apb
+  clusterServiceClassRef:
+    name: d5915e05b253df421efe6e41fb6a66ba
+  clusterServicePlanExternalName: dev
+  clusterServicePlanRef:
+    name: 9783fc2e859f9179833a7dd003baa841
+  externalID: 71d61498-6961-11e8-a6e0-0a580a800004
+  parametersFrom:
+  - secretKeyRef:
+      key: parameters
+      name: rh-postgresql-apb-parametersvdcc0
+  updateRequests: 0
+  userInfo:
+    extra:
+      scopes.authorization.openshift.io:
+      - user:full
+    groups:
+    - system:authenticated:oauth
+    - system:authenticated
+    uid: ""
+    username: jiazha2
+status:
+  asyncOpInProgress: false
+  conditions:
+  - lastTransitionTime: 2018-06-06T08:15:15Z
+    message: The instance was provisioned successfully
+    reason: ProvisionedSuccessfully
+    status: "True"
+    type: Ready
+  deprovisionStatus: Required
+  externalProperties:
+    clusterServicePlanExternalID: 9783fc2e859f9179833a7dd003baa841
+    clusterServicePlanExternalName: dev
+    parameterChecksum: dbac93dc4526449a7c2650fa3916e9370052e331128cba9d8d3c0567393fa453
+    parameters:
+      postgresql_database: <redacted>
+      postgresql_password: <redacted>
+      postgresql_user: <redacted>
+      postgresql_version: <redacted>
+    userInfo:
+      extra:
+        scopes.authorization.openshift.io:
+        - user:full
+      groups:
+      - system:authenticated:oauth
+      - system:authenticated
+      uid: ""
+      username: jiazha2
+  observedGeneration: 1
+  orphanMitigationInProgress: false
+  provisionStatus: Provisioned
+  reconciledGeneration: 1

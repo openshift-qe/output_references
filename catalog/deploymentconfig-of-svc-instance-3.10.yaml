@@ -1,0 +1,87 @@
+# oc -n test get dc postgresql-c8f7d815-6971-11e8-a6e0-0a580a800004 -o yaml
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  creationTimestamp: 2018-06-06T10:10:15Z
+  generation: 1
+  labels:
+    app: postgresql-c8f7d815-6971-11e8-a6e0-0a580a800004
+    service: postgresql-c8f7d815-6971-11e8-a6e0-0a580a800004
+  name: postgresql-c8f7d815-6971-11e8-a6e0-0a580a800004
+  namespace: test
+  resourceVersion: "71093"
+  selfLink: /apis/apps.openshift.io/v1/namespaces/test/deploymentconfigs/postgresql-c8f7d815-6971-11e8-a6e0-0a580a800004
+  uid: ceb72d6f-6971-11e8-9315-fa163e540406
+spec:
+  replicas: 1
+  selector:
+    app: postgresql-c8f7d815-6971-11e8-a6e0-0a580a800004
+    service: postgresql-c8f7d815-6971-11e8-a6e0-0a580a800004
+  strategy:
+    activeDeadlineSeconds: 21600
+    resources: {}
+    rollingParams:
+      intervalSeconds: 1
+      maxSurge: 25%
+      maxUnavailable: 25%
+      timeoutSeconds: 600
+      updatePeriodSeconds: 1
+    type: Rolling
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: postgresql-c8f7d815-6971-11e8-a6e0-0a580a800004
+        service: postgresql-c8f7d815-6971-11e8-a6e0-0a580a800004
+    spec:
+      containers:
+      - env:
+        - name: POSTGRESQL_PASSWORD
+          value: test
+        - name: POSTGRESQL_USER
+          value: admin
+        - name: POSTGRESQL_DATABASE
+          value: admin
+        image: registry.access.redhat.com/rhscl/postgresql-96-rhel7
+        imagePullPolicy: Always
+        name: postgresql
+        ports:
+        - containerPort: 5432
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        workingDir: /
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+  test: false
+  triggers:
+  - type: ConfigChange
+status:
+  availableReplicas: 1
+  conditions:
+  - lastTransitionTime: 2018-06-06T10:10:21Z
+    lastUpdateTime: 2018-06-06T10:10:21Z
+    message: Deployment config has minimum availability.
+    status: "True"
+    type: Available
+  - lastTransitionTime: 2018-06-06T10:10:22Z
+    lastUpdateTime: 2018-06-06T10:10:22Z
+    message: replication controller "postgresql-c8f7d815-6971-11e8-a6e0-0a580a800004-1"
+      successfully rolled out
+    reason: NewReplicationControllerAvailable
+    status: "True"
+    type: Progressing
+  details:
+    causes:
+    - type: ConfigChange
+    message: config change
+  latestVersion: 1
+  observedGeneration: 1
+  readyReplicas: 1
+  replicas: 1
+  unavailableReplicas: 0
+  updatedReplicas: 1

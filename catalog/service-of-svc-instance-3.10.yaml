@@ -1,0 +1,26 @@
+# oc -n test get svc postgresql-c8f7d815-6971-11e8-a6e0-0a580a800004 -o yaml
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: 2018-06-06T10:10:13Z
+  labels:
+    app: postgresql-c8f7d815-6971-11e8-a6e0-0a580a800004
+    service: postgresql-c8f7d815-6971-11e8-a6e0-0a580a800004
+  name: postgresql-c8f7d815-6971-11e8-a6e0-0a580a800004
+  namespace: test
+  resourceVersion: "71021"
+  selfLink: /api/v1/namespaces/test/services/postgresql-c8f7d815-6971-11e8-a6e0-0a580a800004
+  uid: cdab49f0-6971-11e8-9315-fa163e540406
+spec:
+  clusterIP: 172.30.104.105
+  ports:
+  - port: 5432
+    protocol: TCP
+    targetPort: 5432
+  selector:
+    app: postgresql-c8f7d815-6971-11e8-a6e0-0a580a800004
+    service: postgresql-c8f7d815-6971-11e8-a6e0-0a580a800004
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}
