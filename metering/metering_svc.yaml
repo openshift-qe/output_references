@@ -1,0 +1,45 @@
+apiVersion: v1
+items:
+- apiVersion: chargeback.coreos.com/v1alpha1
+  kind: Metering
+  metadata:
+    clusterName: ""
+    creationTimestamp: 2018-08-01T22:32:54Z
+    generation: 1
+    name: openshift-metering
+    namespace: openshift-metering
+    resourceVersion: "89442"
+    selfLink: /apis/chargeback.coreos.com/v1alpha1/namespaces/openshift-metering/meterings/openshift-metering
+    uid: d5395048-95da-11e8-9edc-fa163ef4231c
+  spec: null
+- apiVersion: chargeback.coreos.com/v1alpha1
+  kind: Metering
+  metadata:
+    clusterName: ""
+    creationTimestamp: 2018-08-01T22:31:31Z
+    generation: 1
+    name: operator-metering
+    namespace: openshift-metering
+    resourceVersion: "89242"
+    selfLink: /apis/chargeback.coreos.com/v1alpha1/namespaces/openshift-metering/meterings/operator-metering
+    uid: a3d73334-95da-11e8-9edc-fa163ef4231c
+  spec:
+    presto:
+      hdfs:
+        datanode:
+          storage:
+            class: null
+            size: 5Gi
+        namenode:
+          storage:
+            class: null
+            size: 5Gi
+      hive:
+        metastore:
+          storage:
+            class: null
+            size: 5Gi
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""

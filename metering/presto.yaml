@@ -1,0 +1,220 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    openshift.io/scc: restricted
+    presto-common-config-hash: dd9e460a54a633567f315391012428f98fde0fc379f9275779eb7b6429bb8c73
+    presto-coordinator-config-hash: d0181060a203de6d20c098da7e1a7fd16b57e456f3e722d9fc57fdc92677fdd2
+    presto-secrets-hash: 8f2f3af33465cf2cb6a2482af0070a355ac62e56d011f45754c9c80d5effc009
+  creationTimestamp: 2018-08-01T22:36:25Z
+  generateName: presto-coordinator-5f5866659f-
+  labels:
+    app: presto
+    pod-template-hash: "1914222159"
+    presto: coordinator
+  name: presto-coordinator-5f5866659f-sx7hg
+  namespace: openshift-metering
+  ownerReferences:
+  - apiVersion: extensions/v1beta1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: presto-coordinator-5f5866659f
+    uid: 528ca985-95db-11e8-9edc-fa163ef4231c
+  resourceVersion: "90116"
+  selfLink: /api/v1/namespaces/openshift-metering/pods/presto-coordinator-5f5866659f-sx7hg
+  uid: 529aa0da-95db-11e8-9edc-fa163ef4231c
+spec:
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchExpressions:
+          - key: app
+            operator: In
+            values:
+            - presto
+        topologyKey: kubernetes.io/hostname
+  containers:
+  - env:
+    - name: PRESTO_CONF_discovery___server_enabled
+      value: "true"
+    - name: PRESTO_CONF_coordinator
+      value: "true"
+    - name: PRESTO_CONF_node___scheduler_include___coordinator
+      valueFrom:
+        configMapKeyRef:
+          key: node-scheduler-include-coordinator
+          name: presto-coordinator-config
+    - name: PRESTO_LOG_com_facebook_presto
+      valueFrom:
+        configMapKeyRef:
+          key: log-level
+          name: presto-coordinator-config
+    - name: PRESTO_CONF_task_concurrency
+      valueFrom:
+        configMapKeyRef:
+          key: task-concurrency
+          name: presto-coordinator-config
+          optional: true
+    - name: PRESTO_CONF_task_max___worker___threads
+      valueFrom:
+        configMapKeyRef:
+          key: task-max-worker-threads
+          name: presto-coordinator-config
+          optional: true
+    - name: PRESTO_CONF_task_min___drivers
+      valueFrom:
+        configMapKeyRef:
+          key: task-min-drivers
+          name: presto-coordinator-config
+          optional: true
+    - name: HIVE_CATALOG_hive_s3_aws___access___key
+      valueFrom:
+        secretKeyRef:
+          key: aws-access-key-id
+          name: presto-secrets
+          optional: true
+    - name: HIVE_CATALOG_hive_s3_aws___secret___key
+      valueFrom:
+        secretKeyRef:
+          key: aws-secret-access-key
+          name: presto-secrets
+          optional: true
+    - name: HIVE_CATALOG_hive_metastore_uri
+      valueFrom:
+        configMapKeyRef:
+          key: hive-metastore-uri
+          name: presto-common-config
+    - name: PRESTO_CONF_discovery_uri
+      valueFrom:
+        configMapKeyRef:
+          key: discovery-uri
+          name: presto-common-config
+    - name: PRESTO_NODE_node_environment
+      valueFrom:
+        configMapKeyRef:
+          key: environment
+          name: presto-common-config
+    - name: PRESTO_NODE_node_id
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: metadata.uid
+    - name: MY_NODE_NAME
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: spec.nodeName
+    - name: MY_POD_NAME
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: metadata.name
+    - name: MY_POD_NAMESPACE
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: metadata.namespace
+    - name: MY_MEM_REQUEST
+      valueFrom:
+        resourceFieldRef:
+          containerName: presto
+          divisor: "0"
+          resource: requests.memory
+    - name: MY_MEM_LIMIT
+      valueFrom:
+        resourceFieldRef:
+          containerName: presto
+          divisor: "0"
+          resource: limits.memory
+    - name: JAVA_MAX_MEM_RATIO
+      value: "50"
+    image: quay.io/coreos/chargeback-presto:0.6.1-latest
+    imagePullPolicy: Always
+    name: presto
+    ports:
+    - containerPort: 8080
+      name: http
+      protocol: TCP
+    - containerPort: 8082
+      name: prometheus-jmx
+      protocol: TCP
+    resources:
+      limits:
+        cpu: "1"
+        memory: 2Gi
+      requests:
+        cpu: 300m
+        memory: 1536Mi
+    securityContext:
+      capabilities:
+        drop:
+        - KILL
+        - MKNOD
+        - SETGID
+        - SETUID
+      runAsUser: 1000230000
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/presto/data
+      name: presto-data
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: presto-token-sd5x4
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  imagePullSecrets:
+  - name: presto-dockercfg-hcv4b
+  nodeName: qe-jialiu310-node-1
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext:
+    fsGroup: 1000230000
+    runAsNonRoot: true
+    seLinuxOptions:
+      level: s0:c15,c10
+  serviceAccount: presto
+  serviceAccountName: presto
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoSchedule
+    key: node.kubernetes.io/memory-pressure
+    operator: Exists
+  volumes:
+  - emptyDir: {}
+    name: presto-data
+  - name: presto-token-sd5x4
+    secret:
+      defaultMode: 420
+      secretName: presto-token-sd5x4
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: 2018-08-01T22:36:25Z
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: 2018-08-01T22:36:30Z
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: 2018-08-01T22:36:25Z
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: cri-o://7d14633716ef53212a588bb5e567fc0c5b54148a84a62baede83367163169501
+    image: quay.io/coreos/chargeback-presto:0.6.1-latest
+    imageID: quay.io/coreos/chargeback-presto@sha256:4f1af0cedd7fd31afa027c05d2d811a7a06a147fea3abe8b7a09da1acadbb111
+    lastState: {}
+    name: presto
+    ready: true
+    restartCount: 0
+    state:
+      running:
+        startedAt: 2018-08-01T22:36:29Z
+  hostIP: 172.16.120.103
+  phase: Running
+  podIP: 10.130.0.18
+  qosClass: Burstable
+  startTime: 2018-08-01T22:36:25Z

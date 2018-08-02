@@ -1,0 +1,176 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    hdfs-configmap-hash: 3420b8dd32e9e52b181d85bfcfc5046b4f264b48e26529b3d6af7c92c9d0b12b
+    openshift.io/scc: restricted
+  creationTimestamp: 2018-08-01T22:36:25Z
+  generateName: hdfs-namenode-
+  labels:
+    app: hdfs-namenode
+    controller-revision-hash: hdfs-namenode-5c679955f8
+    statefulset.kubernetes.io/pod-name: hdfs-namenode-0
+  name: hdfs-namenode-0
+  namespace: openshift-metering
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: StatefulSet
+    name: hdfs-namenode
+    uid: 529b19ea-95db-11e8-9edc-fa163ef4231c
+  resourceVersion: "90209"
+  selfLink: /api/v1/namespaces/openshift-metering/pods/hdfs-namenode-0
+  uid: 52b761f0-95db-11e8-9edc-fa163ef4231c
+spec:
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchExpressions:
+          - key: app
+            operator: In
+            values:
+            - hdfs-namenode
+        topologyKey: kubernetes.io/hostname
+  containers:
+  - args:
+    - namenode-entrypoint.sh
+    env:
+    - name: CORE_CONF_fs_defaultFS
+      valueFrom:
+        configMapKeyRef:
+          key: default-fs
+          name: hdfs-config
+    - name: CLUSTER_NAME
+      value: hdfs-k8s
+    - name: HADOOP_LOGLEVEL
+      valueFrom:
+        configMapKeyRef:
+          key: log-level
+          name: hdfs-config
+    - name: MY_NODE_NAME
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: spec.nodeName
+    - name: MY_POD_NAME
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: metadata.name
+    - name: MY_POD_NAMESPACE
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: metadata.namespace
+    - name: MY_MEM_REQUEST
+      valueFrom:
+        resourceFieldRef:
+          containerName: hdfs-namenode
+          divisor: "0"
+          resource: requests.memory
+    - name: MY_MEM_LIMIT
+      valueFrom:
+        resourceFieldRef:
+          containerName: hdfs-namenode
+          divisor: "0"
+          resource: limits.memory
+    - name: JAVA_MAX_MEM_RATIO
+      value: "50"
+    image: quay.io/coreos/chargeback-hadoop:0.6.1-latest
+    imagePullPolicy: Always
+    name: hdfs-namenode
+    ports:
+    - containerPort: 8020
+      name: fs
+      protocol: TCP
+    - containerPort: 50070
+      name: web
+      protocol: TCP
+    resources:
+      limits:
+        cpu: 250m
+        memory: 350Mi
+      requests:
+        cpu: 250m
+        memory: 350Mi
+    securityContext:
+      capabilities:
+        drop:
+        - KILL
+        - MKNOD
+        - SETGID
+        - SETUID
+      runAsUser: 1000230000
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /hadoop/dfs/name
+      name: hdfs-namenode-data
+      subPath: hadoop/dfs/name
+    - mountPath: /hadoop/dfs/data
+      name: datanode-empty
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: hdfs-token-rpg6t
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  hostname: hdfs-namenode-0
+  imagePullSecrets:
+  - name: hdfs-dockercfg-8hhrt
+  nodeName: qe-jialiu310-master-etcd-nfs-1
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext:
+    fsGroup: 1000230000
+    runAsNonRoot: true
+    seLinuxOptions:
+      level: s0:c15,c10
+  serviceAccount: hdfs
+  serviceAccountName: hdfs
+  subdomain: hdfs-namenode
+  terminationGracePeriodSeconds: 10
+  tolerations:
+  - effect: NoSchedule
+    key: node.kubernetes.io/memory-pressure
+    operator: Exists
+  volumes:
+  - name: hdfs-namenode-data
+    persistentVolumeClaim:
+      claimName: hdfs-namenode-data-hdfs-namenode-0
+  - emptyDir: {}
+    name: datanode-empty
+  - name: hdfs-token-rpg6t
+    secret:
+      defaultMode: 420
+      secretName: hdfs-token-rpg6t
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: 2018-08-01T22:36:26Z
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: 2018-08-01T22:36:55Z
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: 2018-08-01T22:36:26Z
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: cri-o://4becbf5f97b29ad7d010fa9ad10ddcc2b51ec84139091ca376ef16c7ba51dde9
+    image: quay.io/coreos/chargeback-hadoop:0.6.1-latest
+    imageID: quay.io/coreos/chargeback-hadoop@sha256:2152e44a0e34376e777fe35108ded9cf7e6a059cbdb5dcbda099af901a823d63
+    lastState: {}
+    name: hdfs-namenode
+    ready: true
+    restartCount: 0
+    state:
+      running:
+        startedAt: 2018-08-01T22:36:55Z
+  hostIP: 172.16.120.98
+  phase: Running
+  podIP: 10.128.0.10
+  qosClass: Guaranteed
+  startTime: 2018-08-01T22:36:26Z

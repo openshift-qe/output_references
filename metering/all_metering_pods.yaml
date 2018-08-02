@@ -1,0 +1,1511 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      hdfs-configmap-hash: 3420b8dd32e9e52b181d85bfcfc5046b4f264b48e26529b3d6af7c92c9d0b12b
+      openshift.io/scc: restricted
+    creationTimestamp: 2018-08-01T22:36:25Z
+    generateName: hdfs-datanode-
+    labels:
+      app: hdfs-datanode
+      controller-revision-hash: hdfs-datanode-7b6c9557fd
+      statefulset.kubernetes.io/pod-name: hdfs-datanode-0
+    name: hdfs-datanode-0
+    namespace: openshift-metering
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: StatefulSet
+      name: hdfs-datanode
+      uid: 5297eceb-95db-11e8-9edc-fa163ef4231c
+    resourceVersion: "90193"
+    selfLink: /api/v1/namespaces/openshift-metering/pods/hdfs-datanode-0
+    uid: 52ab5a33-95db-11e8-9edc-fa163ef4231c
+  spec:
+    affinity:
+      podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+            - key: app
+              operator: In
+              values:
+              - hdfs-datanode
+          topologyKey: kubernetes.io/hostname
+    containers:
+    - args:
+      - datanode-entrypoint.sh
+      env:
+      - name: CORE_CONF_fs_defaultFS
+        valueFrom:
+          configMapKeyRef:
+            key: default-fs
+            name: hdfs-config
+      - name: HDFS_CONF_dfs_datanode_data_dir_perm
+        valueFrom:
+          configMapKeyRef:
+            key: datanode-data-dir-perms
+            name: hdfs-config
+      - name: HADOOP_LOGLEVEL
+        valueFrom:
+          configMapKeyRef:
+            key: log-level
+            name: hdfs-config
+      - name: MY_NODE_NAME
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: spec.nodeName
+      - name: MY_POD_NAME
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: metadata.name
+      - name: MY_POD_NAMESPACE
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: metadata.namespace
+      - name: MY_MEM_REQUEST
+        valueFrom:
+          resourceFieldRef:
+            containerName: hdfs-datanode
+            divisor: "0"
+            resource: requests.memory
+      - name: MY_MEM_LIMIT
+        valueFrom:
+          resourceFieldRef:
+            containerName: hdfs-datanode
+            divisor: "0"
+            resource: limits.memory
+      - name: JAVA_MAX_MEM_RATIO
+        value: "50"
+      image: quay.io/coreos/chargeback-hadoop:0.6.1-latest
+      imagePullPolicy: Always
+      livenessProbe:
+        exec:
+          command:
+          - check-datanode-healthy.sh
+        failureThreshold: 2
+        initialDelaySeconds: 90
+        periodSeconds: 30
+        successThreshold: 1
+        timeoutSeconds: 1
+      name: hdfs-datanode
+      ports:
+      - containerPort: 50010
+        name: fs
+        protocol: TCP
+      - containerPort: 50075
+        name: http
+        protocol: TCP
+      resources:
+        limits:
+          cpu: 250m
+          memory: 250Mi
+        requests:
+          cpu: 250m
+          memory: 250Mi
+      securityContext:
+        capabilities:
+          drop:
+          - KILL
+          - MKNOD
+          - SETGID
+          - SETUID
+        runAsUser: 1000230000
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /hadoop/dfs/data
+        name: hdfs-datanode-data
+        subPath: hadoop/dfs/data
+      - mountPath: /hadoop/dfs/name
+        name: namenode-empty
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: hdfs-token-rpg6t
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    hostname: hdfs-datanode-0
+    imagePullSecrets:
+    - name: hdfs-dockercfg-8hhrt
+    initContainers:
+    - command:
+      - /bin/bash
+      - -c
+      - until host $NAMENODE_HOST; do echo waiting for $NAMENODE_HOST; sleep 2; done;
+      env:
+      - name: NAMENODE_HOST
+        valueFrom:
+          configMapKeyRef:
+            key: namenode-host
+            name: hdfs-config
+      image: quay.io/coreos/chargeback-hadoop:0.6.1-latest
+      imagePullPolicy: Always
+      name: wait-for-namenode
+      resources:
+        limits:
+          cpu: 50m
+          memory: 50Mi
+        requests:
+          cpu: 10m
+          memory: 5Mi
+      securityContext:
+        capabilities:
+          drop:
+          - KILL
+          - MKNOD
+          - SETGID
+          - SETUID
+        runAsUser: 1000230000
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /hadoop/dfs/data
+        name: hdfs-datanode-data
+        subPath: hadoop/dfs/data
+      - mountPath: /hadoop/dfs/name
+        name: namenode-empty
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: hdfs-token-rpg6t
+        readOnly: true
+    nodeName: qe-jialiu310-node-infra-1
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext:
+      fsGroup: 1000230000
+      runAsNonRoot: true
+      seLinuxOptions:
+        level: s0:c15,c10
+    serviceAccount: hdfs
+    serviceAccountName: hdfs
+    subdomain: hdfs-datanode
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoSchedule
+      key: node.kubernetes.io/memory-pressure
+      operator: Exists
+    volumes:
+    - name: hdfs-datanode-data
+      persistentVolumeClaim:
+        claimName: hdfs-datanode-data-hdfs-datanode-0
+    - emptyDir: {}
+      name: namenode-empty
+    - name: hdfs-token-rpg6t
+      secret:
+        defaultMode: 420
+        secretName: hdfs-token-rpg6t
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: 2018-08-01T22:36:49Z
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: 2018-08-01T22:36:52Z
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: 2018-08-01T22:36:26Z
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: cri-o://bb618377d2e1f6c8d37179ce8537d8563041f1f7910ee9cbbcdd401ec974baa8
+      image: quay.io/coreos/chargeback-hadoop:0.6.1-latest
+      imageID: quay.io/coreos/chargeback-hadoop@sha256:2152e44a0e34376e777fe35108ded9cf7e6a059cbdb5dcbda099af901a823d63
+      lastState: {}
+      name: hdfs-datanode
+      ready: true
+      restartCount: 0
+      state:
+        running:
+          startedAt: 2018-08-01T22:36:51Z
+    hostIP: 172.16.120.92
+    initContainerStatuses:
+    - containerID: cri-o://bcf0dc3610bfc23d38c9b41a250aae0fc73c11604f5873c6ad1d5e955f0e51be
+      image: quay.io/coreos/chargeback-hadoop:0.6.1-latest
+      imageID: quay.io/coreos/chargeback-hadoop@sha256:2152e44a0e34376e777fe35108ded9cf7e6a059cbdb5dcbda099af901a823d63
+      lastState: {}
+      name: wait-for-namenode
+      ready: true
+      restartCount: 0
+      state:
+        terminated:
+          containerID: cri-o://bcf0dc3610bfc23d38c9b41a250aae0fc73c11604f5873c6ad1d5e955f0e51be
+          exitCode: 0
+          finishedAt: 2018-08-01T22:36:48Z
+          reason: Completed
+          startedAt: 2018-08-01T22:36:47Z
+    phase: Running
+    podIP: 10.129.0.12
+    qosClass: Guaranteed
+    startTime: 2018-08-01T22:36:26Z
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      hdfs-configmap-hash: 3420b8dd32e9e52b181d85bfcfc5046b4f264b48e26529b3d6af7c92c9d0b12b
+      openshift.io/scc: restricted
+    creationTimestamp: 2018-08-01T22:36:25Z
+    generateName: hdfs-namenode-
+    labels:
+      app: hdfs-namenode
+      controller-revision-hash: hdfs-namenode-5c679955f8
+      statefulset.kubernetes.io/pod-name: hdfs-namenode-0
+    name: hdfs-namenode-0
+    namespace: openshift-metering
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: StatefulSet
+      name: hdfs-namenode
+      uid: 529b19ea-95db-11e8-9edc-fa163ef4231c
+    resourceVersion: "90209"
+    selfLink: /api/v1/namespaces/openshift-metering/pods/hdfs-namenode-0
+    uid: 52b761f0-95db-11e8-9edc-fa163ef4231c
+  spec:
+    affinity:
+      podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+            - key: app
+              operator: In
+              values:
+              - hdfs-namenode
+          topologyKey: kubernetes.io/hostname
+    containers:
+    - args:
+      - namenode-entrypoint.sh
+      env:
+      - name: CORE_CONF_fs_defaultFS
+        valueFrom:
+          configMapKeyRef:
+            key: default-fs
+            name: hdfs-config
+      - name: CLUSTER_NAME
+        value: hdfs-k8s
+      - name: HADOOP_LOGLEVEL
+        valueFrom:
+          configMapKeyRef:
+            key: log-level
+            name: hdfs-config
+      - name: MY_NODE_NAME
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: spec.nodeName
+      - name: MY_POD_NAME
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: metadata.name
+      - name: MY_POD_NAMESPACE
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: metadata.namespace
+      - name: MY_MEM_REQUEST
+        valueFrom:
+          resourceFieldRef:
+            containerName: hdfs-namenode
+            divisor: "0"
+            resource: requests.memory
+      - name: MY_MEM_LIMIT
+        valueFrom:
+          resourceFieldRef:
+            containerName: hdfs-namenode
+            divisor: "0"
+            resource: limits.memory
+      - name: JAVA_MAX_MEM_RATIO
+        value: "50"
+      image: quay.io/coreos/chargeback-hadoop:0.6.1-latest
+      imagePullPolicy: Always
+      name: hdfs-namenode
+      ports:
+      - containerPort: 8020
+        name: fs
+        protocol: TCP
+      - containerPort: 50070
+        name: web
+        protocol: TCP
+      resources:
+        limits:
+          cpu: 250m
+          memory: 350Mi
+        requests:
+          cpu: 250m
+          memory: 350Mi
+      securityContext:
+        capabilities:
+          drop:
+          - KILL
+          - MKNOD
+          - SETGID
+          - SETUID
+        runAsUser: 1000230000
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /hadoop/dfs/name
+        name: hdfs-namenode-data
+        subPath: hadoop/dfs/name
+      - mountPath: /hadoop/dfs/data
+        name: datanode-empty
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: hdfs-token-rpg6t
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    hostname: hdfs-namenode-0
+    imagePullSecrets:
+    - name: hdfs-dockercfg-8hhrt
+    nodeName: qe-jialiu310-master-etcd-nfs-1
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext:
+      fsGroup: 1000230000
+      runAsNonRoot: true
+      seLinuxOptions:
+        level: s0:c15,c10
+    serviceAccount: hdfs
+    serviceAccountName: hdfs
+    subdomain: hdfs-namenode
+    terminationGracePeriodSeconds: 10
+    tolerations:
+    - effect: NoSchedule
+      key: node.kubernetes.io/memory-pressure
+      operator: Exists
+    volumes:
+    - name: hdfs-namenode-data
+      persistentVolumeClaim:
+        claimName: hdfs-namenode-data-hdfs-namenode-0
+    - emptyDir: {}
+      name: datanode-empty
+    - name: hdfs-token-rpg6t
+      secret:
+        defaultMode: 420
+        secretName: hdfs-token-rpg6t
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: 2018-08-01T22:36:26Z
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: 2018-08-01T22:36:55Z
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: 2018-08-01T22:36:26Z
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: cri-o://4becbf5f97b29ad7d010fa9ad10ddcc2b51ec84139091ca376ef16c7ba51dde9
+      image: quay.io/coreos/chargeback-hadoop:0.6.1-latest
+      imageID: quay.io/coreos/chargeback-hadoop@sha256:2152e44a0e34376e777fe35108ded9cf7e6a059cbdb5dcbda099af901a823d63
+      lastState: {}
+      name: hdfs-namenode
+      ready: true
+      restartCount: 0
+      state:
+        running:
+          startedAt: 2018-08-01T22:36:55Z
+    hostIP: 172.16.120.98
+    phase: Running
+    podIP: 10.128.0.10
+    qosClass: Guaranteed
+    startTime: 2018-08-01T22:36:26Z
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      hive-common-configmap-hash: 50f1cb73b224e8e8d51680fb6fe1979cf9d1245bfbc5e8a4a47f714b34f70530
+      hive-common-secret-hash: 7919e383126bfcafbfe3a2c63048ffc9569a11454a1c72aca80954fda78417ab
+      hive-metastore-configmap-hash: f2fa76b6f1afbe594285f83d96e7beeae77558c1ac4721307118a92509286fa7
+      openshift.io/scc: restricted
+      presto-secrets-hash: 8f2f3af33465cf2cb6a2482af0070a355ac62e56d011f45754c9c80d5effc009
+    creationTimestamp: 2018-08-01T22:36:25Z
+    generateName: hive-metastore-
+    labels:
+      app: hive
+      controller-revision-hash: hive-metastore-84d7d5dc9b
+      hive: metastore
+      statefulset.kubernetes.io/pod-name: hive-metastore-0
+    name: hive-metastore-0
+    namespace: openshift-metering
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: StatefulSet
+      name: hive-metastore
+      uid: 52a5ab59-95db-11e8-9edc-fa163ef4231c
+    resourceVersion: "90222"
+    selfLink: /api/v1/namespaces/openshift-metering/pods/hive-metastore-0
+    uid: 52c22431-95db-11e8-9edc-fa163ef4231c
+  spec:
+    containers:
+    - args:
+      - --service
+      - metastore
+      env:
+      - name: HIVE_LOGLEVEL
+        valueFrom:
+          configMapKeyRef:
+            key: log-level
+            name: hive-server-config
+      - name: CORE_CONF_fs_defaultFS
+        valueFrom:
+          configMapKeyRef:
+            key: default-fs
+            name: hive-common-config
+            optional: true
+      - name: CORE_CONF_fs_s3a_access_key
+        valueFrom:
+          secretKeyRef:
+            key: aws-access-key-id
+            name: presto-secrets
+            optional: true
+      - name: CORE_CONF_fs_s3a_secret_key
+        valueFrom:
+          secretKeyRef:
+            key: aws-secret-access-key
+            name: presto-secrets
+            optional: true
+      - name: HIVE_SITE_CONF_hive_metastore_uris
+        valueFrom:
+          configMapKeyRef:
+            key: metastore-uris
+            name: hive-common-config
+      - name: HIVE_SITE_CONF_javax_jdo_option_ConnectionURL
+        valueFrom:
+          configMapKeyRef:
+            key: db-connection-url
+            name: hive-common-config
+      - name: HIVE_SITE_CONF_javax_jdo_option_ConnectionDriverName
+        valueFrom:
+          configMapKeyRef:
+            key: db-connection-driver
+            name: hive-common-config
+      - name: HIVE_SITE_CONF_javax_jdo_option_ConnectionUserName
+        valueFrom:
+          secretKeyRef:
+            key: db-connection-username
+            name: hive-common-secrets
+            optional: true
+      - name: HIVE_SITE_CONF_javax_jdo_option_ConnectionPassword
+        valueFrom:
+          secretKeyRef:
+            key: db-connection-password
+            name: hive-common-secrets
+            optional: true
+      - name: HIVE_SITE_CONF_hive_metastore_schema_verification
+        valueFrom:
+          configMapKeyRef:
+            key: enable-metastore-schema-verification
+            name: hive-common-config
+      - name: HIVE_SITE_CONF_datanucleus_schema_autoCreateAll
+        valueFrom:
+          configMapKeyRef:
+            key: auto-create-metastore-schema
+            name: hive-common-config
+      - name: HIVE_SITE_CONF_hive_default_fileformat
+        valueFrom:
+          configMapKeyRef:
+            key: default-file-format
+            name: hive-common-config
+      - name: MY_NODE_NAME
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: spec.nodeName
+      - name: MY_POD_NAME
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: metadata.name
+      - name: MY_POD_NAMESPACE
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: metadata.namespace
+      - name: JAVA_MAX_MEM_RATIO
+        value: "50"
+      - name: MY_MEM_REQUEST
+        valueFrom:
+          resourceFieldRef:
+            containerName: metastore
+            divisor: "0"
+            resource: requests.memory
+      - name: MY_MEM_LIMIT
+        valueFrom:
+          resourceFieldRef:
+            containerName: metastore
+            divisor: "0"
+            resource: limits.memory
+      image: quay.io/coreos/chargeback-hive:0.6.1-latest
+      imagePullPolicy: Always
+      name: metastore
+      ports:
+      - containerPort: 9083
+        name: meta
+        protocol: TCP
+      resources:
+        limits:
+          cpu: 500m
+          memory: 650Mi
+        requests:
+          cpu: 100m
+          memory: 650Mi
+      securityContext:
+        capabilities:
+          drop:
+          - KILL
+          - MKNOD
+          - SETGID
+          - SETUID
+        runAsUser: 1000230000
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/lib/hive
+        name: hive-metastore-db-data
+      - mountPath: /user/hive/warehouse
+        name: hive-warehouse
+      - mountPath: /hadoop/dfs/name
+        name: namenode-empty
+      - mountPath: /hadoop/dfs/data
+        name: datanode-empty
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: hive-token-cntff
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    hostname: hive-metastore-0
+    imagePullSecrets:
+    - name: hive-dockercfg-qbsxw
+    nodeName: qe-jialiu310-master-etcd-nfs-1
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext:
+      fsGroup: 1000230000
+      runAsNonRoot: true
+      seLinuxOptions:
+        level: s0:c15,c10
+    serviceAccount: hive
+    serviceAccountName: hive
+    subdomain: hive-metastore
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoSchedule
+      key: node.kubernetes.io/memory-pressure
+      operator: Exists
+    volumes:
+    - emptyDir: {}
+      name: hive-warehouse
+    - emptyDir: {}
+      name: namenode-empty
+    - emptyDir: {}
+      name: datanode-empty
+    - name: hive-metastore-db-data
+      persistentVolumeClaim:
+        claimName: hive-metastore-db-data
+    - name: hive-token-cntff
+      secret:
+        defaultMode: 420
+        secretName: hive-token-cntff
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: 2018-08-01T22:36:25Z
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: 2018-08-01T22:36:58Z
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: 2018-08-01T22:36:25Z
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: cri-o://58c99d381b163d71f59e2a85c61f0109b304d8d444c570f2d4705efec14dcd70
+      image: quay.io/coreos/chargeback-hive:0.6.1-latest
+      imageID: quay.io/coreos/chargeback-hive@sha256:27749580fc6b51d9ea965698c7d419b6b2990524bd2183cb770069d2967b0216
+      lastState: {}
+      name: metastore
+      ready: true
+      restartCount: 0
+      state:
+        running:
+          startedAt: 2018-08-01T22:36:57Z
+    hostIP: 172.16.120.98
+    phase: Running
+    podIP: 10.128.0.11
+    qosClass: Burstable
+    startTime: 2018-08-01T22:36:25Z
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      hive-common-configmap-hash: 50f1cb73b224e8e8d51680fb6fe1979cf9d1245bfbc5e8a4a47f714b34f70530
+      hive-common-secret-hash: 7919e383126bfcafbfe3a2c63048ffc9569a11454a1c72aca80954fda78417ab
+      hive-server-configmap-hash: 8b44e3f0dca71817376bec1c63f85a9b18a1747d219b7736786a4af619c3cea1
+      openshift.io/scc: restricted
+      presto-secrets-hash: 8f2f3af33465cf2cb6a2482af0070a355ac62e56d011f45754c9c80d5effc009
+    creationTimestamp: 2018-08-01T22:36:25Z
+    generateName: hive-server-
+    labels:
+      app: hive
+      controller-revision-hash: hive-server-7b6df74968
+      hive: server
+      statefulset.kubernetes.io/pod-name: hive-server-0
+    name: hive-server-0
+    namespace: openshift-metering
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: StatefulSet
+      name: hive-server
+      uid: 52b558db-95db-11e8-9edc-fa163ef4231c
+    resourceVersion: "90123"
+    selfLink: /api/v1/namespaces/openshift-metering/pods/hive-server-0
+    uid: 52d15845-95db-11e8-9edc-fa163ef4231c
+  spec:
+    containers:
+    - args:
+      - --service
+      - hiveserver2
+      env:
+      - name: HIVE_LOGLEVEL
+        valueFrom:
+          configMapKeyRef:
+            key: log-level
+            name: hive-server-config
+      - name: CORE_CONF_fs_defaultFS
+        valueFrom:
+          configMapKeyRef:
+            key: default-fs
+            name: hive-common-config
+            optional: true
+      - name: CORE_CONF_fs_s3a_access_key
+        valueFrom:
+          secretKeyRef:
+            key: aws-access-key-id
+            name: presto-secrets
+            optional: true
+      - name: CORE_CONF_fs_s3a_secret_key
+        valueFrom:
+          secretKeyRef:
+            key: aws-secret-access-key
+            name: presto-secrets
+            optional: true
+      - name: HIVE_SITE_CONF_hive_metastore_uris
+        valueFrom:
+          configMapKeyRef:
+            key: metastore-uris
+            name: hive-common-config
+      - name: HIVE_SITE_CONF_javax_jdo_option_ConnectionURL
+        valueFrom:
+          configMapKeyRef:
+            key: db-connection-url
+            name: hive-common-config
+      - name: HIVE_SITE_CONF_javax_jdo_option_ConnectionDriverName
+        valueFrom:
+          configMapKeyRef:
+            key: db-connection-driver
+            name: hive-common-config
+      - name: HIVE_SITE_CONF_javax_jdo_option_ConnectionUserName
+        valueFrom:
+          secretKeyRef:
+            key: db-connection-username
+            name: hive-common-secrets
+            optional: true
+      - name: HIVE_SITE_CONF_javax_jdo_option_ConnectionPassword
+        valueFrom:
+          secretKeyRef:
+            key: db-connection-password
+            name: hive-common-secrets
+            optional: true
+      - name: HIVE_SITE_CONF_hive_metastore_schema_verification
+        valueFrom:
+          configMapKeyRef:
+            key: enable-metastore-schema-verification
+            name: hive-common-config
+      - name: HIVE_SITE_CONF_datanucleus_schema_autoCreateAll
+        valueFrom:
+          configMapKeyRef:
+            key: auto-create-metastore-schema
+            name: hive-common-config
+      - name: HIVE_SITE_CONF_hive_default_fileformat
+        valueFrom:
+          configMapKeyRef:
+            key: default-file-format
+            name: hive-common-config
+      - name: MY_NODE_NAME
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: spec.nodeName
+      - name: MY_POD_NAME
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: metadata.name
+      - name: MY_POD_NAMESPACE
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: metadata.namespace
+      - name: JAVA_MAX_MEM_RATIO
+        value: "50"
+      - name: MY_MEM_REQUEST
+        valueFrom:
+          resourceFieldRef:
+            containerName: hiveserver2
+            divisor: "0"
+            resource: requests.memory
+      - name: MY_MEM_LIMIT
+        valueFrom:
+          resourceFieldRef:
+            containerName: hiveserver2
+            divisor: "0"
+            resource: limits.memory
+      image: quay.io/coreos/chargeback-hive:0.6.1-latest
+      imagePullPolicy: Always
+      name: hiveserver2
+      ports:
+      - containerPort: 10000
+        name: thrift
+        protocol: TCP
+      - containerPort: 10002
+        name: ui
+        protocol: TCP
+      resources:
+        limits:
+          cpu: 100m
+          memory: 400Mi
+        requests:
+          cpu: 100m
+          memory: 400Mi
+      securityContext:
+        capabilities:
+          drop:
+          - KILL
+          - MKNOD
+          - SETGID
+          - SETUID
+        runAsUser: 1000230000
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/lib/hive
+        name: hive-metastore-db-data
+      - mountPath: /user/hive/warehouse
+        name: hive-warehouse
+      - mountPath: /hadoop/dfs/name
+        name: namenode-empty
+      - mountPath: /hadoop/dfs/data
+        name: datanode-empty
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: hive-token-cntff
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    hostname: hive-server-0
+    imagePullSecrets:
+    - name: hive-dockercfg-qbsxw
+    nodeName: qe-jialiu310-node-infra-1
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext:
+      fsGroup: 1000230000
+      runAsNonRoot: true
+      seLinuxOptions:
+        level: s0:c15,c10
+    serviceAccount: hive
+    serviceAccountName: hive
+    subdomain: hive-server
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoSchedule
+      key: node.kubernetes.io/memory-pressure
+      operator: Exists
+    volumes:
+    - emptyDir: {}
+      name: hive-warehouse
+    - emptyDir: {}
+      name: namenode-empty
+    - emptyDir: {}
+      name: datanode-empty
+    - emptyDir: {}
+      name: hive-metastore-db-data
+    - name: hive-token-cntff
+      secret:
+        defaultMode: 420
+        secretName: hive-token-cntff
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: 2018-08-01T22:36:25Z
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: 2018-08-01T22:36:30Z
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: 2018-08-01T22:36:25Z
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: cri-o://855f08dfd881041b563b8f35c4d855e0938a627fd953eb788bdbdb7517c0f669
+      image: quay.io/coreos/chargeback-hive:0.6.1-latest
+      imageID: quay.io/coreos/chargeback-hive@sha256:27749580fc6b51d9ea965698c7d419b6b2990524bd2183cb770069d2967b0216
+      lastState: {}
+      name: hiveserver2
+      ready: true
+      restartCount: 0
+      state:
+        running:
+          startedAt: 2018-08-01T22:36:30Z
+    hostIP: 172.16.120.92
+    phase: Running
+    podIP: 10.129.0.11
+    qosClass: Guaranteed
+    startTime: 2018-08-01T22:36:25Z
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      metering-config-hash: c1bde5b15a82952e4d2591765b89f843c972d10440a7d911a3521f78b4b0a491
+      metering-secrets-hash: fe757a90803b4db8800dd77fa4bc90e3ce3809bc4beeda4506111e29e012358e
+      openshift.io/scc: restricted
+    creationTimestamp: 2018-08-01T22:36:25Z
+    generateName: metering-65d459978c-
+    labels:
+      app: metering
+      pod-template-hash: "2180155347"
+    name: metering-65d459978c-q25ml
+    namespace: openshift-metering
+    ownerReferences:
+    - apiVersion: extensions/v1beta1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: metering-65d459978c
+      uid: 528b26dd-95db-11e8-9edc-fa163ef4231c
+    resourceVersion: "90987"
+    selfLink: /api/v1/namespaces/openshift-metering/pods/metering-65d459978c-q25ml
+    uid: 5299ba4b-95db-11e8-9edc-fa163ef4231c
+  spec:
+    containers:
+    - env:
+      - name: POD_NAME
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: metadata.name
+      - name: AWS_ACCESS_KEY_ID
+        valueFrom:
+          secretKeyRef:
+            key: aws-access-key-id
+            name: metering-secrets
+      - name: AWS_SECRET_ACCESS_KEY
+        valueFrom:
+          secretKeyRef:
+            key: aws-secret-access-key
+            name: metering-secrets
+      - name: CHARGEBACK_LOG_DML_QUERIES
+        valueFrom:
+          configMapKeyRef:
+            key: log-dml-queries
+            name: metering-config
+      - name: CHARGEBACK_LOG_DDL_QUERIES
+        valueFrom:
+          configMapKeyRef:
+            key: log-ddl-queries
+            name: metering-config
+      - name: CHARGEBACK_LOG_REPORT
+        valueFrom:
+          configMapKeyRef:
+            key: log-reports
+            name: metering-config
+      - name: CHARGEBACK_PROMETHEUS_HOST
+        valueFrom:
+          configMapKeyRef:
+            key: prometheus-url
+            name: metering-config
+      - name: CHARGEBACK_PROMSUM_INTERVAL
+        valueFrom:
+          configMapKeyRef:
+            key: promsum-poll-interval
+            name: metering-config
+      - name: CHARGEBACK_PROMSUM_CHUNK_SIZE
+        valueFrom:
+          configMapKeyRef:
+            key: promsum-chunk-size
+            name: metering-config
+      - name: CHARGEBACK_PROMSUM_STEP_SIZE
+        valueFrom:
+          configMapKeyRef:
+            key: promsum-step-size
+            name: metering-config
+      - name: CHARGEBACK_DISABLE_PROMSUM
+        valueFrom:
+          configMapKeyRef:
+            key: disable-promsum
+            name: metering-config
+      - name: CHARGEBACK_PRESTO_HOST
+        valueFrom:
+          configMapKeyRef:
+            key: presto-host
+            name: metering-config
+      - name: CHARGEBACK_HIVE_HOST
+        valueFrom:
+          configMapKeyRef:
+            key: hive-host
+            name: metering-config
+      - name: CHARGEBACK_LEASE_DURATION
+        valueFrom:
+          configMapKeyRef:
+            key: leader-lease-duration
+            name: metering-config
+      image: quay.io/coreos/chargeback:0.6.1-latest
+      imagePullPolicy: Always
+      livenessProbe:
+        failureThreshold: 5
+        httpGet:
+          path: /healthy
+          port: 8080
+          scheme: HTTP
+        initialDelaySeconds: 120
+        periodSeconds: 60
+        successThreshold: 1
+        timeoutSeconds: 60
+      name: metering
+      ports:
+      - containerPort: 8080
+        name: http
+        protocol: TCP
+      - containerPort: 6060
+        name: pprof
+        protocol: TCP
+      - containerPort: 8082
+        name: metrics
+        protocol: TCP
+      readinessProbe:
+        failureThreshold: 6
+        httpGet:
+          path: /ready
+          port: 8080
+          scheme: HTTP
+        initialDelaySeconds: 60
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 60
+      resources:
+        limits:
+          cpu: 100m
+          memory: 150Mi
+        requests:
+          cpu: 50m
+          memory: 50Mi
+      securityContext:
+        capabilities:
+          drop:
+          - KILL
+          - MKNOD
+          - SETGID
+          - SETUID
+        runAsUser: 1000230000
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: metering-token-fb4x4
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    imagePullSecrets:
+    - name: metering-dockercfg-wxzqt
+    nodeName: qe-jialiu310-node-1
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext:
+      fsGroup: 1000230000
+      runAsNonRoot: true
+      seLinuxOptions:
+        level: s0:c15,c10
+    serviceAccount: metering
+    serviceAccountName: metering
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoSchedule
+      key: node.kubernetes.io/memory-pressure
+      operator: Exists
+    volumes:
+    - name: metering-token-fb4x4
+      secret:
+        defaultMode: 420
+        secretName: metering-token-fb4x4
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: 2018-08-01T22:36:25Z
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: 2018-08-01T22:42:35Z
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: 2018-08-01T22:36:25Z
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: cri-o://6cc395ac4ff85e29efef124d62b5ecbb70080e1e27b27fff8bc81c11a279a4df
+      image: quay.io/coreos/chargeback:0.6.1-latest
+      imageID: quay.io/coreos/chargeback@sha256:4002c899090ec8c83dd0a75ef7c090dc0ae774ba56d991f9646e351b22fe3b18
+      lastState:
+        terminated:
+          containerID: cri-o://7c25456f1a67f7508cbd6a80ea3ab126d9eb4c93c2b5913f6b0c1af14cbd0195
+          exitCode: 1
+          finishedAt: 2018-08-01T22:39:41Z
+          reason: Error
+          startedAt: 2018-08-01T22:36:40Z
+      name: metering
+      ready: true
+      restartCount: 1
+      state:
+        running:
+          startedAt: 2018-08-01T22:39:45Z
+    hostIP: 172.16.120.103
+    phase: Running
+    podIP: 10.130.0.19
+    qosClass: Burstable
+    startTime: 2018-08-01T22:36:25Z
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      openshift.io/scc: restricted
+    creationTimestamp: 2018-08-01T22:32:57Z
+    generateName: metering-helm-operator-6c5757bf4c-
+    labels:
+      app: metering-helm-operator
+      pod-template-hash: "2713136907"
+    name: metering-helm-operator-6c5757bf4c-p8znf
+    namespace: openshift-metering
+    ownerReferences:
+    - apiVersion: extensions/v1beta1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: metering-helm-operator-6c5757bf4c
+      uid: d0bcbb0e-95da-11e8-9edc-fa163ef4231c
+    resourceVersion: "90822"
+    selfLink: /api/v1/namespaces/openshift-metering/pods/metering-helm-operator-6c5757bf4c-p8znf
+    uid: d6e5ae57-95da-11e8-9edc-fa163ef4231c
+  spec:
+    containers:
+    - args:
+      - run-operator.sh
+      env:
+      - name: HELM_RELEASE_CRD_NAME
+        value: Metering
+      - name: HELM_RELEASE_CRD_API_GROUP
+        value: chargeback.coreos.com
+      - name: HELM_CHART_PATH
+        value: /openshift-metering-0.1.0.tgz
+      - name: MY_POD_NAME
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: metadata.name
+      - name: MY_POD_NAMESPACE
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: metadata.namespace
+      - name: HELM_HOST
+        value: 127.0.0.1:44134
+      - name: HELM_WAIT
+        value: "false"
+      - name: HELM_RECONCILE_INTERVAL_SECONDS
+        value: "30"
+      - name: RELEASE_HISTORY_LIMIT
+        value: "3"
+      image: quay.io/coreos/chargeback-helm-operator:0.6.1-latest
+      imagePullPolicy: Always
+      name: metering-helm-operator
+      resources:
+        limits:
+          cpu: 50m
+          memory: 25Mi
+        requests:
+          cpu: 50m
+          memory: 25Mi
+      securityContext:
+        capabilities:
+          drop:
+          - KILL
+          - MKNOD
+          - SETGID
+          - SETUID
+        runAsUser: 1000230000
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: metering-helm-operator-token-2dt4t
+        readOnly: true
+    - args:
+      - /tiller
+      env:
+      - name: TILLER_NAMESPACE
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: metadata.namespace
+      - name: TILLER_HISTORY_MAX
+        value: "3"
+      image: quay.io/coreos/chargeback-helm-operator:0.6.1-latest
+      imagePullPolicy: Always
+      livenessProbe:
+        failureThreshold: 3
+        httpGet:
+          path: /liveness
+          port: 44135
+          scheme: HTTP
+        initialDelaySeconds: 1
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 1
+      name: tiller
+      readinessProbe:
+        failureThreshold: 3
+        httpGet:
+          path: /readiness
+          port: 44135
+          scheme: HTTP
+        initialDelaySeconds: 1
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 1
+      resources:
+        limits:
+          cpu: 50m
+          memory: 100Mi
+        requests:
+          cpu: 50m
+          memory: 50Mi
+      securityContext:
+        capabilities:
+          drop:
+          - KILL
+          - MKNOD
+          - SETGID
+          - SETUID
+        runAsUser: 1000230000
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: metering-helm-operator-token-2dt4t
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    imagePullSecrets:
+    - name: metering-helm-operator-dockercfg-mf9j8
+    nodeName: qe-jialiu310-node-1
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext:
+      fsGroup: 1000230000
+      runAsNonRoot: true
+      seLinuxOptions:
+        level: s0:c15,c10
+    serviceAccount: metering-helm-operator
+    serviceAccountName: metering-helm-operator
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoSchedule
+      key: node.kubernetes.io/memory-pressure
+      operator: Exists
+    volumes:
+    - name: metering-helm-operator-token-2dt4t
+      secret:
+        defaultMode: 420
+        secretName: metering-helm-operator-token-2dt4t
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: 2018-08-01T22:32:57Z
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: 2018-08-01T22:41:29Z
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: 2018-08-01T22:32:57Z
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: cri-o://6f83e155ad83111e8a4255c4569c1172bd7b3889043eddf770068db1eb7bdb5c
+      image: quay.io/coreos/chargeback-helm-operator:0.6.1-latest
+      imageID: quay.io/coreos/chargeback-helm-operator@sha256:5b217bdfd91f6db902bf04b39eab3232d6dff19f3720084195cc0d5193e82f7e
+      lastState:
+        terminated:
+          containerID: cri-o://f202315fd62c98fe2092913561bc4aa83bfc69458be43d628002b3caa53a5eed
+          exitCode: 1
+          finishedAt: 2018-08-01T22:41:25Z
+          reason: Error
+          startedAt: 2018-08-01T22:33:03Z
+      name: metering-helm-operator
+      ready: true
+      restartCount: 1
+      state:
+        running:
+          startedAt: 2018-08-01T22:41:28Z
+    - containerID: cri-o://c1471d5d0dacfefd08f92b9a9fbac0285dc780fa4913b24fb9a95c5726664630
+      image: quay.io/coreos/chargeback-helm-operator:0.6.1-latest
+      imageID: quay.io/coreos/chargeback-helm-operator@sha256:5b217bdfd91f6db902bf04b39eab3232d6dff19f3720084195cc0d5193e82f7e
+      lastState: {}
+      name: tiller
+      ready: true
+      restartCount: 0
+      state:
+        running:
+          startedAt: 2018-08-01T22:33:06Z
+    hostIP: 172.16.120.103
+    phase: Running
+    podIP: 10.130.0.17
+    qosClass: Burstable
+    startTime: 2018-08-01T22:32:57Z
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      openshift.io/scc: restricted
+      presto-common-config-hash: dd9e460a54a633567f315391012428f98fde0fc379f9275779eb7b6429bb8c73
+      presto-coordinator-config-hash: d0181060a203de6d20c098da7e1a7fd16b57e456f3e722d9fc57fdc92677fdd2
+      presto-secrets-hash: 8f2f3af33465cf2cb6a2482af0070a355ac62e56d011f45754c9c80d5effc009
+    creationTimestamp: 2018-08-01T22:36:25Z
+    generateName: presto-coordinator-5f5866659f-
+    labels:
+      app: presto
+      pod-template-hash: "1914222159"
+      presto: coordinator
+    name: presto-coordinator-5f5866659f-sx7hg
+    namespace: openshift-metering
+    ownerReferences:
+    - apiVersion: extensions/v1beta1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: presto-coordinator-5f5866659f
+      uid: 528ca985-95db-11e8-9edc-fa163ef4231c
+    resourceVersion: "90116"
+    selfLink: /api/v1/namespaces/openshift-metering/pods/presto-coordinator-5f5866659f-sx7hg
+    uid: 529aa0da-95db-11e8-9edc-fa163ef4231c
+  spec:
+    affinity:
+      podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+            - key: app
+              operator: In
+              values:
+              - presto
+          topologyKey: kubernetes.io/hostname
+    containers:
+    - env:
+      - name: PRESTO_CONF_discovery___server_enabled
+        value: "true"
+      - name: PRESTO_CONF_coordinator
+        value: "true"
+      - name: PRESTO_CONF_node___scheduler_include___coordinator
+        valueFrom:
+          configMapKeyRef:
+            key: node-scheduler-include-coordinator
+            name: presto-coordinator-config
+      - name: PRESTO_LOG_com_facebook_presto
+        valueFrom:
+          configMapKeyRef:
+            key: log-level
+            name: presto-coordinator-config
+      - name: PRESTO_CONF_task_concurrency
+        valueFrom:
+          configMapKeyRef:
+            key: task-concurrency
+            name: presto-coordinator-config
+            optional: true
+      - name: PRESTO_CONF_task_max___worker___threads
+        valueFrom:
+          configMapKeyRef:
+            key: task-max-worker-threads
+            name: presto-coordinator-config
+            optional: true
+      - name: PRESTO_CONF_task_min___drivers
+        valueFrom:
+          configMapKeyRef:
+            key: task-min-drivers
+            name: presto-coordinator-config
+            optional: true
+      - name: HIVE_CATALOG_hive_s3_aws___access___key
+        valueFrom:
+          secretKeyRef:
+            key: aws-access-key-id
+            name: presto-secrets
+            optional: true
+      - name: HIVE_CATALOG_hive_s3_aws___secret___key
+        valueFrom:
+          secretKeyRef:
+            key: aws-secret-access-key
+            name: presto-secrets
+            optional: true
+      - name: HIVE_CATALOG_hive_metastore_uri
+        valueFrom:
+          configMapKeyRef:
+            key: hive-metastore-uri
+            name: presto-common-config
+      - name: PRESTO_CONF_discovery_uri
+        valueFrom:
+          configMapKeyRef:
+            key: discovery-uri
+            name: presto-common-config
+      - name: PRESTO_NODE_node_environment
+        valueFrom:
+          configMapKeyRef:
+            key: environment
+            name: presto-common-config
+      - name: PRESTO_NODE_node_id
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: metadata.uid
+      - name: MY_NODE_NAME
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: spec.nodeName
+      - name: MY_POD_NAME
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: metadata.name
+      - name: MY_POD_NAMESPACE
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: metadata.namespace
+      - name: MY_MEM_REQUEST
+        valueFrom:
+          resourceFieldRef:
+            containerName: presto
+            divisor: "0"
+            resource: requests.memory
+      - name: MY_MEM_LIMIT
+        valueFrom:
+          resourceFieldRef:
+            containerName: presto
+            divisor: "0"
+            resource: limits.memory
+      - name: JAVA_MAX_MEM_RATIO
+        value: "50"
+      image: quay.io/coreos/chargeback-presto:0.6.1-latest
+      imagePullPolicy: Always
+      name: presto
+      ports:
+      - containerPort: 8080
+        name: http
+        protocol: TCP
+      - containerPort: 8082
+        name: prometheus-jmx
+        protocol: TCP
+      resources:
+        limits:
+          cpu: "1"
+          memory: 2Gi
+        requests:
+          cpu: 300m
+          memory: 1536Mi
+      securityContext:
+        capabilities:
+          drop:
+          - KILL
+          - MKNOD
+          - SETGID
+          - SETUID
+        runAsUser: 1000230000
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/presto/data
+        name: presto-data
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: presto-token-sd5x4
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    imagePullSecrets:
+    - name: presto-dockercfg-hcv4b
+    nodeName: qe-jialiu310-node-1
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext:
+      fsGroup: 1000230000
+      runAsNonRoot: true
+      seLinuxOptions:
+        level: s0:c15,c10
+    serviceAccount: presto
+    serviceAccountName: presto
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoSchedule
+      key: node.kubernetes.io/memory-pressure
+      operator: Exists
+    volumes:
+    - emptyDir: {}
+      name: presto-data
+    - name: presto-token-sd5x4
+      secret:
+        defaultMode: 420
+        secretName: presto-token-sd5x4
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: 2018-08-01T22:36:25Z
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: 2018-08-01T22:36:30Z
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: 2018-08-01T22:36:25Z
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: cri-o://7d14633716ef53212a588bb5e567fc0c5b54148a84a62baede83367163169501
+      image: quay.io/coreos/chargeback-presto:0.6.1-latest
+      imageID: quay.io/coreos/chargeback-presto@sha256:4f1af0cedd7fd31afa027c05d2d811a7a06a147fea3abe8b7a09da1acadbb111
+      lastState: {}
+      name: presto
+      ready: true
+      restartCount: 0
+      state:
+        running:
+          startedAt: 2018-08-01T22:36:29Z
+    hostIP: 172.16.120.103
+    phase: Running
+    podIP: 10.130.0.18
+    qosClass: Burstable
+    startTime: 2018-08-01T22:36:25Z
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""

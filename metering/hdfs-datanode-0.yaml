@@ -1,0 +1,243 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    hdfs-configmap-hash: 3420b8dd32e9e52b181d85bfcfc5046b4f264b48e26529b3d6af7c92c9d0b12b
+    openshift.io/scc: restricted
+  creationTimestamp: 2018-08-01T22:36:25Z
+  generateName: hdfs-datanode-
+  labels:
+    app: hdfs-datanode
+    controller-revision-hash: hdfs-datanode-7b6c9557fd
+    statefulset.kubernetes.io/pod-name: hdfs-datanode-0
+  name: hdfs-datanode-0
+  namespace: openshift-metering
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: StatefulSet
+    name: hdfs-datanode
+    uid: 5297eceb-95db-11e8-9edc-fa163ef4231c
+  resourceVersion: "90193"
+  selfLink: /api/v1/namespaces/openshift-metering/pods/hdfs-datanode-0
+  uid: 52ab5a33-95db-11e8-9edc-fa163ef4231c
+spec:
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchExpressions:
+          - key: app
+            operator: In
+            values:
+            - hdfs-datanode
+        topologyKey: kubernetes.io/hostname
+  containers:
+  - args:
+    - datanode-entrypoint.sh
+    env:
+    - name: CORE_CONF_fs_defaultFS
+      valueFrom:
+        configMapKeyRef:
+          key: default-fs
+          name: hdfs-config
+    - name: HDFS_CONF_dfs_datanode_data_dir_perm
+      valueFrom:
+        configMapKeyRef:
+          key: datanode-data-dir-perms
+          name: hdfs-config
+    - name: HADOOP_LOGLEVEL
+      valueFrom:
+        configMapKeyRef:
+          key: log-level
+          name: hdfs-config
+    - name: MY_NODE_NAME
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: spec.nodeName
+    - name: MY_POD_NAME
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: metadata.name
+    - name: MY_POD_NAMESPACE
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: metadata.namespace
+    - name: MY_MEM_REQUEST
+      valueFrom:
+        resourceFieldRef:
+          containerName: hdfs-datanode
+          divisor: "0"
+          resource: requests.memory
+    - name: MY_MEM_LIMIT
+      valueFrom:
+        resourceFieldRef:
+          containerName: hdfs-datanode
+          divisor: "0"
+          resource: limits.memory
+    - name: JAVA_MAX_MEM_RATIO
+      value: "50"
+    image: quay.io/coreos/chargeback-hadoop:0.6.1-latest
+    imagePullPolicy: Always
+    livenessProbe:
+      exec:
+        command:
+        - check-datanode-healthy.sh
+      failureThreshold: 2
+      initialDelaySeconds: 90
+      periodSeconds: 30
+      successThreshold: 1
+      timeoutSeconds: 1
+    name: hdfs-datanode
+    ports:
+    - containerPort: 50010
+      name: fs
+      protocol: TCP
+    - containerPort: 50075
+      name: http
+      protocol: TCP
+    resources:
+      limits:
+        cpu: 250m
+        memory: 250Mi
+      requests:
+        cpu: 250m
+        memory: 250Mi
+    securityContext:
+      capabilities:
+        drop:
+        - KILL
+        - MKNOD
+        - SETGID
+        - SETUID
+      runAsUser: 1000230000
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /hadoop/dfs/data
+      name: hdfs-datanode-data
+      subPath: hadoop/dfs/data
+    - mountPath: /hadoop/dfs/name
+      name: namenode-empty
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: hdfs-token-rpg6t
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  hostname: hdfs-datanode-0
+  imagePullSecrets:
+  - name: hdfs-dockercfg-8hhrt
+  initContainers:
+  - command:
+    - /bin/bash
+    - -c
+    - until host $NAMENODE_HOST; do echo waiting for $NAMENODE_HOST; sleep 2; done;
+    env:
+    - name: NAMENODE_HOST
+      valueFrom:
+        configMapKeyRef:
+          key: namenode-host
+          name: hdfs-config
+    image: quay.io/coreos/chargeback-hadoop:0.6.1-latest
+    imagePullPolicy: Always
+    name: wait-for-namenode
+    resources:
+      limits:
+        cpu: 50m
+        memory: 50Mi
+      requests:
+        cpu: 10m
+        memory: 5Mi
+    securityContext:
+      capabilities:
+        drop:
+        - KILL
+        - MKNOD
+        - SETGID
+        - SETUID
+      runAsUser: 1000230000
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /hadoop/dfs/data
+      name: hdfs-datanode-data
+      subPath: hadoop/dfs/data
+    - mountPath: /hadoop/dfs/name
+      name: namenode-empty
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: hdfs-token-rpg6t
+      readOnly: true
+  nodeName: qe-jialiu310-node-infra-1
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext:
+    fsGroup: 1000230000
+    runAsNonRoot: true
+    seLinuxOptions:
+      level: s0:c15,c10
+  serviceAccount: hdfs
+  serviceAccountName: hdfs
+  subdomain: hdfs-datanode
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoSchedule
+    key: node.kubernetes.io/memory-pressure
+    operator: Exists
+  volumes:
+  - name: hdfs-datanode-data
+    persistentVolumeClaim:
+      claimName: hdfs-datanode-data-hdfs-datanode-0
+  - emptyDir: {}
+    name: namenode-empty
+  - name: hdfs-token-rpg6t
+    secret:
+      defaultMode: 420
+      secretName: hdfs-token-rpg6t
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: 2018-08-01T22:36:49Z
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: 2018-08-01T22:36:52Z
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: 2018-08-01T22:36:26Z
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: cri-o://bb618377d2e1f6c8d37179ce8537d8563041f1f7910ee9cbbcdd401ec974baa8
+    image: quay.io/coreos/chargeback-hadoop:0.6.1-latest
+    imageID: quay.io/coreos/chargeback-hadoop@sha256:2152e44a0e34376e777fe35108ded9cf7e6a059cbdb5dcbda099af901a823d63
+    lastState: {}
+    name: hdfs-datanode
+    ready: true
+    restartCount: 0
+    state:
+      running:
+        startedAt: 2018-08-01T22:36:51Z
+  hostIP: 172.16.120.92
+  initContainerStatuses:
+  - containerID: cri-o://bcf0dc3610bfc23d38c9b41a250aae0fc73c11604f5873c6ad1d5e955f0e51be
+    image: quay.io/coreos/chargeback-hadoop:0.6.1-latest
+    imageID: quay.io/coreos/chargeback-hadoop@sha256:2152e44a0e34376e777fe35108ded9cf7e6a059cbdb5dcbda099af901a823d63
+    lastState: {}
+    name: wait-for-namenode
+    ready: true
+    restartCount: 0
+    state:
+      terminated:
+        containerID: cri-o://bcf0dc3610bfc23d38c9b41a250aae0fc73c11604f5873c6ad1d5e955f0e51be
+        exitCode: 0
+        finishedAt: 2018-08-01T22:36:48Z
+        reason: Completed
+        startedAt: 2018-08-01T22:36:47Z
+  phase: Running
+  podIP: 10.129.0.12
+  qosClass: Guaranteed
+  startTime: 2018-08-01T22:36:26Z

@@ -1,0 +1,230 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    hive-common-configmap-hash: 50f1cb73b224e8e8d51680fb6fe1979cf9d1245bfbc5e8a4a47f714b34f70530
+    hive-common-secret-hash: 7919e383126bfcafbfe3a2c63048ffc9569a11454a1c72aca80954fda78417ab
+    hive-server-configmap-hash: 8b44e3f0dca71817376bec1c63f85a9b18a1747d219b7736786a4af619c3cea1
+    openshift.io/scc: restricted
+    presto-secrets-hash: 8f2f3af33465cf2cb6a2482af0070a355ac62e56d011f45754c9c80d5effc009
+  creationTimestamp: 2018-08-01T22:36:25Z
+  generateName: hive-server-
+  labels:
+    app: hive
+    controller-revision-hash: hive-server-7b6df74968
+    hive: server
+    statefulset.kubernetes.io/pod-name: hive-server-0
+  name: hive-server-0
+  namespace: openshift-metering
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: StatefulSet
+    name: hive-server
+    uid: 52b558db-95db-11e8-9edc-fa163ef4231c
+  resourceVersion: "90123"
+  selfLink: /api/v1/namespaces/openshift-metering/pods/hive-server-0
+  uid: 52d15845-95db-11e8-9edc-fa163ef4231c
+spec:
+  containers:
+  - args:
+    - --service
+    - hiveserver2
+    env:
+    - name: HIVE_LOGLEVEL
+      valueFrom:
+        configMapKeyRef:
+          key: log-level
+          name: hive-server-config
+    - name: CORE_CONF_fs_defaultFS
+      valueFrom:
+        configMapKeyRef:
+          key: default-fs
+          name: hive-common-config
+          optional: true
+    - name: CORE_CONF_fs_s3a_access_key
+      valueFrom:
+        secretKeyRef:
+          key: aws-access-key-id
+          name: presto-secrets
+          optional: true
+    - name: CORE_CONF_fs_s3a_secret_key
+      valueFrom:
+        secretKeyRef:
+          key: aws-secret-access-key
+          name: presto-secrets
+          optional: true
+    - name: HIVE_SITE_CONF_hive_metastore_uris
+      valueFrom:
+        configMapKeyRef:
+          key: metastore-uris
+          name: hive-common-config
+    - name: HIVE_SITE_CONF_javax_jdo_option_ConnectionURL
+      valueFrom:
+        configMapKeyRef:
+          key: db-connection-url
+          name: hive-common-config
+    - name: HIVE_SITE_CONF_javax_jdo_option_ConnectionDriverName
+      valueFrom:
+        configMapKeyRef:
+          key: db-connection-driver
+          name: hive-common-config
+    - name: HIVE_SITE_CONF_javax_jdo_option_ConnectionUserName
+      valueFrom:
+        secretKeyRef:
+          key: db-connection-username
+          name: hive-common-secrets
+          optional: true
+    - name: HIVE_SITE_CONF_javax_jdo_option_ConnectionPassword
+      valueFrom:
+        secretKeyRef:
+          key: db-connection-password
+          name: hive-common-secrets
+          optional: true
+    - name: HIVE_SITE_CONF_hive_metastore_schema_verification
+      valueFrom:
+        configMapKeyRef:
+          key: enable-metastore-schema-verification
+          name: hive-common-config
+    - name: HIVE_SITE_CONF_datanucleus_schema_autoCreateAll
+      valueFrom:
+        configMapKeyRef:
+          key: auto-create-metastore-schema
+          name: hive-common-config
+    - name: HIVE_SITE_CONF_hive_default_fileformat
+      valueFrom:
+        configMapKeyRef:
+          key: default-file-format
+          name: hive-common-config
+    - name: MY_NODE_NAME
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: spec.nodeName
+    - name: MY_POD_NAME
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: metadata.name
+    - name: MY_POD_NAMESPACE
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: metadata.namespace
+    - name: JAVA_MAX_MEM_RATIO
+      value: "50"
+    - name: MY_MEM_REQUEST
+      valueFrom:
+        resourceFieldRef:
+          containerName: hiveserver2
+          divisor: "0"
+          resource: requests.memory
+    - name: MY_MEM_LIMIT
+      valueFrom:
+        resourceFieldRef:
+          containerName: hiveserver2
+          divisor: "0"
+          resource: limits.memory
+    image: quay.io/coreos/chargeback-hive:0.6.1-latest
+    imagePullPolicy: Always
+    name: hiveserver2
+    ports:
+    - containerPort: 10000
+      name: thrift
+      protocol: TCP
+    - containerPort: 10002
+      name: ui
+      protocol: TCP
+    resources:
+      limits:
+        cpu: 100m
+        memory: 400Mi
+      requests:
+        cpu: 100m
+        memory: 400Mi
+    securityContext:
+      capabilities:
+        drop:
+        - KILL
+        - MKNOD
+        - SETGID
+        - SETUID
+      runAsUser: 1000230000
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/lib/hive
+      name: hive-metastore-db-data
+    - mountPath: /user/hive/warehouse
+      name: hive-warehouse
+    - mountPath: /hadoop/dfs/name
+      name: namenode-empty
+    - mountPath: /hadoop/dfs/data
+      name: datanode-empty
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: hive-token-cntff
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  hostname: hive-server-0
+  imagePullSecrets:
+  - name: hive-dockercfg-qbsxw
+  nodeName: qe-jialiu310-node-infra-1
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext:
+    fsGroup: 1000230000
+    runAsNonRoot: true
+    seLinuxOptions:
+      level: s0:c15,c10
+  serviceAccount: hive
+  serviceAccountName: hive
+  subdomain: hive-server
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoSchedule
+    key: node.kubernetes.io/memory-pressure
+    operator: Exists
+  volumes:
+  - emptyDir: {}
+    name: hive-warehouse
+  - emptyDir: {}
+    name: namenode-empty
+  - emptyDir: {}
+    name: datanode-empty
+  - emptyDir: {}
+    name: hive-metastore-db-data
+  - name: hive-token-cntff
+    secret:
+      defaultMode: 420
+      secretName: hive-token-cntff
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: 2018-08-01T22:36:25Z
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: 2018-08-01T22:36:30Z
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: 2018-08-01T22:36:25Z
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: cri-o://855f08dfd881041b563b8f35c4d855e0938a627fd953eb788bdbdb7517c0f669
+    image: quay.io/coreos/chargeback-hive:0.6.1-latest
+    imageID: quay.io/coreos/chargeback-hive@sha256:27749580fc6b51d9ea965698c7d419b6b2990524bd2183cb770069d2967b0216
+    lastState: {}
+    name: hiveserver2
+    ready: true
+    restartCount: 0
+    state:
+      running:
+        startedAt: 2018-08-01T22:36:30Z
+  hostIP: 172.16.120.92
+  phase: Running
+  podIP: 10.129.0.11
+  qosClass: Guaranteed
+  startTime: 2018-08-01T22:36:25Z

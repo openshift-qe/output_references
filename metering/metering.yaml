@@ -1,0 +1,210 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    metering-config-hash: c1bde5b15a82952e4d2591765b89f843c972d10440a7d911a3521f78b4b0a491
+    metering-secrets-hash: fe757a90803b4db8800dd77fa4bc90e3ce3809bc4beeda4506111e29e012358e
+    openshift.io/scc: restricted
+  creationTimestamp: 2018-08-01T22:36:25Z
+  generateName: metering-65d459978c-
+  labels:
+    app: metering
+    pod-template-hash: "2180155347"
+  name: metering-65d459978c-q25ml
+  namespace: openshift-metering
+  ownerReferences:
+  - apiVersion: extensions/v1beta1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: metering-65d459978c
+    uid: 528b26dd-95db-11e8-9edc-fa163ef4231c
+  resourceVersion: "90987"
+  selfLink: /api/v1/namespaces/openshift-metering/pods/metering-65d459978c-q25ml
+  uid: 5299ba4b-95db-11e8-9edc-fa163ef4231c
+spec:
+  containers:
+  - env:
+    - name: POD_NAME
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: metadata.name
+    - name: AWS_ACCESS_KEY_ID
+      valueFrom:
+        secretKeyRef:
+          key: aws-access-key-id
+          name: metering-secrets
+    - name: AWS_SECRET_ACCESS_KEY
+      valueFrom:
+        secretKeyRef:
+          key: aws-secret-access-key
+          name: metering-secrets
+    - name: CHARGEBACK_LOG_DML_QUERIES
+      valueFrom:
+        configMapKeyRef:
+          key: log-dml-queries
+          name: metering-config
+    - name: CHARGEBACK_LOG_DDL_QUERIES
+      valueFrom:
+        configMapKeyRef:
+          key: log-ddl-queries
+          name: metering-config
+    - name: CHARGEBACK_LOG_REPORT
+      valueFrom:
+        configMapKeyRef:
+          key: log-reports
+          name: metering-config
+    - name: CHARGEBACK_PROMETHEUS_HOST
+      valueFrom:
+        configMapKeyRef:
+          key: prometheus-url
+          name: metering-config
+    - name: CHARGEBACK_PROMSUM_INTERVAL
+      valueFrom:
+        configMapKeyRef:
+          key: promsum-poll-interval
+          name: metering-config
+    - name: CHARGEBACK_PROMSUM_CHUNK_SIZE
+      valueFrom:
+        configMapKeyRef:
+          key: promsum-chunk-size
+          name: metering-config
+    - name: CHARGEBACK_PROMSUM_STEP_SIZE
+      valueFrom:
+        configMapKeyRef:
+          key: promsum-step-size
+          name: metering-config
+    - name: CHARGEBACK_DISABLE_PROMSUM
+      valueFrom:
+        configMapKeyRef:
+          key: disable-promsum
+          name: metering-config
+    - name: CHARGEBACK_PRESTO_HOST
+      valueFrom:
+        configMapKeyRef:
+          key: presto-host
+          name: metering-config
+    - name: CHARGEBACK_HIVE_HOST
+      valueFrom:
+        configMapKeyRef:
+          key: hive-host
+          name: metering-config
+    - name: CHARGEBACK_LEASE_DURATION
+      valueFrom:
+        configMapKeyRef:
+          key: leader-lease-duration
+          name: metering-config
+    image: quay.io/coreos/chargeback:0.6.1-latest
+    imagePullPolicy: Always
+    livenessProbe:
+      failureThreshold: 5
+      httpGet:
+        path: /healthy
+        port: 8080
+        scheme: HTTP
+      initialDelaySeconds: 120
+      periodSeconds: 60
+      successThreshold: 1
+      timeoutSeconds: 60
+    name: metering
+    ports:
+    - containerPort: 8080
+      name: http
+      protocol: TCP
+    - containerPort: 6060
+      name: pprof
+      protocol: TCP
+    - containerPort: 8082
+      name: metrics
+      protocol: TCP
+    readinessProbe:
+      failureThreshold: 6
+      httpGet:
+        path: /ready
+        port: 8080
+        scheme: HTTP
+      initialDelaySeconds: 60
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 60
+    resources:
+      limits:
+        cpu: 100m
+        memory: 150Mi
+      requests:
+        cpu: 50m
+        memory: 50Mi
+    securityContext:
+      capabilities:
+        drop:
+        - KILL
+        - MKNOD
+        - SETGID
+        - SETUID
+      runAsUser: 1000230000
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: metering-token-fb4x4
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  imagePullSecrets:
+  - name: metering-dockercfg-wxzqt
+  nodeName: qe-jialiu310-node-1
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext:
+    fsGroup: 1000230000
+    runAsNonRoot: true
+    seLinuxOptions:
+      level: s0:c15,c10
+  serviceAccount: metering
+  serviceAccountName: metering
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoSchedule
+    key: node.kubernetes.io/memory-pressure
+    operator: Exists
+  volumes:
+  - name: metering-token-fb4x4
+    secret:
+      defaultMode: 420
+      secretName: metering-token-fb4x4
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: 2018-08-01T22:36:25Z
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: 2018-08-01T22:42:35Z
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: 2018-08-01T22:36:25Z
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: cri-o://6cc395ac4ff85e29efef124d62b5ecbb70080e1e27b27fff8bc81c11a279a4df
+    image: quay.io/coreos/chargeback:0.6.1-latest
+    imageID: quay.io/coreos/chargeback@sha256:4002c899090ec8c83dd0a75ef7c090dc0ae774ba56d991f9646e351b22fe3b18
+    lastState:
+      terminated:
+        containerID: cri-o://7c25456f1a67f7508cbd6a80ea3ab126d9eb4c93c2b5913f6b0c1af14cbd0195
+        exitCode: 1
+        finishedAt: 2018-08-01T22:39:41Z
+        reason: Error
+        startedAt: 2018-08-01T22:36:40Z
+    name: metering
+    ready: true
+    restartCount: 1
+    state:
+      running:
+        startedAt: 2018-08-01T22:39:45Z
+  hostIP: 172.16.120.103
+  phase: Running
+  podIP: 10.130.0.19
+  qosClass: Burstable
+  startTime: 2018-08-01T22:36:25Z

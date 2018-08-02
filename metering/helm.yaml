@@ -1,0 +1,198 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    openshift.io/scc: restricted
+  creationTimestamp: 2018-08-01T22:32:57Z
+  generateName: metering-helm-operator-6c5757bf4c-
+  labels:
+    app: metering-helm-operator
+    pod-template-hash: "2713136907"
+  name: metering-helm-operator-6c5757bf4c-p8znf
+  namespace: openshift-metering
+  ownerReferences:
+  - apiVersion: extensions/v1beta1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: metering-helm-operator-6c5757bf4c
+    uid: d0bcbb0e-95da-11e8-9edc-fa163ef4231c
+  resourceVersion: "90822"
+  selfLink: /api/v1/namespaces/openshift-metering/pods/metering-helm-operator-6c5757bf4c-p8znf
+  uid: d6e5ae57-95da-11e8-9edc-fa163ef4231c
+spec:
+  containers:
+  - args:
+    - run-operator.sh
+    env:
+    - name: HELM_RELEASE_CRD_NAME
+      value: Metering
+    - name: HELM_RELEASE_CRD_API_GROUP
+      value: chargeback.coreos.com
+    - name: HELM_CHART_PATH
+      value: /openshift-metering-0.1.0.tgz
+    - name: MY_POD_NAME
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: metadata.name
+    - name: MY_POD_NAMESPACE
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: metadata.namespace
+    - name: HELM_HOST
+      value: 127.0.0.1:44134
+    - name: HELM_WAIT
+      value: "false"
+    - name: HELM_RECONCILE_INTERVAL_SECONDS
+      value: "30"
+    - name: RELEASE_HISTORY_LIMIT
+      value: "3"
+    image: quay.io/coreos/chargeback-helm-operator:0.6.1-latest
+    imagePullPolicy: Always
+    name: metering-helm-operator
+    resources:
+      limits:
+        cpu: 50m
+        memory: 25Mi
+      requests:
+        cpu: 50m
+        memory: 25Mi
+    securityContext:
+      capabilities:
+        drop:
+        - KILL
+        - MKNOD
+        - SETGID
+        - SETUID
+      runAsUser: 1000230000
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: metering-helm-operator-token-2dt4t
+      readOnly: true
+  - args:
+    - /tiller
+    env:
+    - name: TILLER_NAMESPACE
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: metadata.namespace
+    - name: TILLER_HISTORY_MAX
+      value: "3"
+    image: quay.io/coreos/chargeback-helm-operator:0.6.1-latest
+    imagePullPolicy: Always
+    livenessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /liveness
+        port: 44135
+        scheme: HTTP
+      initialDelaySeconds: 1
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 1
+    name: tiller
+    readinessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /readiness
+        port: 44135
+        scheme: HTTP
+      initialDelaySeconds: 1
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 1
+    resources:
+      limits:
+        cpu: 50m
+        memory: 100Mi
+      requests:
+        cpu: 50m
+        memory: 50Mi
+    securityContext:
+      capabilities:
+        drop:
+        - KILL
+        - MKNOD
+        - SETGID
+        - SETUID
+      runAsUser: 1000230000
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: metering-helm-operator-token-2dt4t
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  imagePullSecrets:
+  - name: metering-helm-operator-dockercfg-mf9j8
+  nodeName: qe-jialiu310-node-1
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext:
+    fsGroup: 1000230000
+    runAsNonRoot: true
+    seLinuxOptions:
+      level: s0:c15,c10
+  serviceAccount: metering-helm-operator
+  serviceAccountName: metering-helm-operator
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoSchedule
+    key: node.kubernetes.io/memory-pressure
+    operator: Exists
+  volumes:
+  - name: metering-helm-operator-token-2dt4t
+    secret:
+      defaultMode: 420
+      secretName: metering-helm-operator-token-2dt4t
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: 2018-08-01T22:32:57Z
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: 2018-08-01T22:41:29Z
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: 2018-08-01T22:32:57Z
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: cri-o://6f83e155ad83111e8a4255c4569c1172bd7b3889043eddf770068db1eb7bdb5c
+    image: quay.io/coreos/chargeback-helm-operator:0.6.1-latest
+    imageID: quay.io/coreos/chargeback-helm-operator@sha256:5b217bdfd91f6db902bf04b39eab3232d6dff19f3720084195cc0d5193e82f7e
+    lastState:
+      terminated:
+        containerID: cri-o://f202315fd62c98fe2092913561bc4aa83bfc69458be43d628002b3caa53a5eed
+        exitCode: 1
+        finishedAt: 2018-08-01T22:41:25Z
+        reason: Error
+        startedAt: 2018-08-01T22:33:03Z
+    name: metering-helm-operator
+    ready: true
+    restartCount: 1
+    state:
+      running:
+        startedAt: 2018-08-01T22:41:28Z
+  - containerID: cri-o://c1471d5d0dacfefd08f92b9a9fbac0285dc780fa4913b24fb9a95c5726664630
+    image: quay.io/coreos/chargeback-helm-operator:0.6.1-latest
+    imageID: quay.io/coreos/chargeback-helm-operator@sha256:5b217bdfd91f6db902bf04b39eab3232d6dff19f3720084195cc0d5193e82f7e
+    lastState: {}
+    name: tiller
+    ready: true
+    restartCount: 0
+    state:
+      running:
+        startedAt: 2018-08-01T22:33:06Z
+  hostIP: 172.16.120.103
+  phase: Running
+  podIP: 10.130.0.17
+  qosClass: Burstable
+  startTime: 2018-08-01T22:32:57Z
