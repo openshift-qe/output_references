@@ -1,0 +1,13 @@
+[root@pruan-311-metering-preserve-merrn-1 ~]# oc get pod -n openshift-monitoring --show-labels
+NAME                                           READY     STATUS    RESTARTS   AGE       LABELS
+alertmanager-main-0                            3/3       Running   0          18h       alertmanager=main,app=alertmanager,controller-revision-hash=alertmanager-main-77f4f8bdcf,statefulset.kubernetes.io/pod-name=alertmanager-main-0
+alertmanager-main-1                            3/3       Running   0          18h       alertmanager=main,app=alertmanager,controller-revision-hash=alertmanager-main-77f4f8bdcf,statefulset.kubernetes.io/pod-name=alertmanager-main-1
+alertmanager-main-2                            3/3       Running   0          18h       alertmanager=main,app=alertmanager,controller-revision-hash=alertmanager-main-77f4f8bdcf,statefulset.kubernetes.io/pod-name=alertmanager-main-2
+cluster-monitoring-operator-7f86544467-6g58v   1/1       Running   0          18h       app=cluster-monitoring-operator,pod-template-hash=3942100023
+grafana-5ff67776b9-9tr4c                       2/2       Running   0          18h       app=grafana,pod-template-hash=1992333265
+kube-state-metrics-55cdcdc55c-q6bvb            3/3       Running   0          18h       app=kube-state-metrics,pod-template-hash=1178787117
+node-exporter-4z7sg                            2/2       Running   0          18h       app=node-exporter,controller-revision-hash=1398285717,pod-template-generation=1
+prometheus-k8s-0                               4/4       Running   1          18h       app=prometheus,controller-revision-hash=prometheus-k8s-5cb4b87c5b,prometheus=k8s,statefulset.kubernetes.io/pod-name=prometheus-k8s-0
+prometheus-k8s-1                               4/4       Running   1          18h       app=prometheus,controller-revision-hash=prometheus-k8s-5cb4b87c5b,prometheus=k8s,statefulset.kubernetes.io/pod-name=prometheus-k8s-1
+prometheus-operator-796d5d8d47-rgzqw           1/1       Running   0          18h       k8s-app=prometheus-operator,pod-template-hash=3528184803
+
