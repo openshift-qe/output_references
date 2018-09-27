@@ -1,0 +1,226 @@
+apiVersion: v1
+items:
+- apiVersion: metering.openshift.io/v1alpha1
+  kind: ReportPrometheusQuery
+  metadata:
+    creationTimestamp: 2018-09-27T00:01:48Z
+    generation: 1
+    labels:
+      operator-metering: "true"
+    name: node-allocatable-cpu-cores
+    namespace: openshift-metering
+    ownerReferences:
+    - apiVersion: metering.openshift.io/v1alpha1
+      blockOwnerDeletion: false
+      controller: true
+      kind: Metering
+      name: openshift-metering
+      uid: 4f0bca4f-c1e8-11e8-aa1e-fa163ecc7747
+    resourceVersion: "34355"
+    selfLink: /apis/metering.openshift.io/v1alpha1/namespaces/openshift-metering/reportprometheusqueries/node-allocatable-cpu-cores
+    uid: 875c0e89-c1e8-11e8-aa1e-fa163ecc7747
+  spec:
+    query: |
+      kube_node_status_allocatable_cpu_cores * on(node) group_left(provider_id) max(kube_node_info) by (node, provider_id)
+- apiVersion: metering.openshift.io/v1alpha1
+  kind: ReportPrometheusQuery
+  metadata:
+    creationTimestamp: 2018-09-27T00:01:48Z
+    generation: 1
+    labels:
+      operator-metering: "true"
+    name: node-allocatable-memory-bytes
+    namespace: openshift-metering
+    ownerReferences:
+    - apiVersion: metering.openshift.io/v1alpha1
+      blockOwnerDeletion: false
+      controller: true
+      kind: Metering
+      name: openshift-metering
+      uid: 4f0bca4f-c1e8-11e8-aa1e-fa163ecc7747
+    resourceVersion: "34343"
+    selfLink: /apis/metering.openshift.io/v1alpha1/namespaces/openshift-metering/reportprometheusqueries/node-allocatable-memory-bytes
+    uid: 87515c8c-c1e8-11e8-aa1e-fa163ecc7747
+  spec:
+    query: |
+      kube_node_status_allocatable_memory_bytes * on(node) group_left(provider_id) max(kube_node_info) by (node, provider_id)
+- apiVersion: metering.openshift.io/v1alpha1
+  kind: ReportPrometheusQuery
+  metadata:
+    creationTimestamp: 2018-09-27T00:01:48Z
+    generation: 1
+    labels:
+      operator-metering: "true"
+    name: node-capacity-cpu-cores
+    namespace: openshift-metering
+    ownerReferences:
+    - apiVersion: metering.openshift.io/v1alpha1
+      blockOwnerDeletion: false
+      controller: true
+      kind: Metering
+      name: openshift-metering
+      uid: 4f0bca4f-c1e8-11e8-aa1e-fa163ecc7747
+    resourceVersion: "34357"
+    selfLink: /apis/metering.openshift.io/v1alpha1/namespaces/openshift-metering/reportprometheusqueries/node-capacity-cpu-cores
+    uid: 875d97fc-c1e8-11e8-aa1e-fa163ecc7747
+  spec:
+    query: |
+      kube_node_status_capacity_cpu_cores * on(node) group_left(provider_id) max(kube_node_info) by (node, provider_id)
+- apiVersion: metering.openshift.io/v1alpha1
+  kind: ReportPrometheusQuery
+  metadata:
+    creationTimestamp: 2018-09-27T00:01:48Z
+    generation: 1
+    labels:
+      operator-metering: "true"
+    name: node-capacity-memory-bytes
+    namespace: openshift-metering
+    ownerReferences:
+    - apiVersion: metering.openshift.io/v1alpha1
+      blockOwnerDeletion: false
+      controller: true
+      kind: Metering
+      name: openshift-metering
+      uid: 4f0bca4f-c1e8-11e8-aa1e-fa163ecc7747
+    resourceVersion: "34356"
+    selfLink: /apis/metering.openshift.io/v1alpha1/namespaces/openshift-metering/reportprometheusqueries/node-capacity-memory-bytes
+    uid: 875cbb1d-c1e8-11e8-aa1e-fa163ecc7747
+  spec:
+    query: |
+      kube_node_status_capacity_memory_bytes * on(node) group_left(provider_id) max(kube_node_info) by (node, provider_id)
+- apiVersion: metering.openshift.io/v1alpha1
+  kind: ReportPrometheusQuery
+  metadata:
+    creationTimestamp: 2018-09-27T00:01:48Z
+    generation: 1
+    labels:
+      operator-metering: "true"
+    name: pod-limit-cpu-cores
+    namespace: openshift-metering
+    ownerReferences:
+    - apiVersion: metering.openshift.io/v1alpha1
+      blockOwnerDeletion: false
+      controller: true
+      kind: Metering
+      name: openshift-metering
+      uid: 4f0bca4f-c1e8-11e8-aa1e-fa163ecc7747
+    resourceVersion: "34359"
+    selfLink: /apis/metering.openshift.io/v1alpha1/namespaces/openshift-metering/reportprometheusqueries/pod-limit-cpu-cores
+    uid: 875ecb99-c1e8-11e8-aa1e-fa163ecc7747
+  spec:
+    query: |
+      sum(kube_pod_container_resource_limits_cpu_cores) by (pod, namespace, node)
+- apiVersion: metering.openshift.io/v1alpha1
+  kind: ReportPrometheusQuery
+  metadata:
+    creationTimestamp: 2018-09-27T00:01:48Z
+    generation: 1
+    labels:
+      operator-metering: "true"
+    name: pod-limit-memory-bytes
+    namespace: openshift-metering
+    ownerReferences:
+    - apiVersion: metering.openshift.io/v1alpha1
+      blockOwnerDeletion: false
+      controller: true
+      kind: Metering
+      name: openshift-metering
+      uid: 4f0bca4f-c1e8-11e8-aa1e-fa163ecc7747
+    resourceVersion: "34361"
+    selfLink: /apis/metering.openshift.io/v1alpha1/namespaces/openshift-metering/reportprometheusqueries/pod-limit-memory-bytes
+    uid: 876004e8-c1e8-11e8-aa1e-fa163ecc7747
+  spec:
+    query: |
+      sum(kube_pod_container_resource_limits_memory_bytes) by (pod, namespace, node)
+- apiVersion: metering.openshift.io/v1alpha1
+  kind: ReportPrometheusQuery
+  metadata:
+    creationTimestamp: 2018-09-27T00:01:48Z
+    generation: 1
+    labels:
+      operator-metering: "true"
+    name: pod-request-cpu-cores
+    namespace: openshift-metering
+    ownerReferences:
+    - apiVersion: metering.openshift.io/v1alpha1
+      blockOwnerDeletion: false
+      controller: true
+      kind: Metering
+      name: openshift-metering
+      uid: 4f0bca4f-c1e8-11e8-aa1e-fa163ecc7747
+    resourceVersion: "34358"
+    selfLink: /apis/metering.openshift.io/v1alpha1/namespaces/openshift-metering/reportprometheusqueries/pod-request-cpu-cores
+    uid: 875e11c5-c1e8-11e8-aa1e-fa163ecc7747
+  spec:
+    query: |
+      sum(kube_pod_container_resource_requests_cpu_cores) by (pod, namespace, node)
+- apiVersion: metering.openshift.io/v1alpha1
+  kind: ReportPrometheusQuery
+  metadata:
+    creationTimestamp: 2018-09-27T00:01:48Z
+    generation: 1
+    labels:
+      operator-metering: "true"
+    name: pod-request-memory-bytes
+    namespace: openshift-metering
+    ownerReferences:
+    - apiVersion: metering.openshift.io/v1alpha1
+      blockOwnerDeletion: false
+      controller: true
+      kind: Metering
+      name: openshift-metering
+      uid: 4f0bca4f-c1e8-11e8-aa1e-fa163ecc7747
+    resourceVersion: "34363"
+    selfLink: /apis/metering.openshift.io/v1alpha1/namespaces/openshift-metering/reportprometheusqueries/pod-request-memory-bytes
+    uid: 87618a0a-c1e8-11e8-aa1e-fa163ecc7747
+  spec:
+    query: |
+      sum(kube_pod_container_resource_requests_memory_bytes) by (pod, namespace, node)
+- apiVersion: metering.openshift.io/v1alpha1
+  kind: ReportPrometheusQuery
+  metadata:
+    creationTimestamp: 2018-09-27T00:01:48Z
+    generation: 1
+    labels:
+      operator-metering: "true"
+    name: pod-usage-cpu-cores
+    namespace: openshift-metering
+    ownerReferences:
+    - apiVersion: metering.openshift.io/v1alpha1
+      blockOwnerDeletion: false
+      controller: true
+      kind: Metering
+      name: openshift-metering
+      uid: 4f0bca4f-c1e8-11e8-aa1e-fa163ecc7747
+    resourceVersion: "34360"
+    selfLink: /apis/metering.openshift.io/v1alpha1/namespaces/openshift-metering/reportprometheusqueries/pod-usage-cpu-cores
+    uid: 875f5995-c1e8-11e8-aa1e-fa163ecc7747
+  spec:
+    query: |
+      label_replace(sum(rate(container_cpu_usage_seconds_total{container_name!="POD",pod_name!=""}[1m])) BY (pod_name, namespace), "pod", "$1", "pod_name", "(.*)") + on (pod, namespace) group_left(node) (sum(kube_pod_info{pod_ip!="",node!="",host_ip!=""}) by (pod, namespace, node) * 0)
+- apiVersion: metering.openshift.io/v1alpha1
+  kind: ReportPrometheusQuery
+  metadata:
+    creationTimestamp: 2018-09-27T00:01:48Z
+    generation: 1
+    labels:
+      operator-metering: "true"
+    name: pod-usage-memory-bytes
+    namespace: openshift-metering
+    ownerReferences:
+    - apiVersion: metering.openshift.io/v1alpha1
+      blockOwnerDeletion: false
+      controller: true
+      kind: Metering
+      name: openshift-metering
+      uid: 4f0bca4f-c1e8-11e8-aa1e-fa163ecc7747
+    resourceVersion: "34362"
+    selfLink: /apis/metering.openshift.io/v1alpha1/namespaces/openshift-metering/reportprometheusqueries/pod-usage-memory-bytes
+    uid: 8760ce65-c1e8-11e8-aa1e-fa163ecc7747
+  spec:
+    query: |
+      sum(label_replace(container_memory_usage_bytes{container_name!="POD", container_name!=""}, "pod", "$1", "pod_name", "(.*)")) by (pod, namespace) + on (pod, namespace) group_left(node) (sum(kube_pod_info{pod_ip!="",node!="",host_ip!=""}) by (pod, namespace, node) * 0)
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""

@@ -1,0 +1,42 @@
+apiVersion: v1
+items:
+- apiVersion: metering.openshift.io/v1alpha1
+  kind: Report
+  metadata:
+    creationTimestamp: 2018-09-27T04:39:31Z
+    generation: 1
+    name: namespace-cpu-request
+    namespace: openshift-metering
+    resourceVersion: "75327"
+    selfLink: /apis/metering.openshift.io/v1alpha1/namespaces/openshift-metering/reports/namespace-cpu-request
+    uid: 536a4f2a-c20f-11e8-aa1e-fa163ecc7747
+  spec:
+    generationQuery: namespace-cpu-request
+    reportingEnd: 2018-12-30T23:59:59Z
+    reportingStart: 2018-01-01T00:00:00Z
+    runImmediately: true
+  status:
+    phase: Finished
+    table_name: report_namespace_cpu_request
+- apiVersion: metering.openshift.io/v1alpha1
+  kind: Report
+  metadata:
+    creationTimestamp: 2018-09-27T19:10:11Z
+    generation: 1
+    name: pod-cpu-request
+    namespace: openshift-metering
+    resourceVersion: "203313"
+    selfLink: /apis/metering.openshift.io/v1alpha1/namespaces/openshift-metering/reports/pod-cpu-request
+    uid: f5209f76-c288-11e8-aa1e-fa163ecc7747
+  spec:
+    generationQuery: pod-cpu-request
+    reportingEnd: 2018-12-30T23:59:59Z
+    reportingStart: 2018-01-01T00:00:00Z
+    runImmediately: true
+  status:
+    phase: Finished
+    table_name: report_pod_cpu_request
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""
