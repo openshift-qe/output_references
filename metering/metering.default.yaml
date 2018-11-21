@@ -1,0 +1,11 @@
+apiVersion: metering.openshift.io/v1alpha1
+kind: Metering
+metadata:
+  creationTimestamp: 2018-11-21T20:15:16Z
+  generation: 1
+  name: openshift-metering
+  namespace: openshift-metering
+  resourceVersion: "14273"
+  selfLink: /apis/metering.openshift.io/v1alpha1/namespaces/openshift-metering/meterings/openshift-metering
+  uid: 2951a426-edca-11e8-9c0e-fa163e6924d6
+spec: null
