@@ -1,0 +1,39 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    openshift.io/host.generated: "true"
+  creationTimestamp: 2018-11-26T21:17:16Z
+  name: metering
+  namespace: openshift-metering
+  ownerReferences:
+  - apiVersion: metering.openshift.io/v1alpha1
+    blockOwnerDeletion: false
+    controller: true
+    kind: Metering
+    name: openshift-metering
+    uid: af3c0ad8-f1ad-11e8-999b-fa163eb63f73
+  resourceVersion: "31743"
+  selfLink: /apis/route.openshift.io/v1/namespaces/openshift-metering/routes/metering
+  uid: a69e0141-f1c0-11e8-999b-fa163eb63f73
+spec:
+  host: metering-openshift-metering.apps.1127-xuv.qe.rhcloud.com
+  port:
+    targetPort: http
+  tls:
+    insecureEdgeTerminationPolicy: Allow
+    termination: reencrypt
+  to:
+    kind: Service
+    name: reporting-operator
+    weight: 100
+  wildcardPolicy: None
+status:
+  ingress:
+  - conditions:
+    - lastTransitionTime: 2018-11-26T21:17:16Z
+      status: "True"
+      type: Admitted
+    host: metering-openshift-metering.apps.1127-xuv.qe.rhcloud.com
+    routerName: router
+    wildcardPolicy: None
