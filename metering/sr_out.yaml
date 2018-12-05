@@ -1,0 +1,86 @@
+apiVersion: v1
+items:
+- apiVersion: metering.openshift.io/v1alpha1
+  kind: ScheduledReport
+  metadata:
+    creationTimestamp: 2018-12-05T19:31:07Z
+    generation: 1
+    name: namespace-memory-usage-hourly
+    namespace: openshift-metering
+    resourceVersion: "254944"
+    selfLink: /apis/metering.openshift.io/v1alpha1/namespaces/openshift-metering/scheduledreports/namespace-memory-usage-hourly
+    uid: 4ff313b4-f8c4-11e8-a2e5-fa163e2a123a
+  spec:
+    generationQuery: namespace-memory-usage
+    reportingEnd: 2018-11-08T00:00:00Z
+    reportingStart: 2018-11-02T00:00:00Z
+    schedule:
+      period: hourly
+  status:
+    conditions:
+    - lastTransitionTime: 2018-12-05T22:52:48Z
+      lastUpdateTime: 2018-12-05T22:52:48Z
+      message: 'ScheduledReport has finished reporting. Report has reached the configured
+        spec.reportingEnd: 2018-11-08 00:00:00 +0000 UTC'
+      reason: ReportPeriodFinished
+      status: "False"
+      type: Running
+    lastReportTime: 2018-11-08T00:00:00Z
+    tableName: scheduled_report_namespace_memory_usage_hourly
+- apiVersion: metering.openshift.io/v1alpha1
+  kind: ScheduledReport
+  metadata:
+    creationTimestamp: 2018-12-05T18:46:34Z
+    generation: 1
+    name: namespace-memory-usage-hourly-invalid
+    namespace: openshift-metering
+    resourceVersion: "254927"
+    selfLink: /apis/metering.openshift.io/v1alpha1/namespaces/openshift-metering/scheduledreports/namespace-memory-usage-hourly-invalid
+    uid: 16af37b0-f8be-11e8-a2e5-fa163e2a123a
+  spec:
+    generationQuery: namespace-memory-usage
+    reportingEnd: 2018-11-01T00:00:00Z
+    reportingStart: 2018-11-02T00:00:00Z
+    schedule:
+      period: hourly
+  status:
+    conditions:
+    - lastTransitionTime: 2018-12-05T18:46:34Z
+      lastUpdateTime: 2018-12-05T18:46:34Z
+      message: spec.reportingEnd (2018-11-01 00:00:00 +0000 UTC) must be after spec.reportingStart
+        (2018-11-02 00:00:00 +0000 UTC)
+      reason: FailedValidation
+      status: "True"
+      type: Failure
+    tableName: ""
+- apiVersion: metering.openshift.io/v1alpha1
+  kind: ScheduledReport
+  metadata:
+    creationTimestamp: 2018-12-05T21:48:39Z
+    generation: 1
+    name: namespace-memory-usage-hourly-scheduled-report
+    namespace: openshift-metering
+    resourceVersion: "254945"
+    selfLink: /apis/metering.openshift.io/v1alpha1/namespaces/openshift-metering/scheduledreports/namespace-memory-usage-hourly-scheduled-report
+    uid: 86a730dc-f8d7-11e8-a2e5-fa163e2a123a
+  spec:
+    generationQuery: namespace-memory-usage
+    reportingEnd: 2018-11-04T00:00:00Z
+    reportingStart: 2018-11-02T00:00:00Z
+    schedule:
+      period: hourly
+  status:
+    conditions:
+    - lastTransitionTime: 2018-12-05T22:52:48Z
+      lastUpdateTime: 2018-12-05T22:52:48Z
+      message: 'ScheduledReport has finished reporting. Report has reached the configured
+        spec.reportingEnd: 2018-11-04 00:00:00 +0000 UTC'
+      reason: ReportPeriodFinished
+      status: "False"
+      type: Running
+    lastReportTime: 2018-11-04T00:00:00Z
+    tableName: scheduled_report_namespace_memory_usage_hourly_scheduled_report
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""
