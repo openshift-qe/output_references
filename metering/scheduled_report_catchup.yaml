@@ -1,0 +1,29 @@
+[root@qe-pruan-metering-preserve-men-1 ~]# oc get report node-memory-capacity -o yaml
+apiVersion: metering.openshift.io/v1alpha1
+kind: Report
+metadata:
+  creationTimestamp: 2018-12-12T17:52:56Z
+  generation: 1
+  name: node-memory-capacity
+  namespace: openshift-metering
+  resourceVersion: "182895"
+  selfLink: /apis/metering.openshift.io/v1alpha1/namespaces/openshift-metering/reports/node-memory-capacity
+  uid: c1e6ec4a-fe36-11e8-a9e0-fa163e8fc511
+spec:
+  generationQuery: node-memory-capacity
+  reportingEnd: 2018-12-30T23:59:59Z
+  reportingStart: 2018-01-01T00:00:00Z
+  schedule:
+    hourly: {}
+    period: hourly
+status:
+  conditions:
+  - lastTransitionTime: 2018-12-12T17:52:56Z
+    lastUpdateTime: 2018-12-12T20:21:05Z
+    message: reached end of last reporting period [2018-12-12 09:00:00 +0000 UTC to
+      2018-12-12 10:00:00 +0000 UTC]
+    reason: Scheduled
+    status: "True"
+    type: Running
+  lastReportTime: 2018-12-12T09:00:00Z
+  tableName: report_node_memory_capacity
