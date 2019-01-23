@@ -1,9 +1,9 @@
-[root@pruan-311-debug-preserve-men-1 ~]# oc get pods --show-labels
 NAME                                  READY     STATUS    RESTARTS   AGE       LABELS
-hdfs-datanode-0                       1/1       Running   0          8m        app=hdfs-datanode,controller-revision-hash=hdfs-datanode-699694b4,statefulset.kubernetes.io/pod-name=hdfs-datanode-0
-hdfs-namenode-0                       1/1       Running   0          12m       app=hdfs-namenode,controller-revision-hash=hdfs-namenode-66df484f56,statefulset.kubernetes.io/pod-name=hdfs-namenode-0
-hive-metastore-0                      1/1       Running   0          8m        app=hive,controller-revision-hash=hive-metastore-5fcd98f959,hive=metastore,statefulset.kubernetes.io/pod-name=hive-metastore-0
-hive-server-0                         1/1       Running   0          7m        app=hive,controller-revision-hash=hive-server-6d4fff795d,hive=server,statefulset.kubernetes.io/pod-name=hive-server-0
-metering-operator-df67bb6cb-j4g5p     2/2       Running   0          13m       app=metering-operator,pod-template-hash=892366276
-presto-coordinator-64cb98b4f-skpql    1/1       Running   0          12m       app=presto,pod-template-hash=207654609,presto=coordinator
-reporting-operator-698579685f-sj8sg   1/1       Running   0          7m        app=reporting-operator,pod-template-hash=2541352419
+hdfs-datanode-0                       1/1       Running   0          2h        app=hdfs-datanode,controller-revision-hash=hdfs-datanode-f46dd4484,statefulset.kubernetes.io/pod-name=hdfs-datanode-0
+hdfs-namenode-0                       1/1       Running   0          2h        app=hdfs-namenode,controller-revision-hash=hdfs-namenode-76df954cc4,statefulset.kubernetes.io/pod-name=hdfs-namenode-0
+hive-metastore-0                      1/1       Running   0          2h        app=hive,controller-revision-hash=hive-metastore-cd97669b,hive=metastore,statefulset.kubernetes.io/pod-name=hive-metastore-0
+hive-server-0                         1/1       Running   1          2h        app=hive,controller-revision-hash=hive-server-ddd7fccd5,hive=server,statefulset.kubernetes.io/pod-name=hive-server-0
+metering-2bpfc                        1/1       Running   0          3h        olm.catalogSource=metering,olm.configMapResourceVersion=17399
+metering-operator-5bf7bc9c45-r26nz    2/2       Running   0          3h        app=metering-operator,pod-template-hash=1693675701
+presto-coordinator-6c9864f8dc-ldkg9   1/1       Running   0          2h        app=presto,pod-template-hash=2754209487,presto=coordinator
+reporting-operator-67c6cf9c-p44l4     1/1       Running   0          2h        app=reporting-operator,pod-template-hash=23727957
