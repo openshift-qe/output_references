@@ -1,0 +1,441 @@
+apiVersion: v1
+items:
+- apiVersion: metering.openshift.io/v1alpha1
+  kind: ReportDataSource
+  metadata:
+    creationTimestamp: 2019-02-04T19:23:53Z
+    generation: 1
+    labels:
+      operator-metering: "true"
+    name: node-allocatable-cpu-cores
+    namespace: openshift-metering
+    ownerReferences:
+    - apiVersion: metering.openshift.io/v1alpha1
+      blockOwnerDeletion: false
+      controller: true
+      kind: Metering
+      name: operator-metering
+      uid: 521d07d2-28b2-11e9-9526-0a83632124ee
+    resourceVersion: "704932"
+    selfLink: /apis/metering.openshift.io/v1alpha1/namespaces/openshift-metering/reportdatasources/node-allocatable-cpu-cores
+    uid: 68aff4c9-28b2-11e9-9526-0a83632124ee
+  spec:
+    awsBilling: null
+    promsum:
+      query: node-allocatable-cpu-cores
+  status:
+    prometheusMetricImportStatus:
+      earliestImportedMetricTime: 2019-02-04T17:29:00Z
+      lastImportTime: 2019-02-05T04:26:19Z
+      newestImportedMetricTime: 2019-02-05T04:26:00Z
+    tableName: datasource_openshift_metering_node_allocatable_cpu_cores
+- apiVersion: metering.openshift.io/v1alpha1
+  kind: ReportDataSource
+  metadata:
+    creationTimestamp: 2019-02-04T19:23:53Z
+    generation: 1
+    labels:
+      operator-metering: "true"
+    name: node-allocatable-memory-bytes
+    namespace: openshift-metering
+    ownerReferences:
+    - apiVersion: metering.openshift.io/v1alpha1
+      blockOwnerDeletion: false
+      controller: true
+      kind: Metering
+      name: operator-metering
+      uid: 521d07d2-28b2-11e9-9526-0a83632124ee
+    resourceVersion: "704898"
+    selfLink: /apis/metering.openshift.io/v1alpha1/namespaces/openshift-metering/reportdatasources/node-allocatable-memory-bytes
+    uid: 68a6d86d-28b2-11e9-9526-0a83632124ee
+  spec:
+    awsBilling: null
+    promsum:
+      query: node-allocatable-memory-bytes
+  status:
+    prometheusMetricImportStatus:
+      earliestImportedMetricTime: 2019-02-04T17:29:00Z
+      lastImportTime: 2019-02-05T04:26:18Z
+      newestImportedMetricTime: 2019-02-05T04:26:00Z
+    tableName: datasource_openshift_metering_node_allocatable_memory_bytes
+- apiVersion: metering.openshift.io/v1alpha1
+  kind: ReportDataSource
+  metadata:
+    creationTimestamp: 2019-02-04T19:23:53Z
+    generation: 1
+    labels:
+      operator-metering: "true"
+    name: node-capacity-cpu-cores
+    namespace: openshift-metering
+    ownerReferences:
+    - apiVersion: metering.openshift.io/v1alpha1
+      blockOwnerDeletion: false
+      controller: true
+      kind: Metering
+      name: operator-metering
+      uid: 521d07d2-28b2-11e9-9526-0a83632124ee
+    resourceVersion: "704832"
+    selfLink: /apis/metering.openshift.io/v1alpha1/namespaces/openshift-metering/reportdatasources/node-capacity-cpu-cores
+    uid: 68af43bf-28b2-11e9-9526-0a83632124ee
+  spec:
+    awsBilling: null
+    promsum:
+      query: node-capacity-cpu-cores
+  status:
+    prometheusMetricImportStatus:
+      earliestImportedMetricTime: 2019-02-04T17:29:00Z
+      lastImportTime: 2019-02-05T04:26:14Z
+      newestImportedMetricTime: 2019-02-05T04:26:00Z
+    tableName: datasource_openshift_metering_node_capacity_cpu_cores
+- apiVersion: metering.openshift.io/v1alpha1
+  kind: ReportDataSource
+  metadata:
+    creationTimestamp: 2019-02-04T19:23:53Z
+    generation: 1
+    labels:
+      operator-metering: "true"
+    name: node-capacity-memory-bytes
+    namespace: openshift-metering
+    ownerReferences:
+    - apiVersion: metering.openshift.io/v1alpha1
+      blockOwnerDeletion: false
+      controller: true
+      kind: Metering
+      name: operator-metering
+      uid: 521d07d2-28b2-11e9-9526-0a83632124ee
+    resourceVersion: "704665"
+    selfLink: /apis/metering.openshift.io/v1alpha1/namespaces/openshift-metering/reportdatasources/node-capacity-memory-bytes
+    uid: 68b283c0-28b2-11e9-9526-0a83632124ee
+  spec:
+    awsBilling: null
+    promsum:
+      query: node-capacity-memory-bytes
+  status:
+    prometheusMetricImportStatus:
+      earliestImportedMetricTime: 2019-02-04T17:29:00Z
+      lastImportTime: 2019-02-05T04:26:05Z
+      newestImportedMetricTime: 2019-02-05T04:26:00Z
+    tableName: datasource_openshift_metering_node_capacity_memory_bytes
+- apiVersion: metering.openshift.io/v1alpha1
+  kind: ReportDataSource
+  metadata:
+    creationTimestamp: 2019-02-04T19:23:53Z
+    generation: 1
+    labels:
+      operator-metering: "true"
+    name: persistentvolumeclaim-capacity-bytes
+    namespace: openshift-metering
+    ownerReferences:
+    - apiVersion: metering.openshift.io/v1alpha1
+      blockOwnerDeletion: false
+      controller: true
+      kind: Metering
+      name: operator-metering
+      uid: 521d07d2-28b2-11e9-9526-0a83632124ee
+    resourceVersion: "704532"
+    selfLink: /apis/metering.openshift.io/v1alpha1/namespaces/openshift-metering/reportdatasources/persistentvolumeclaim-capacity-bytes
+    uid: 68b13233-28b2-11e9-9526-0a83632124ee
+  spec:
+    awsBilling: null
+    promsum:
+      query: persistentvolumeclaim-capacity-bytes
+  status:
+    prometheusMetricImportStatus:
+      earliestImportedMetricTime: 2019-02-04T17:29:00Z
+      lastImportTime: 2019-02-05T04:25:59Z
+      newestImportedMetricTime: 2019-02-05T04:24:00Z
+    tableName: datasource_openshift_metering_persistentvolumeclaim_capacity_bytes
+- apiVersion: metering.openshift.io/v1alpha1
+  kind: ReportDataSource
+  metadata:
+    creationTimestamp: 2019-02-04T19:23:53Z
+    generation: 1
+    labels:
+      operator-metering: "true"
+    name: persistentvolumeclaim-phase
+    namespace: openshift-metering
+    ownerReferences:
+    - apiVersion: metering.openshift.io/v1alpha1
+      blockOwnerDeletion: false
+      controller: true
+      kind: Metering
+      name: operator-metering
+      uid: 521d07d2-28b2-11e9-9526-0a83632124ee
+    resourceVersion: "705023"
+    selfLink: /apis/metering.openshift.io/v1alpha1/namespaces/openshift-metering/reportdatasources/persistentvolumeclaim-phase
+    uid: 68a95d28-28b2-11e9-9526-0a83632124ee
+  spec:
+    awsBilling: null
+    promsum:
+      query: persistentvolumeclaim-phase
+  status:
+    prometheusMetricImportStatus:
+      earliestImportedMetricTime: 2019-02-04T17:29:00Z
+      lastImportTime: 2019-02-05T04:26:23Z
+      newestImportedMetricTime: 2019-02-05T04:26:00Z
+    tableName: datasource_openshift_metering_persistentvolumeclaim_phase
+- apiVersion: metering.openshift.io/v1alpha1
+  kind: ReportDataSource
+  metadata:
+    creationTimestamp: 2019-02-04T19:23:53Z
+    generation: 1
+    labels:
+      operator-metering: "true"
+    name: persistentvolumeclaim-request-bytes
+    namespace: openshift-metering
+    ownerReferences:
+    - apiVersion: metering.openshift.io/v1alpha1
+      blockOwnerDeletion: false
+      controller: true
+      kind: Metering
+      name: operator-metering
+      uid: 521d07d2-28b2-11e9-9526-0a83632124ee
+    resourceVersion: "704617"
+    selfLink: /apis/metering.openshift.io/v1alpha1/namespaces/openshift-metering/reportdatasources/persistentvolumeclaim-request-bytes
+    uid: 68b1cdd2-28b2-11e9-9526-0a83632124ee
+  spec:
+    awsBilling: null
+    promsum:
+      query: persistentvolumeclaim-request-bytes
+  status:
+    prometheusMetricImportStatus:
+      earliestImportedMetricTime: 2019-02-04T17:29:00Z
+      lastImportTime: 2019-02-05T04:26:03Z
+      newestImportedMetricTime: 2019-02-05T04:26:00Z
+    tableName: datasource_openshift_metering_persistentvolumeclaim_request_bytes
+- apiVersion: metering.openshift.io/v1alpha1
+  kind: ReportDataSource
+  metadata:
+    creationTimestamp: 2019-02-04T19:23:53Z
+    generation: 1
+    labels:
+      operator-metering: "true"
+    name: persistentvolumeclaim-usage-bytes
+    namespace: openshift-metering
+    ownerReferences:
+    - apiVersion: metering.openshift.io/v1alpha1
+      blockOwnerDeletion: false
+      controller: true
+      kind: Metering
+      name: operator-metering
+      uid: 521d07d2-28b2-11e9-9526-0a83632124ee
+    resourceVersion: "704716"
+    selfLink: /apis/metering.openshift.io/v1alpha1/namespaces/openshift-metering/reportdatasources/persistentvolumeclaim-usage-bytes
+    uid: 68ae8810-28b2-11e9-9526-0a83632124ee
+  spec:
+    awsBilling: null
+    promsum:
+      query: persistentvolumeclaim-usage-bytes
+  status:
+    prometheusMetricImportStatus:
+      earliestImportedMetricTime: 2019-02-04T17:29:00Z
+      lastImportTime: 2019-02-05T04:26:08Z
+      newestImportedMetricTime: 2019-02-05T04:26:00Z
+    tableName: datasource_openshift_metering_persistentvolumeclaim_usage_bytes
+- apiVersion: metering.openshift.io/v1alpha1
+  kind: ReportDataSource
+  metadata:
+    creationTimestamp: 2019-02-04T19:23:53Z
+    generation: 1
+    labels:
+      operator-metering: "true"
+    name: pod-limit-cpu-cores
+    namespace: openshift-metering
+    ownerReferences:
+    - apiVersion: metering.openshift.io/v1alpha1
+      blockOwnerDeletion: false
+      controller: true
+      kind: Metering
+      name: operator-metering
+      uid: 521d07d2-28b2-11e9-9526-0a83632124ee
+    resourceVersion: "705007"
+    selfLink: /apis/metering.openshift.io/v1alpha1/namespaces/openshift-metering/reportdatasources/pod-limit-cpu-cores
+    uid: 68aa387d-28b2-11e9-9526-0a83632124ee
+  spec:
+    awsBilling: null
+    promsum:
+      query: pod-limit-cpu-cores
+  status:
+    prometheusMetricImportStatus:
+      earliestImportedMetricTime: 2019-02-04T17:29:00Z
+      lastImportTime: 2019-02-05T04:26:22Z
+      newestImportedMetricTime: 2019-02-05T04:26:00Z
+    tableName: datasource_openshift_metering_pod_limit_cpu_cores
+- apiVersion: metering.openshift.io/v1alpha1
+  kind: ReportDataSource
+  metadata:
+    creationTimestamp: 2019-02-04T19:23:53Z
+    generation: 1
+    labels:
+      operator-metering: "true"
+    name: pod-limit-memory-bytes
+    namespace: openshift-metering
+    ownerReferences:
+    - apiVersion: metering.openshift.io/v1alpha1
+      blockOwnerDeletion: false
+      controller: true
+      kind: Metering
+      name: operator-metering
+      uid: 521d07d2-28b2-11e9-9526-0a83632124ee
+    resourceVersion: "704977"
+    selfLink: /apis/metering.openshift.io/v1alpha1/namespaces/openshift-metering/reportdatasources/pod-limit-memory-bytes
+    uid: 68b09663-28b2-11e9-9526-0a83632124ee
+  spec:
+    awsBilling: null
+    promsum:
+      query: pod-limit-memory-bytes
+  status:
+    prometheusMetricImportStatus:
+      earliestImportedMetricTime: 2019-02-04T17:29:00Z
+      lastImportTime: 2019-02-05T04:26:22Z
+      newestImportedMetricTime: 2019-02-05T04:26:00Z
+    tableName: datasource_openshift_metering_pod_limit_memory_bytes
+- apiVersion: metering.openshift.io/v1alpha1
+  kind: ReportDataSource
+  metadata:
+    creationTimestamp: 2019-02-04T19:23:53Z
+    generation: 1
+    labels:
+      operator-metering: "true"
+    name: pod-persistentvolumeclaim-request-info
+    namespace: openshift-metering
+    ownerReferences:
+    - apiVersion: metering.openshift.io/v1alpha1
+      blockOwnerDeletion: false
+      controller: true
+      kind: Metering
+      name: operator-metering
+      uid: 521d07d2-28b2-11e9-9526-0a83632124ee
+    resourceVersion: "704349"
+    selfLink: /apis/metering.openshift.io/v1alpha1/namespaces/openshift-metering/reportdatasources/pod-persistentvolumeclaim-request-info
+    uid: 68abaf9f-28b2-11e9-9526-0a83632124ee
+  spec:
+    awsBilling: null
+    promsum:
+      query: pod-persistentvolumeclaim-request-info
+  status:
+    prometheusMetricImportStatus:
+      earliestImportedMetricTime: 2019-02-04T17:29:00Z
+      lastImportTime: 2019-02-05T04:25:49Z
+      newestImportedMetricTime: 2019-02-05T04:24:00Z
+    tableName: datasource_openshift_metering_pod_persistentvolumeclaim_request_info
+- apiVersion: metering.openshift.io/v1alpha1
+  kind: ReportDataSource
+  metadata:
+    creationTimestamp: 2019-02-04T19:23:53Z
+    generation: 1
+    labels:
+      operator-metering: "true"
+    name: pod-request-cpu-cores
+    namespace: openshift-metering
+    ownerReferences:
+    - apiVersion: metering.openshift.io/v1alpha1
+      blockOwnerDeletion: false
+      controller: true
+      kind: Metering
+      name: operator-metering
+      uid: 521d07d2-28b2-11e9-9526-0a83632124ee
+    resourceVersion: "705091"
+    selfLink: /apis/metering.openshift.io/v1alpha1/namespaces/openshift-metering/reportdatasources/pod-request-cpu-cores
+    uid: 68ac4910-28b2-11e9-9526-0a83632124ee
+  spec:
+    awsBilling: null
+    promsum:
+      query: pod-request-cpu-cores
+  status:
+    prometheusMetricImportStatus:
+      earliestImportedMetricTime: 2019-02-04T17:29:00Z
+      lastImportTime: 2019-02-05T04:26:27Z
+      newestImportedMetricTime: 2019-02-05T04:26:00Z
+    tableName: datasource_openshift_metering_pod_request_cpu_cores
+- apiVersion: metering.openshift.io/v1alpha1
+  kind: ReportDataSource
+  metadata:
+    creationTimestamp: 2019-02-04T19:23:53Z
+    generation: 1
+    labels:
+      operator-metering: "true"
+    name: pod-request-memory-bytes
+    namespace: openshift-metering
+    ownerReferences:
+    - apiVersion: metering.openshift.io/v1alpha1
+      blockOwnerDeletion: false
+      controller: true
+      kind: Metering
+      name: operator-metering
+      uid: 521d07d2-28b2-11e9-9526-0a83632124ee
+    resourceVersion: "704885"
+    selfLink: /apis/metering.openshift.io/v1alpha1/namespaces/openshift-metering/reportdatasources/pod-request-memory-bytes
+    uid: 68ad97cc-28b2-11e9-9526-0a83632124ee
+  spec:
+    awsBilling: null
+    promsum:
+      query: pod-request-memory-bytes
+  status:
+    prometheusMetricImportStatus:
+      earliestImportedMetricTime: 2019-02-04T17:29:00Z
+      lastImportTime: 2019-02-05T04:26:16Z
+      newestImportedMetricTime: 2019-02-05T04:26:00Z
+    tableName: datasource_openshift_metering_pod_request_memory_bytes
+- apiVersion: metering.openshift.io/v1alpha1
+  kind: ReportDataSource
+  metadata:
+    creationTimestamp: 2019-02-04T19:23:53Z
+    generation: 1
+    labels:
+      operator-metering: "true"
+    name: pod-usage-cpu-cores
+    namespace: openshift-metering
+    ownerReferences:
+    - apiVersion: metering.openshift.io/v1alpha1
+      blockOwnerDeletion: false
+      controller: true
+      kind: Metering
+      name: operator-metering
+      uid: 521d07d2-28b2-11e9-9526-0a83632124ee
+    resourceVersion: "709369"
+    selfLink: /apis/metering.openshift.io/v1alpha1/namespaces/openshift-metering/reportdatasources/pod-usage-cpu-cores
+    uid: 68acecd5-28b2-11e9-9526-0a83632124ee
+  spec:
+    awsBilling: null
+    promsum:
+      query: pod-usage-cpu-cores
+  status:
+    prometheusMetricImportStatus:
+      earliestImportedMetricTime: 2019-02-04T17:29:00Z
+      lastImportTime: 2019-02-05T04:30:18Z
+      newestImportedMetricTime: 2019-02-05T04:30:00Z
+    tableName: datasource_openshift_metering_pod_usage_cpu_cores
+- apiVersion: metering.openshift.io/v1alpha1
+  kind: ReportDataSource
+  metadata:
+    creationTimestamp: 2019-02-04T19:23:53Z
+    generation: 1
+    labels:
+      operator-metering: "true"
+    name: pod-usage-memory-bytes
+    namespace: openshift-metering
+    ownerReferences:
+    - apiVersion: metering.openshift.io/v1alpha1
+      blockOwnerDeletion: false
+      controller: true
+      kind: Metering
+      name: operator-metering
+      uid: 521d07d2-28b2-11e9-9526-0a83632124ee
+    resourceVersion: "709407"
+    selfLink: /apis/metering.openshift.io/v1alpha1/namespaces/openshift-metering/reportdatasources/pod-usage-memory-bytes
+    uid: 68a86929-28b2-11e9-9526-0a83632124ee
+  spec:
+    awsBilling: null
+    promsum:
+      query: pod-usage-memory-bytes
+  status:
+    prometheusMetricImportStatus:
+      earliestImportedMetricTime: 2019-02-04T17:29:00Z
+      lastImportTime: 2019-02-05T04:30:20Z
+      newestImportedMetricTime: 2019-02-05T04:30:00Z
+    tableName: datasource_openshift_metering_pod_usage_memory_bytes
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""
