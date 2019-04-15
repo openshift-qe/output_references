@@ -1,0 +1,113 @@
+apiVersion: logging.openshift.io/v1
+kind: ClusterLogging
+metadata:
+  creationTimestamp: "2019-04-15T17:32:47Z"
+  generation: 1
+  name: instance
+  namespace: openshift-logging
+  resourceVersion: "593168"
+  selfLink: /apis/logging.openshift.io/v1/namespaces/openshift-logging/clusterloggings/instance
+  uid: 7c2d831a-5fa4-11e9-8cd7-0aaec8e4b6c0
+spec:
+  collection:
+    logs:
+      fluentd:
+        resources: null
+      rsyslog:
+        resources: null
+      type: fluentd
+  curation:
+    curator:
+      resources: null
+      schedule: '*/10 * * * *'
+    type: curator
+  logStore:
+    elasticsearch:
+      nodeCount: 1
+      redundancyPolicy: ZeroRedundancy
+      resources:
+        limits:
+          memory: 2Gi
+        requests:
+          cpu: 200m
+          memory: 2Gi
+      storage: {}
+    type: elasticsearch
+  managementState: Managed
+  visualization:
+    kibana:
+      proxy:
+        resources: null
+      replicas: 1
+      resources: null
+    type: kibana
+status:
+  collection:
+    logs:
+      fluentdStatus:
+        daemonSet: fluentd
+        nodes:
+          fluentd-78bw2: ip-172-31-133-60.eu-west-3.compute.internal
+          fluentd-ctxxv: ip-172-31-160-4.eu-west-3.compute.internal
+          fluentd-f5plj: ip-172-31-164-155.eu-west-3.compute.internal
+          fluentd-gmxtg: ip-172-31-154-60.eu-west-3.compute.internal
+          fluentd-q4vk4: ip-172-31-156-10.eu-west-3.compute.internal
+          fluentd-wrq5f: ip-172-31-142-226.eu-west-3.compute.internal
+        pods:
+          failed: []
+          notReady: []
+          ready:
+          - fluentd-78bw2
+          - fluentd-ctxxv
+          - fluentd-f5plj
+          - fluentd-gmxtg
+          - fluentd-q4vk4
+          - fluentd-wrq5f
+      rsyslogStatus:
+        Nodes: null
+        daemonSet: ""
+        pods: null
+  curation:
+    curatorStatus:
+    - cronJobs: curator
+      schedules: '*/10 * * * *'
+      suspended: false
+  logStore:
+    elasticsearchStatus:
+    - clusterHealth: green
+      clusterName: elasticsearch
+      deployments:
+      - elasticsearch-cdm-m97no2bp-1
+      nodeCount: 1
+      pods:
+        client:
+          failed: []
+          notReady: []
+          ready:
+          - elasticsearch-cdm-m97no2bp-1-748c64d568-qxmx6
+        data:
+          failed: []
+          notReady: []
+          ready:
+          - elasticsearch-cdm-m97no2bp-1-748c64d568-qxmx6
+        master:
+          failed: []
+          notReady: []
+          ready:
+          - elasticsearch-cdm-m97no2bp-1-748c64d568-qxmx6
+      replicaSets:
+      - ""
+      statefulSets:
+      - ""
+  message: ""
+  visualization:
+    kibanaStatus:
+    - deployment: kibana
+      pods:
+        failed: []
+        notReady: []
+        ready:
+        - kibana-7fb4fd4cc9-z784b
+      replicaSets:
+      - kibana-7fb4fd4cc9
+      replicas: 1
