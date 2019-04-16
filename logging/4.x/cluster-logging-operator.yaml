@@ -1,0 +1,192 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    alm-examples: |-
+      [
+          {
+            "apiVersion": "logging.openshift.io/v1",
+            "kind": "ClusterLogging",
+            "metadata": {
+              "name": "instance",
+              "namespace": "openshift-logging"
+             },
+            "spec": {
+              "managementState": "Managed",
+              "logStore": {
+                "type": "elasticsearch",
+                "elasticsearch": {
+                  "nodeCount": 3,
+                  "redundancyPolicy": "SingleRedundancy",
+                  "storage": {
+                    "storageClassName": "gp2",
+                    "size": "200G"
+                   }
+                 }
+              },
+              "visualization": {
+                "type": "kibana",
+                "kibana": {
+                  "replicas": 1
+                }
+              },
+              "curation": {
+                "type": "curator",
+                "curator": {
+                  "schedule": "30 3 * * *"
+                }
+              },
+              "collection": {
+                "logs": {
+                  "type": "fluentd",
+                  "fluentd": {}
+                }
+              }
+            }
+          }
+      ]
+    capabilities: Seamless Upgrades
+    categories: OpenShift Optional, Logging & Tracing
+    certified: "false"
+    containerImage: quay.io/openshift/origin-cluster-logging-operator:latest
+    createdAt: "2018-08-01 08:00:00"
+    description: The Cluster Logging Operator for OKD provides a means for configuring
+      and managing your aggregated logging stack.
+    k8s.v1.cni.cncf.io/networks-status: |-
+      [{
+          "name": "openshift-sdn",
+          "interface": "eth0",
+          "ips": [
+              "10.128.2.22"
+          ],
+          "default": true,
+          "dns": {}
+      }]
+    olm.operatorGroup: openshift-logging-8p95h
+    olm.operatorNamespace: openshift-logging
+    olm.targetNamespaces: openshift-logging
+    openshift.io/scc: restricted
+    support: AOS Logging
+  creationTimestamp: "2019-04-16T17:34:30Z"
+  generateName: cluster-logging-operator-6bb776697d-
+  labels:
+    name: cluster-logging-operator
+    pod-template-hash: 6bb776697d
+  name: cluster-logging-operator-6bb776697d-vz5m9
+  namespace: openshift-logging
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: cluster-logging-operator-6bb776697d
+    uid: e3e180ce-606d-11e9-afb7-0e903b61e6c4
+  resourceVersion: "45575"
+  selfLink: /api/v1/namespaces/openshift-logging/pods/cluster-logging-operator-6bb776697d-vz5m9
+  uid: e3e3f04b-606d-11e9-afb7-0e903b61e6c4
+spec:
+  containers:
+  - command:
+    - cluster-logging-operator
+    env:
+    - name: WATCH_NAMESPACE
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: metadata.annotations['olm.targetNamespaces']
+    - name: OPERATOR_NAME
+      value: cluster-logging-operator
+    - name: ELASTICSEARCH_IMAGE
+      value: quay.io/openshift/origin-logging-elasticsearch5:latest
+    - name: FLUENTD_IMAGE
+      value: quay.io/openshift/origin-logging-fluentd:latest
+    - name: KIBANA_IMAGE
+      value: quay.io/openshift/origin-logging-kibana5:latest
+    - name: CURATOR_IMAGE
+      value: quay.io/openshift/origin-logging-curator5:latest
+    - name: OAUTH_PROXY_IMAGE
+      value: quay.io/openshift/origin-oauth-proxy:latest
+    - name: RSYSLOG_IMAGE
+      value: docker.io/viaq/rsyslog:latest
+    image: quay.io/openshift/origin-cluster-logging-operator:latest
+    imagePullPolicy: IfNotPresent
+    name: cluster-logging-operator
+    resources: {}
+    securityContext:
+      capabilities:
+        drop:
+        - KILL
+        - MKNOD
+        - SETGID
+        - SETUID
+      procMount: Default
+      runAsUser: 1000470000
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: cluster-logging-operator-token-c4649
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  imagePullSecrets:
+  - name: cluster-logging-operator-dockercfg-sd5fr
+  nodeName: ip-172-31-136-118.eu-west-3.compute.internal
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext:
+    fsGroup: 1000470000
+    seLinuxOptions:
+      level: s0:c22,c4
+  serviceAccount: cluster-logging-operator
+  serviceAccountName: cluster-logging-operator
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: cluster-logging-operator-token-c4649
+    secret:
+      defaultMode: 420
+      secretName: cluster-logging-operator-token-c4649
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2019-04-16T17:34:30Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2019-04-16T17:34:50Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2019-04-16T17:34:50Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2019-04-16T17:34:30Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: cri-o://2dacb0931ffd7cede91c42a41f0d32ec1f6d6a432852801ea52eebb809961bde
+    image: quay.io/openshift/origin-cluster-logging-operator:latest
+    imageID: quay.io/openshift/origin-cluster-logging-operator@sha256:51f65deb0565f275b1eb34eb510596ef04c3f1c85daffab2b8be1e957f20f218
+    lastState: {}
+    name: cluster-logging-operator
+    ready: true
+    restartCount: 0
+    state:
+      running:
+        startedAt: "2019-04-16T17:34:49Z"
+  hostIP: 172.31.136.118
+  phase: Running
+  podIP: 10.128.2.22
+  qosClass: BestEffort
+  startTime: "2019-04-16T17:34:30Z"
