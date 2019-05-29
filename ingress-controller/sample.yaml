@@ -1,0 +1,23 @@
+apiVersion: operator.openshift.io/v1
+kind: IngressController
+metadata:
+  creationTimestamp: "2019-05-28T17:04:03Z"
+  finalizers:
+  - ingresscontroller.operator.openshift.io/finalizer-ingresscontroller
+  generation: 1
+  name: default
+  namespace: openshift-ingress-operator
+  resourceVersion: "14383"
+  selfLink: /apis/operator.openshift.io/v1/namespaces/openshift-ingress-operator/ingresscontrollers/default
+  uid: 98af0220-816a-11e9-82c1-02b3adb00b00
+spec: {}
+status:
+  availableReplicas: 2
+  conditions:
+  - lastTransitionTime: "2019-05-28T17:07:59Z"
+    status: "True"
+    type: Available
+  domain: apps.qe-pruan-05-28.qe.devcluster.openshift.com
+  endpointPublishingStrategy:
+    type: LoadBalancerService
+  selector: ingresscontroller.operator.openshift.io/deployment-ingresscontroller=default
