@@ -1,0 +1,59 @@
+apiVersion: config.openshift.io/v1
+kind: ClusterOperator   
+metadata:    
+  creationTimestamp: "2019-07-25T01:52:24Z"
+  generation: 1         
+  name: authentication
+  resourceVersion: "30694"
+  selfLink: /apis/config.openshift.io/v1/clusteroperators/authentication
+  uid: d972ad5e-ae7e-11e9-b0cc-0a30792ccd50
+spec: {}                                                                                                 
+status:                          
+  conditions:
+  - lastTransitionTime: "2019-07-25T02:02:02Z"
+    reason: AsExpected
+    status: "False"
+    type: Degraded
+  - lastTransitionTime: "2019-07-25T02:03:55Z"
+    reason: AsExpected
+    status: "False"
+    type: Progressing
+  - lastTransitionTime: "2019-07-25T02:03:55Z"
+    reason: AsExpected
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2019-07-25T01:52:24Z"
+    reason: AsExpected
+    status: "True"
+    type: Upgradeable
+  extension: null
+  relatedObjects:
+  - group: operator.openshift.io
+    name: cluster
+    resource: authentications
+  - group: config.openshift.io
+    name: cluster
+    resource: authentications
+  - group: config.openshift.io
+    name: cluster
+    resource: infrastructures
+  - group: config.openshift.io
+    name: cluster
+    resource: oauths
+  - group: ""
+    name: openshift-config
+    resource: namespaces
+  - group: ""
+    name: openshift-config-managed
+    resource: namespaces
+  - group: ""
+    name: openshift-authentication
+    resource: namespaces
+  - group: ""
+    name: openshift-authentication-operator
+    resource: namespaces
+  versions:
+  - name: operator
+    version: 4.2.0-0.nightly-2019-07-24-233914
+  - name: oauth-openshift
+    version: 4.2.0-0.nightly-2019-07-24-233914_openshift
