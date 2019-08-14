@@ -1,0 +1,28 @@
+---
+apiVersion: "autoscaling.openshift.io/v1beta1"
+kind: "MachineAutoscaler"
+metadata:
+  name: "qe-pruan-07-30-073644-p4gnd-worker-us-west-1a"
+  namespace: "openshift-machine-api"
+spec:
+  minReplicas: 1
+  maxReplicas: 10
+  scaleTargetRef:
+    apiVersion: machine.openshift.io/v1beta1
+    kind: MachineSet
+    name: qe-pruan-07-30-073644-p4gnd-worker-us-west-1a
+
+---
+apiVersion: "autoscaling.openshift.io/v1beta1"
+kind: "MachineAutoscaler"
+metadata:
+  name: "qe-pruan-07-30-073644-p4gnd-worker-us-west-1c"
+  namespace: "openshift-machine-api"
+spec:
+  minReplicas: 1
+  maxReplicas: 10
+  scaleTargetRef:
+    apiVersion: machine.openshift.io/v1beta1
+    kind: MachineSet
+    name: qe-pruan-07-30-073644-p4gnd-worker-us-west-1c
+
