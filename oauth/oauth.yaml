@@ -1,0 +1,35 @@
+apiVersion: config.openshift.io/v1
+kind: OAuth
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"config.openshift.io/v1","kind":"OAuth","metadata":{"annotations":{},"name":"cluster"},"spec":{"identityProviders":[{"challenge":true,"htpasswd":{"fileData":{"name":"htpass-secret"}},"login":true,"mappingMethod":"claim","name":"flexy-htpasswd-provider","type":"HTPasswd"}]}}
+    release.openshift.io/create-only: "true"
+  creationTimestamp: "2019-08-19T17:15:28Z"
+  generation: 4
+  name: cluster
+  resourceVersion: "229867"
+  selfLink: /apis/config.openshift.io/v1/oauths/cluster
+  uid: f0eda55d-c2a4-11e9-846a-023af3e4d81c
+spec:
+  identityProviders:
+  - challenge: true
+    htpasswd:
+      fileData:
+        name: htpass-secret
+    login: true
+    mappingMethod: claim
+    name: flexy-htpasswd-provider
+    type: HTPasswd
+  - htpasswd:
+      fileData:
+        name: htpasswd-z6wkr
+    mappingMethod: claim
+    name: htpasswd
+    type: HTPasswd
+  - htpasswd:
+      fileData:
+        name: htpasswd-svtqn
+    mappingMethod: claim
+    name: htpasswd-test
+    type: HTPasswd
