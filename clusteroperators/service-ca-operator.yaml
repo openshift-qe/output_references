@@ -1,0 +1,49 @@
+apiVersion: config.openshift.io/v1
+kind: ClusterOperator
+metadata:
+  creationTimestamp: "2019-09-05T00:50:45Z"
+  generation: 1
+  name: service-ca
+  resourceVersion: "272763"
+  selfLink: /apis/config.openshift.io/v1/clusteroperators/service-ca
+  uid: 3198aba9-cf77-11e9-9851-0291c0b4a83e
+spec: {}
+status:
+  conditions:
+  - lastTransitionTime: "2019-09-05T00:50:59Z"
+    reason: AsExpected
+    status: "False"
+    type: Degraded
+  - lastTransitionTime: "2019-09-05T07:05:39Z"
+    message: 'Progressing: All service-ca-operator deployments updated'
+    reason: AsExpected
+    status: "False"
+    type: Progressing
+  - lastTransitionTime: "2019-09-05T00:50:51Z"
+    reason: AsExpected
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2019-09-05T00:50:45Z"
+    reason: NoData
+    status: Unknown
+    type: Upgradeable
+  extension: null
+  relatedObjects:
+  - group: operator.openshift.io
+    name: cluster
+    resource: servicecas
+  - group: ""
+    name: openshift-config
+    resource: namespaces
+  - group: ""
+    name: openshift-config-managed
+    resource: namespaces
+  - group: ""
+    name: openshift-service-ca-operator
+    resource: namespaces
+  - group: ""
+    name: openshift-service-ca
+    resource: namespaces
+  versions:
+  - name: operator
+    version: 4.2.0-0.nightly-2019-09-04-142146
