@@ -1,0 +1,124 @@
+apiVersion: logging.openshift.io/v1
+kind: ClusterLogging
+metadata:
+  creationTimestamp: "2019-09-23T04:11:55Z"
+  generation: 306
+  name: instance
+  namespace: openshift-logging
+  resourceVersion: "119120"
+  selfLink: /apis/logging.openshift.io/v1/namespaces/openshift-logging/clusterloggings/instance
+  uid: 4783e744-ddb8-11e9-98e6-06166b071764
+spec:
+  collection:
+    logs:
+      fluentd:
+        resources: null
+      rsyslog:
+        resources: null
+      type: fluentd
+  curation:
+    curator:
+      resources: null
+      schedule: '*/10 * * * *'
+    type: curator
+  logStore:
+    elasticsearch:
+      nodeCount: 1
+      redundancyPolicy: ZeroRedundancy
+      resources:
+        limits:
+          memory: 2Gi
+        requests:
+          cpu: 200m
+          memory: 2Gi
+      storage: {}
+    type: elasticsearch
+  managementState: Managed
+  visualization:
+    kibana:
+      proxy:
+        resources: null
+      replicas: 1
+      resources: null
+    type: kibana
+status:
+  collection:
+    logs:
+      fluentdStatus:
+        daemonSet: fluentd
+        nodes:
+          fluentd-5tpkd: ip-10-0-142-65.eu-west-3.compute.internal
+          fluentd-9rzqw: ip-10-0-135-110.eu-west-3.compute.internal
+          fluentd-ktdkt: ip-10-0-150-65.eu-west-3.compute.internal
+          fluentd-ldfkx: ip-10-0-169-102.eu-west-3.compute.internal
+          fluentd-v2sqc: ip-10-0-161-131.eu-west-3.compute.internal
+          fluentd-xqtb6: ip-10-0-148-243.eu-west-3.compute.internal
+        pods:
+          failed: []
+          notReady: []
+          ready:
+          - fluentd-5tpkd
+          - fluentd-9rzqw
+          - fluentd-ktdkt
+          - fluentd-ldfkx
+          - fluentd-v2sqc
+          - fluentd-xqtb6
+      rsyslogStatus:
+        Nodes: null
+        daemonSet: ""
+        pods: null
+  curation:
+    curatorStatus:
+    - clusterCondition:
+        curator-1569216000-krvs5:
+        - lastTransitionTime: "2019-09-23T05:21:18Z"
+          reason: Completed
+          status: "True"
+          type: ContainerTerminated
+      cronJobs: curator
+      schedules: '*/10 * * * *'
+      suspended: false
+  logStore:
+    elasticsearchStatus:
+    - ShardAllocationEnabled: all
+      cluster:
+        activePrimaryShards: 7
+        activeShards: 7
+        initializingShards: 0
+        numDataNodes: 1
+        numNodes: 1
+        pendingTasks: 0
+        relocatingShards: 0
+        status: green
+        unassignedShards: 0
+      clusterName: elasticsearch
+      nodeConditions:
+        elasticsearch-cdm-ahcfvw0j-1: []
+      nodeCount: 1
+      pods:
+        client:
+          failed: []
+          notReady: []
+          ready:
+          - elasticsearch-cdm-ahcfvw0j-1-5b75959f4c-dfr27
+        data:
+          failed: []
+          notReady: []
+          ready:
+          - elasticsearch-cdm-ahcfvw0j-1-5b75959f4c-dfr27
+        master:
+          failed: []
+          notReady: []
+          ready:
+          - elasticsearch-cdm-ahcfvw0j-1-5b75959f4c-dfr27
+  visualization:
+    kibanaStatus:
+    - deployment: kibana
+      pods:
+        failed: []
+        notReady: []
+        ready:
+        - kibana-558bb6b6bc-s59fg
+      replicaSets:
+      - kibana-558bb6b6bc
+      replicas: 1
