@@ -1,0 +1,77 @@
+apiVersion: machine.openshift.io/v1beta1
+kind: MachineSet
+metadata:
+  annotations:
+    autoscaling.openshift.io/machineautoscaler: openshift-machine-api/azure-42-upgrade-pbv27-worker-centralus1
+    machine.openshift.io/cluster-api-autoscaler-node-group-max-size: "10"
+    machine.openshift.io/cluster-api-autoscaler-node-group-min-size: "1"
+  creationTimestamp: "2019-09-26T08:11:33Z"
+  generation: 7
+  labels:
+    machine.openshift.io/cluster-api-cluster: azure-42-upgrade-pbv27
+    machine.openshift.io/cluster-api-machine-role: worker
+    machine.openshift.io/cluster-api-machine-type: worker
+  name: azure-42-upgrade-pbv27-worker-centralus1
+  namespace: openshift-machine-api
+  resourceVersion: "234744"
+  selfLink: /apis/machine.openshift.io/v1beta1/namespaces/openshift-machine-api/machinesets/azure-42-upgrade-pbv27-worker-centralus1
+  uid: 40907317-e035-11e9-b9c0-000d3a9743d3
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      machine.openshift.io/cluster-api-cluster: azure-42-upgrade-pbv27
+      machine.openshift.io/cluster-api-machineset: azure-42-upgrade-pbv27-worker-centralus1
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        machine.openshift.io/cluster-api-cluster: azure-42-upgrade-pbv27
+        machine.openshift.io/cluster-api-machine-role: worker
+        machine.openshift.io/cluster-api-machine-type: worker
+        machine.openshift.io/cluster-api-machineset: azure-42-upgrade-pbv27-worker-centralus1
+    spec:
+      metadata:
+        creationTimestamp: null
+      providerSpec:
+        value:
+          apiVersion: azureproviderconfig.openshift.io/v1beta1
+          credentialsSecret:
+            name: azure-cloud-credentials
+            namespace: openshift-machine-api
+          image:
+            offer: ""
+            publisher: ""
+            resourceID: /resourceGroups/azure-42-upgrade-pbv27-rg/providers/Microsoft.Compute/images/azure-42-upgrade-pbv27
+            sku: ""
+            version: ""
+          internalLoadBalancer: ""
+          kind: AzureMachineProviderSpec
+          location: centralus
+          managedIdentity: azure-42-upgrade-pbv27-identity
+          metadata:
+            creationTimestamp: null
+          natRule: null
+          networkResourceGroup: ""
+          osDisk:
+            diskSizeGB: 128
+            managedDisk:
+              storageAccountType: Premium_LRS
+            osType: Linux
+          publicIP: false
+          publicLoadBalancer: ""
+          resourceGroup: azure-42-upgrade-pbv27-rg
+          sshPrivateKey: ""
+          sshPublicKey: ""
+          subnet: azure-42-upgrade-pbv27-worker-subnet
+          userDataSecret:
+            name: worker-user-data
+          vmSize: Standard_D4s_v3
+          vnet: azure-42-upgrade-pbv27-vnet
+          zone: "1"
+status:
+  availableReplicas: 1
+  fullyLabeledReplicas: 1
+  observedGeneration: 7
+  readyReplicas: 1
+  replicas: 1
