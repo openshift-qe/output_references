@@ -1,0 +1,91 @@
+apiVersion: local.storage.openshift.io/v1alpha1
+kind: LocalVolumeDiscoveryResult
+metadata:
+  creationTimestamp: "2021-03-09T03:44:08Z"
+  generation: 1
+  labels:
+    discovery-result-node: kata-metering-0308-ztzr6-worker-a-rrdwz.c.openshift-qe.internal
+  managedFields:
+  - apiVersion: local.storage.openshift.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:labels:
+          .: {}
+          f:discovery-result-node: {}
+        f:ownerReferences:
+          .: {}
+          k:{"uid":"1d3ad892-7a1e-413b-8780-807b9b17e293"}:
+            .: {}
+            f:apiVersion: {}
+            f:kind: {}
+            f:name: {}
+            f:uid: {}
+      f:spec:
+        .: {}
+        f:nodeName: {}
+      f:status:
+        .: {}
+        f:discoveredDevices: {}
+        f:discoveredTimeStamp: {}
+    manager: diskmaker
+    operation: Update
+    time: "2021-03-09T03:44:08Z"
+  name: discovery-result-2d82238c17f56c68f6fc0dae9e616637
+  namespace: openshift-local-storage
+  ownerReferences:
+  - apiVersion: local.storage.openshift.io/v1alpha1
+    kind: LocalVolumeDiscovery
+    name: auto-discover-devices
+    uid: 1d3ad892-7a1e-413b-8780-807b9b17e293
+  resourceVersion: "297556"
+  uid: df800905-9161-4769-9829-0fea8e1b88e1
+spec:
+  nodeName: kata-metering-0308-ztzr6-worker-a-rrdwz.c.openshift-qe.internal
+status:
+  discoveredDevices:
+  - deviceID: /dev/disk/by-id/google-persistent-disk-0-part1
+    fstype: ""
+    model: ""
+    path: /dev/sda1
+    property: NonRotational
+    serial: ""
+    size: 1048576
+    status:
+      state: NotAvailable
+    type: part
+    vendor: ""
+  - deviceID: /dev/disk/by-id/google-persistent-disk-0-part2
+    fstype: vfat
+    model: ""
+    path: /dev/sda2
+    property: NonRotational
+    serial: ""
+    size: 133169152
+    status:
+      state: NotAvailable
+    type: part
+    vendor: ""
+  - deviceID: /dev/disk/by-id/google-persistent-disk-0-part3
+    fstype: ext4
+    model: ""
+    path: /dev/sda3
+    property: NonRotational
+    serial: ""
+    size: 402653184
+    status:
+      state: NotAvailable
+    type: part
+    vendor: ""
+  - deviceID: /dev/disk/by-id/google-persistent-disk-0-part4
+    fstype: xfs
+    model: ""
+    path: /dev/sda4
+    property: NonRotational
+    serial: ""
+    size: 136901017088
+    status:
+      state: NotAvailable
+    type: part
+    vendor: ""
+  discoveredTimeStamp: "2021-03-09T03:44:08Z"
